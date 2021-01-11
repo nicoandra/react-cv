@@ -38,3 +38,12 @@ stages:
         tags: |
           $(tag)
           latest
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
+        appType: 'webAppContainer'
+        WebAppName: 'nicoandra'
+        DockerNamespace: 'nicoandra'
+        DockerRepository: 'react-cv'
+        DockerImageTag: 'latest'
