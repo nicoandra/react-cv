@@ -11,7 +11,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: 'cb295ce7-2beb-436a-8d5d-4be6579b4b3b'
-  imageRepository: 'reactcv'
+  imageRepository: 'react-cv'
   containerRegistry: 'nicoandra.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
