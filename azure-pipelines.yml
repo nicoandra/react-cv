@@ -133,4 +133,4 @@ stages:
         scriptType: bash
         scriptLocation: inlineScript
         inlineScript: |
-          az storage blob upload-batch --account-name nicoandra -s . -d "$web"
+          az storage blob upload-batch --account-name nicoandra -s ./build -d \$web
