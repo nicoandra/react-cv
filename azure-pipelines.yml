@@ -21,12 +21,14 @@ variables:
   value: '$(Build.SourcesDirectory)/Dockerfile'
 - name: tag
   value: '$(Build.BuildId)'
+- name: commitHash
+  value '$(Build.SourceVersion)'
 - name: sourceBranch
   value: $[variables['build.sourceBranch']]
 - name: isMainBranch
   value: $[eq(variables['build.sourceBranch'], 'refs/heads/main')]
 - name: isQaBranch
-  value: $[startsWith(variables['build.sourceBranch'], 'refs/heads/qa')]  
+  value: $[startsWith(variables['build.sourceBranch'], 'refs/heads/qa')]
 pool:
   vmImage: 'ubuntu-20.04'
 
@@ -39,24 +41,39 @@ stages:
         echo "sourceBranch: $(sourceBranch)"
         echo "isMainBranch: $(isMainBranch)"
         echo "isQaBranch: $(isQaBranch)"
-# - stage: Build
-#   displayName: Build and push stage
-#   jobs:  
-#   - job: Build
-#     displayName: Build
-#     pool:
-#       vmImage: $(vmImageName)
-#     steps:
-#     - task: Docker@2
-#       displayName: Build and push an image to container registry
-#       inputs:
-#         command: buildAndPush
-#         repository: $(imageRepository)
-#         dockerfile: $(dockerfilePath)
-#         containerRegistry: $(dockerRegistryServiceConnection)
-#         tags: |
-#           $(tag)
-#           latest
+        echo "commitHash: $(commitHash)"
+- stage: Build
+  displayName: Build and push stage
+  jobs:  
+  - job: Build
+    displayName: Build
+    condition: or(eq(variables.isMainBranch, true), eq(variables.isQaBranch, true))
+    steps:
+    - task: Docker@2
+      displayName: Build and push Latest
+      condition: eq(variables.isMainBranch, true)
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
+          $(commitHash)
+          latest
+    - task: Docker@2
+      displayName: Build and push RC
+      condition: eq(variables.isQaBranch, true)
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
+          $(commitHash)
+          qa
+# 
 #     - task: AzureRmWebAppDeployment@4
 #       inputs:
 #         ConnectionType: 'AzureRM'
