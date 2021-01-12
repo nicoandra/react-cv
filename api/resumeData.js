@@ -61,6 +61,10 @@ module.exports = {
     ],
     "skills":[
       {
+        "name":"Spoken languages",
+        "content":"English, Français, Español"
+      },      
+      {
         "name":"Databases and Data storage",
         "content":"Un poco de MySQL"
       },
