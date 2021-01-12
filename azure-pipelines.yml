@@ -21,14 +21,12 @@ variables:
   value: '$(Build.SourcesDirectory)/Dockerfile'
 - name: tag
   value: '$(Build.BuildId)'
-- name: sourceBranchName
+- name: sourceBranch
   value: $[variables['build.sourceBranch']]
-- name: tagQaOrLatest
-  ${{ if eq(variables['build.sourceBranch'], 'main') }}:
-    value: latest
-  ${{ if eq(variables['build.sourceBranch'], 'qa') }}:
-    value: qa
-  
+- name: isMainBranch
+  value: $[eq(variables['build.sourceBranch'], 'refs/heads/main')]
+- name: isQaBranch
+  value: $[startsWith(variables['build.sourceBranch'], 'refs/heads/qa')]  
 pool:
   vmImage: 'ubuntu-20.04'
 
@@ -38,7 +36,9 @@ stages:
   - job: "ShowVariables"
     steps:
     - bash: |
-        echo "tagQaOrLatest: $(tagQaOrLatest)"
+        echo "sourceBranch: $(sourceBranch)"
+        echo "isMainBranch: $(isMainBranch)"
+        echo "isQaBranch: $(isQaBranch)"
 # - stage: Build
 #   displayName: Build and push stage
 #   jobs:  
