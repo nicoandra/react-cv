@@ -3,11 +3,20 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-- main
-- qa
+  branches:
+    include:
+    - main
+    - qa
+    - refs/tags/*
+    - releases/tags/*
+    - azure-pipeline
 
 resources:
 - repo: self
+
+pr:
+  - main
+  - qa
 
 variables:
 # Container registry service connection established during pipeline creation
