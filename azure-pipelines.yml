@@ -99,13 +99,13 @@ stages:
         DockerRepository: 'react-cv'
         DockerImageTag: 'qa'
     - task: AzureRmWebAppDeployment@4
-        displayName: Deploy to Prod
-        condition: eq(variables.isMainBranch, true)
-        inputs:
-          ConnectionType: 'AzureRM'
-          azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
-          appType: 'webAppContainer'
-          WebAppName: 'nicoandra'
-          DockerNamespace: 'nicoandra.azurecr.io'
-          DockerRepository: 'react-cv'
-          DockerImageTag: 'latest'
+      displayName: Deploy to Prod
+      condition: eq(variables.isMainBranch, true)
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
+        appType: 'webAppContainer'
+        WebAppName: 'nicoandra'
+        DockerNamespace: 'nicoandra.azurecr.io'
+        DockerRepository: 'react-cv'
+        DockerImageTag: 'latest'
