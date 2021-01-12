@@ -38,12 +38,11 @@ variables:
   value: $[eq(variables['build.sourceBranch'], 'refs/heads/main')]
 - name: isQaBranch
   value: $[startsWith(variables['build.sourceBranch'], 'refs/heads/qa')]
-${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/qa')) }}:
-  - name: dockerTagName
-    value: qa
-${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/main')) }}:
-  - name: dockerTagName
-    value: latest
+- name: dockerTagName
+    ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/qa')) }}:
+      value: qa
+    ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/main')) }}:
+      value: latest
     
 
 pool:
@@ -59,6 +58,7 @@ stages:
         echo "isMainBranch: $(isMainBranch)"
         echo "isQaBranch: $(isQaBranch)"
         echo "commitHash: $(commitHash)"
+        echo "dockerTagName $(dockerTagName)"
 - stage: Build
   displayName: Build and push stage
   jobs:
