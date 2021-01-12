@@ -61,32 +61,32 @@ module.exports = {
     ],
     "skills":[
       {
-        "name":"Git",
-        "level":"60%"
+        "name":"Databases and Data storage",
+        "content":"Un poco de MySQL"
       },
       {
         "name":"Illustrator",
-        "level":"55%"
+        "content":"55%"
       },
       {
         "name":"ReactJs",
-        "level":"50%"
+        "content":"50%"
       },
       {
         "name":"CSS",
-        "level":"90%"
+        "content":"90%"
       },
       {
         "name":"HTML5",
-        "level":"80%"
+        "content":"80%"
       },
       {
         "name":"VueJs",
-        "level":"50%"
+        "content":"50%"
       },
       {
         "name":"MongoDB",
-        "level":"80%"
+        "content":"80%"
       }
     ]
   },

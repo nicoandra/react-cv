@@ -53,7 +53,7 @@ stages:
         echo "commitHash: $(commitHash)"
 - stage: Build
   displayName: Build and push stage
-  jobs:  
+  jobs:
   - job: Build
     displayName: Build
     condition: or(eq(variables.isMainBranch, true), eq(variables.isQaBranch, true))
@@ -68,7 +68,6 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-          $(commitHash)
           latest
     - task: Docker@2
       displayName: Build and push RC
@@ -80,15 +79,33 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-          $(commitHash)
           qa
-# 
-#     - task: AzureRmWebAppDeployment@4
-#       inputs:
-#         ConnectionType: 'AzureRM'
-#         azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
-#         appType: 'webAppContainer'
-#         WebAppName: 'nicoandra'
-#         DockerNamespace: 'nicoandra.azurecr.io'
-#         DockerRepository: 'react-cv'
-#         DockerImageTag: 'latest'
+
+- stage: Deploy
+  displayName: Deploy
+  jobs:
+  - job: Deploy
+    condition: or(eq(variables.isMainBranch, true), eq(variables.isQaBranch, true))
+    steps:
+    - task: AzureRmWebAppDeployment@4
+      displayName: Deploy to QA
+      condition: eq(variables.isQaBranch, true)
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
+        appType: 'webAppContainer'
+        WebAppName: 'nicoandra-qa'
+        DockerNamespace: 'nicoandra.azurecr.io'
+        DockerRepository: 'react-cv'
+        DockerImageTag: 'qa'
+    - task: AzureRmWebAppDeployment@4
+        displayName: Deploy to Prod
+        condition: eq(variables.isMainBranch, true)
+        inputs:
+          ConnectionType: 'AzureRM'
+          azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
+          appType: 'webAppContainer'
+          WebAppName: 'nicoandra'
+          DockerNamespace: 'nicoandra.azurecr.io'
+          DockerRepository: 'react-cv'
+          DockerImageTag: 'latest'
