@@ -21,11 +21,13 @@ variables:
   value: '$(Build.SourcesDirectory)/Dockerfile'
 - name: tag
   value: '$(Build.BuildId)'
+- name: sourceBranchName
+  value: $[variables['build.sourceBranch']]
 - name: tagQaOrLatest
-  ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+  ${{ if eq(variables['build.sourceBranch'], 'main') }}:
     value: latest
-  ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
-    value: ${{ parameters.var1 }}
+  ${{ if eq(variables['build.sourceBranch'], 'qa') }}:
+    value: qa
   
 pool:
   vmImage: 'ubuntu-20.04'
