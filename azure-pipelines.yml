@@ -4,18 +4,34 @@
 
 trigger:
 - main
+- qa
 
 resources:
 - repo: self
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'cb295ce7-2beb-436a-8d5d-4be6579b4b3b'
-  imageRepository: 'react-cv'
-  containerRegistry: 'nicoandra.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
-  tag: '$(Build.BuildId)'
-  
+  - name: dockerRegistryServiceConnection:
+    value: 'cb295ce7-2beb-436a-8d5d-4be6579b4b3b'
+  - name: imageRepository
+    value: 'react-cv'
+  - name: containerRegistry
+    value: 'nicoandra.azurecr.io'
+  - name: dockerfilePath
+    value: '$(Build.SourcesDirectory)/Dockerfile'
+  - name: tag
+    value: '$(Build.BuildId)'
+  - name: tagQaOrLatest
+    ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+      value: latest
+    ${{ if eq(variables['Build.SourceBranchName'], 'qa') }}:
+      value: qa
+  - name: tagQaOrLatest
+    ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+      value: latest
+    ${{ if eq(variables['Build.SourceBranchName'], 'qa') }}:
+      value: qa
+
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
@@ -37,13 +53,27 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-          latest
-    - task: AzureRmWebAppDeployment@4
-      inputs:
-        ConnectionType: 'AzureRM'
-        azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
-        appType: 'webAppContainer'
-        WebAppName: 'nicoandra'
-        DockerNamespace: 'nicoandra.azurecr.io'
-        DockerRepository: 'react-cv'
-        DockerImageTag: 'latest'
+          $(tagQaOrLatest)
+- stage: Deploy
+  displayName: Deploy
+  - task: AzureRmWebAppDeployment@4
+    condition: eq(variables.tagQaOrLatest, "latest")
+    inputs:
+      ConnectionType: 'AzureRM'
+      azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
+      appType: 'webAppContainer'
+      WebAppName: 'nicoandra'
+      DockerNamespace: 'nicoandra.azurecr.io'
+      DockerRepository: 'react-cv'
+      DockerImageTag: 'latest'
+  - task: AzureRmWebAppDeployment@4
+    condition: eq(variables.tagQaOrLatest, "qa")
+    inputs:
+      ConnectionType: 'AzureRM'
+      azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
+      appType: 'webAppContainer'
+      WebAppName: 'nicoandra-qa'
+      DockerNamespace: 'nicoandra.azurecr.io'
+      DockerRepository: 'react-cv'
+      DockerImageTag: 'latest'
+  
