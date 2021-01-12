@@ -39,10 +39,10 @@ variables:
 - name: isQaBranch
   value: $[startsWith(variables['build.sourceBranch'], 'refs/heads/qa')]
 - name: dockerTagName
-    ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/qa')) }}:
-      value: qa
-    ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/main')) }}:
-      value: latest
+  ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/qa')) }}:
+    value: qa
+  ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/main')) }}:
+    value: latest
     
 
 pool:
