@@ -38,6 +38,14 @@ variables:
   value: $[eq(variables['build.sourceBranch'], 'refs/heads/main')]
 - name: isQaBranch
   value: $[startsWith(variables['build.sourceBranch'], 'refs/heads/qa')]
+${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/qa')) }}:
+  - name: dockerTagName
+    value: qa
+${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/main')) }}:
+  - name: dockerTagName
+    value: latest
+    
+
 pool:
   vmImage: 'ubuntu-20.04'
 
