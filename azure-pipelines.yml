@@ -22,7 +22,7 @@ variables:
 - name: tag
   value: '$(Build.BuildId)'
 - name: commitHash
-  value '$(Build.SourceVersion)'
+  value: '$(Build.SourceVersion)'
 - name: sourceBranch
   value: $[variables['build.sourceBranch']]
 - name: isMainBranch
