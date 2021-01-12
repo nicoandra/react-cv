@@ -126,6 +126,11 @@ stages:
         npm install
         npm run build
       displayName: Compile App to ./build
-    - bash: |
-        az storage blob upload-batch --account-name nicoandra -s . -d '$web'
+    - task: AzureCLI@2
       displayName: Copy to Blob Container
+      inputs:
+        azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
+        scriptType: bash
+        scriptLocation: inlineScript
+        inlineScript: |
+          az storage blob upload-batch --account-name nicoandra -s . -d "$web"
