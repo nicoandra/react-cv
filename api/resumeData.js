@@ -31,20 +31,6 @@ module.exports = {
   },
   "resume":{
     "skillmessage":"skill skill skill",
-    "education":[
-      {
-        "school":"University?",
-        "degree":"Masters in Beer tasting",
-        "graduated":"April 2007",
-        "description":"Describe your experience at school, what you learned, what useful skills you have acquired etc."
-      },
-      {
-        "school":"School #1 Maybe College?",
-        "degree":"What did you study 101",
-        "graduated":"March 2003",
-        "description":"Describe your experience at school, what you learned, what useful skills you have acquired etc."
-      }
-    ],
     "work":[
       {
         "company":"Awesome Design Studio",
@@ -66,42 +52,24 @@ module.exports = {
       },      
       {
         "name":"Databases and Data storage",
-        "content":"Un poco de MySQL"
+        "content":"PostgreSQL, MySQL, MongoDB, DynamoDB, DocumentDB, Redis"
       },
       {
-        "name":"Illustrator",
-        "content":"55%"
+        "name":"Cloud Services and Infrastructure",
+        "content":"SQS, S3, Kubernetes, Docker"
       },
       {
-        "name":"ReactJs",
-        "content":"50%"
+        "name":"Programming Languages",
+        "content":"TypeScript, JavaScript, PHP, React, Python"
       },
       {
-        "name":"CSS",
-        "content":"90%"
+        "name":"CI/CD",
+        "content":"Jenkins Blue Ocean (basic), Azure Pipelines (basic)"
       },
       {
-        "name":"HTML5",
-        "content":"80%"
+        "name":"Monitoring and Alerting",
+        "content":"DataDog, Sentry"
       },
-      {
-        "name":"VueJs",
-        "content":"50%"
-      },
-      {
-        "name":"MongoDB",
-        "content":"80%"
-      }
-    ]
-  },
-  "portfolio":{
-    "projects": [
-      {
-        "title":"SSENSE",
-        "category":"Online retail",
-        "image":"canadian-wanderlust.jpg",
-        "url":"https://www.ssense.com"
-      }
     ]
   },
   "testimonials":{
