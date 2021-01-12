@@ -92,7 +92,8 @@ stages:
 - stage: Deploy
   displayName: Deploy
   jobs:
-  - job: Deploy as App Service
+  - job: DeployAppService
+    displayName: Deploy as App Service - docker
     condition: and(false, or(eq(variables.isMainBranch, true), eq(variables.isQaBranch, true)))
     steps:
     - task: AzureRmWebAppDeployment@4
@@ -117,7 +118,8 @@ stages:
         DockerNamespace: 'nicoandra.azurecr.io'
         DockerRepository: 'react-cv'
         DockerImageTag: 'latest'
-  - job: Deploy as Storage Blob to container=$web
+  - job: DeployBlobContainer
+    displayName: Deploy as Storage Blob to container=$web
     condition: eq(variables.isQaBranch, true)
     steps:
     - bash: |
