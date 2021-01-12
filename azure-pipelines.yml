@@ -27,8 +27,8 @@ variables:
   ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
     value: ${{ parameters.var1 }}
   
-  # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+pool:
+  vmImage: 'ubuntu-20.04'
 
 stages:
 - stage: "ShowVariables"
