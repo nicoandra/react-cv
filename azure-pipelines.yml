@@ -3,49 +3,72 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-- main
-- qa
+  branches:
+    include:
+    - main
+    - qa
+    - refs/tags/*
+    - releases/tags/*
+    - azure-pipeline
 
 resources:
 - repo: self
 
-variables:
-  # Container registry service connection established during pipeline creation
-  - name: dockerRegistryServiceConnection:
-    value: 'cb295ce7-2beb-436a-8d5d-4be6579b4b3b'
-  - name: imageRepository
-    value: 'react-cv'
-  - name: containerRegistry
-    value: 'nicoandra.azurecr.io'
-  - name: dockerfilePath
-    value: '$(Build.SourcesDirectory)/Dockerfile'
-  - name: tag
-    value: '$(Build.BuildId)'
-  - name: tagQaOrLatest
-    ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
-      value: latest
-    ${{ if eq(variables['Build.SourceBranchName'], 'qa') }}:
-      value: qa
-  - name: tagQaOrLatest
-    ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
-      value: latest
-    ${{ if eq(variables['Build.SourceBranchName'], 'qa') }}:
-      value: qa
+pr:
+  - main
+  - qa
 
-  # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+variables:
+# Container registry service connection established during pipeline creation
+- name: dockerRegistryServiceConnection
+  value: 'cb295ce7-2beb-436a-8d5d-4be6579b4b3b'
+- name: imageRepository
+  value: 'react-cv'
+- name: containerRegistry
+  value: 'nicoandra.azurecr.io'
+- name: dockerfilePath
+  value: '$(Build.SourcesDirectory)/Dockerfile'
+- name: tag
+  value: '$(Build.BuildId)'
+- name: commitHash
+  value: '$(Build.SourceVersion)'
+- name: sourceBranch
+  value: $[variables['build.sourceBranch']]
+- name: isMainBranch
+  value: $[eq(variables['build.sourceBranch'], 'refs/heads/main')]
+- name: isQaBranch
+  value: $[startsWith(variables['build.sourceBranch'], 'refs/heads/qa')]
+- name: dockerTagName
+  ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/qa') }}:
+    value: qa
+  ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/main') }}:
+    value: latest
+    
+
+pool:
+  vmImage: 'ubuntu-20.04'
 
 stages:
+- stage: "ShowVariables"
+  jobs:
+  - job: "ShowVariables"
+    steps:
+    - bash: |
+        echo "sourceBranch: $(sourceBranch)"
+        echo "isMainBranch: $(isMainBranch)"
+        echo "isQaBranch: $(isQaBranch)"
+        echo "commitHash: $(commitHash)"
+        echo "dockerTagName $(dockerTagName)"
 - stage: Build
   displayName: Build and push stage
-  jobs:  
+  jobs:
   - job: Build
     displayName: Build
-    pool:
-      vmImage: $(vmImageName)
+    condition: or(eq(variables.isMainBranch, true), eq(variables.isQaBranch, true))
     steps:
     - task: Docker@2
-      displayName: Build and push an image to container registry
+      displayName: Build and push Latest
+      condition: eq(variables.isMainBranch, true)
       inputs:
         command: buildAndPush
         repository: $(imageRepository)
@@ -53,27 +76,44 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-          $(tagQaOrLatest)
+          latest
+    - task: Docker@2
+      displayName: Build and push RC
+      condition: eq(variables.isQaBranch, true)
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
+          qa
+
 - stage: Deploy
   displayName: Deploy
-  - task: AzureRmWebAppDeployment@4
-    condition: eq(variables.tagQaOrLatest, "latest")
-    inputs:
-      ConnectionType: 'AzureRM'
-      azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
-      appType: 'webAppContainer'
-      WebAppName: 'nicoandra'
-      DockerNamespace: 'nicoandra.azurecr.io'
-      DockerRepository: 'react-cv'
-      DockerImageTag: 'latest'
-  - task: AzureRmWebAppDeployment@4
-    condition: eq(variables.tagQaOrLatest, "qa")
-    inputs:
-      ConnectionType: 'AzureRM'
-      azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
-      appType: 'webAppContainer'
-      WebAppName: 'nicoandra-qa'
-      DockerNamespace: 'nicoandra.azurecr.io'
-      DockerRepository: 'react-cv'
-      DockerImageTag: 'latest'
-  
+  jobs:
+  - job: Deploy
+    condition: or(eq(variables.isMainBranch, true), eq(variables.isQaBranch, true))
+    steps:
+    - task: AzureRmWebAppDeployment@4
+      displayName: Deploy to QA
+      condition: eq(variables.isQaBranch, true)
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
+        appType: 'webAppContainer'
+        WebAppName: 'nicoandra-qa'
+        DockerNamespace: 'nicoandra.azurecr.io'
+        DockerRepository: 'react-cv'
+        DockerImageTag: 'qa'
+    - task: AzureRmWebAppDeployment@4
+      displayName: Deploy to Prod
+      condition: eq(variables.isMainBranch, true)
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
+        appType: 'webAppContainer'
+        WebAppName: 'nicoandra'
+        DockerNamespace: 'nicoandra.azurecr.io'
+        DockerRepository: 'react-cv'
+        DockerImageTag: 'latest'

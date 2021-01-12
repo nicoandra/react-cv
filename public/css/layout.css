@@ -295,11 +295,10 @@ ul#nav li.current a { color: #F06000; }
   	margin-top: 36px;
    list-style: none;
 }
-.bars li {
+.bars ul.skills li.skillCell {
    position: relative;
+   line-height: normal;
   	margin-bottom: 60px;
-  	background: #ccc;
-  	height: 42px;
   	border-radius: 3px;
 }
 .bars li em {
@@ -309,8 +308,22 @@ ul#nav li.current a { color: #F06000; }
    letter-spacing: 2px;
 	font-weight: normal;
    position: relative;
-	top: -36px;
 }
+
+.bars ul.skills li ul li{
+   position: relative;
+  	margin-bottom: 10px;
+  	background: rgb(107, 10, 10);
+  	border-radius: 3px;
+}
+/*
+.bars li {
+   position: relative;
+  	margin-bottom: 60px;
+  	background: #ccc;
+  	border-radius: 3px;
+}*/
+
 .bar-expand {
    position: absolute;
    left: 0;
