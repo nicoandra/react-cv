@@ -10,22 +10,22 @@ resources:
 - repo: self
 
 variables:
-  # Container registry service connection established during pipeline creation
-  - name: dockerRegistryServiceConnection:
-    value: 'cb295ce7-2beb-436a-8d5d-4be6579b4b3b'
-  - name: imageRepository
-    value: 'react-cv'
-  - name: containerRegistry
-    value: 'nicoandra.azurecr.io'
-  - name: dockerfilePath
-    value: '$(Build.SourcesDirectory)/Dockerfile'
-  - name: tag
-    value: '$(Build.BuildId)'
-  - name: tagQaOrLatest
-    ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
-      value: latest
-    ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
-      value: ${{ parameters.var1 }}
+# Container registry service connection established during pipeline creation
+- name: dockerRegistryServiceConnection:
+  value: 'cb295ce7-2beb-436a-8d5d-4be6579b4b3b'
+- name: imageRepository
+  value: 'react-cv'
+- name: containerRegistry
+  value: 'nicoandra.azurecr.io'
+- name: dockerfilePath
+  value: '$(Build.SourcesDirectory)/Dockerfile'
+- name: tag
+  value: '$(Build.BuildId)'
+- name: tagQaOrLatest
+  ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+    value: latest
+  ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+    value: ${{ parameters.var1 }}
   
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
