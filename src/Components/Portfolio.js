@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 
 class Portfolio extends Component {
   render() {
@@ -40,6 +41,10 @@ class Portfolio extends Component {
    </section>
     );
   }
+}
+
+Portfolio.propTypes = {
+  data: PropTypes.object
 }
 
 export default Portfolio;
