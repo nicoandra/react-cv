@@ -81,12 +81,12 @@ function Contact(props) {
 	const loadingSpinner = loading && <span id="image-loader">
 	<img alt="" src="images/loader.gif" />
 </span>;
+
 	const contactForm = (
 		<fieldset>
 			<div>
 				<label htmlFor="contactName">
-					Name posting to {postUrl}{" "}
-					<span className="required">*</span>
+					Name<span className="required">*</span>
 				</label>
 				<input
 					type="text"

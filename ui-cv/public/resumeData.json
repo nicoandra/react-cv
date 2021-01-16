@@ -30,19 +30,29 @@
 		]
 	},
 	"resume": {
-		"skillmessage": "skill skill skill",
+		"skillmessage": false,
 		"work": [
 			{
-				"company": "Awesome Design Studio",
-				"title": "Senior UX God ",
-				"years": "March 2010 - Present",
-				"description": "Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
+				"company": "SSENSE",
+				"link": "https://ssense.com",
+				"location": "Montréal, Québec, Canada",
+				"title": "Tech Lead",
+				"years": "November 2018 - Present",
+				"markdownTemplate": "/markdown/jobs/ssense.md"
 			},
 			{
-				"company": "Super Cool Studio",
-				"title": "Junior bug fixer",
+				"company": "Mindgeek",
+				"location": "Montréal, Québec, Canada",
+				"title": "Lead Code Auditor",
 				"years": "March 2007 - February 2010",
-				"description": "Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
+				"markdownTemplate": "/markdown/jobs/mindgeek-security.md"
+			},
+			{
+				"company": "",
+				"location": "Montréal, Québec, Canada",
+				"title": "Tech Lead",
+				"years": "March 2007 - February 2010",
+				"markdownTemplate": "/markdown/jobs/mindgeek-techlead.md"
 			}
 		],
 		"skills": [

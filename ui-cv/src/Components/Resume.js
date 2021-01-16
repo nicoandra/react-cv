@@ -1,21 +1,23 @@
 import React, { Component } from "react";
+import MarkdownLoader from './MarkdownLoader'
+
 import PropTypes from "prop-types";
 
 class Resume extends Component {
 	render() {
 		if (this.props.data) {
 			var skillmessage = this.props.data.skillmessage;
-
-			var work = this.props.data.work.map(function (work) {
+			var work = this.props.data.work.map(function (work, index) {
+				const workTitle = (work.company.length ? <h3>{(work.link ? <a href={work.link} target="_blank">{work.company}</a> : work.company)}</h3> : false)
 				return (
-					<div key={work.company}>
-						<h3>{work.company}</h3>
+					<div key={'work' + index}>
+						{workTitle}
 						<p className="info">
 							{work.title}
 							<span>&bull;</span>{" "}
 							<em className="date">{work.years}</em>
 						</p>
-						<p>{work.description}</p>
+						<MarkdownLoader url={work.markdownTemplate} />
 					</div>
 				);
 			});
@@ -37,7 +39,6 @@ class Resume extends Component {
 							<span>Work</span>
 						</h1>
 					</div>
-
 					<div className="nine columns main-col">{work}</div>
 				</div>
 
@@ -49,7 +50,7 @@ class Resume extends Component {
 					</div>
 
 					<div className="nine columns main-col">
-						<p>{skillmessage}</p>
+						{skillmessage && <p>{skillmessage}</p>}
 						<div className="bars">
 							<ul className="skills">{skills}</ul>
 						</div>
