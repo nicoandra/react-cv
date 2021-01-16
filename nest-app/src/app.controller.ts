@@ -16,7 +16,10 @@ export class AppController {
     @Req() req,
   ): Promise<ContactFormMessageExternalResponse> {
     const { reCaptchaToken } = body;
-
+    return Promise.resolve(<ContactFormMessageExternalResponse>{
+      error: 'No reCaptchaToken',
+      result: null,
+    });
     if (reCaptchaToken === undefined) {
       return Promise.resolve(<ContactFormMessageExternalResponse>{
         error: 'No reCaptchaToken',

@@ -1,59 +1,66 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Resume extends Component {
-  render() {
+	render() {
+		if (this.props.data) {
+			var skillmessage = this.props.data.skillmessage;
 
-    if(this.props.data){
-      var skillmessage = this.props.data.skillmessage;
+			var work = this.props.data.work.map(function (work) {
+				return (
+					<div key={work.company}>
+						<h3>{work.company}</h3>
+						<p className="info">
+							{work.title}
+							<span>&bull;</span>{" "}
+							<em className="date">{work.years}</em>
+						</p>
+						<p>{work.description}</p>
+					</div>
+				);
+			});
+			var skills = this.props.data.skills.map(function (skills) {
+				return (
+					<li className="skillCell" key={skills.name}>
+						<em>{skills.name}</em>
+						<p>{skills.content}</p>
+					</li>
+				);
+			});
+		}
 
-      var work = this.props.data.work.map(function(work){
-        return <div key={work.company}><h3>{work.company}</h3>
-            <p className="info">{work.title}<span>&bull;</span> <em className="date">{work.years}</em></p>
-            <p>{work.description}</p>
-        </div>
-      })
-      var skills = this.props.data.skills.map(function(skills){
-        return <li className="skillCell" key={skills.name}><em>{skills.name}</em>
-        <p>{skills.content}</p>
-        </li>
-      })
-    }
+		return (
+			<section id="resume">
+				<div className="row work">
+					<div className="three columns header-col">
+						<h1>
+							<span>Work</span>
+						</h1>
+					</div>
 
-    return (
-      <section id="resume">
-        <div className="row work">
-          <div className="three columns header-col">
-            <h1><span>Work</span></h1>
-          </div>
-
-          <div className="nine columns main-col">
-            {work}
-          </div>
-        </div>
-
-
-
-      <div className="row skill">
-         <div className="three columns header-col">
-            <h1><span>Skills</span></h1>
-         </div>
-
-         <div className="nine columns main-col">
-            <p>{skillmessage}</p>
-				<div className="bars">
-				   <ul className="skills">
-					  {skills}
-					</ul>
+					<div className="nine columns main-col">{work}</div>
 				</div>
-			</div>
-      </div>
-   </section>
-    );
-  }
+
+				<div className="row skill">
+					<div className="three columns header-col">
+						<h1>
+							<span>Skills</span>
+						</h1>
+					</div>
+
+					<div className="nine columns main-col">
+						<p>{skillmessage}</p>
+						<div className="bars">
+							<ul className="skills">{skills}</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+		);
+	}
 }
 
 Resume.propTypes = {
-  data: PropTypes.object
-}
+	data: PropTypes.object,
+};
 export default Resume;
