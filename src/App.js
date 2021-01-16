@@ -13,8 +13,8 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      foo: 'bar',
-      resumeData: {}
+      resumeData: {},
+      ready: false
     };
   }
 
@@ -24,7 +24,7 @@ class App extends Component {
       dataType:'json',
       cache: false,
       success: function(data){
-        this.setState({resumeData: data});
+        this.setState({resumeData: data, ready: true});
       }.bind(this),
       error: function(xhr, status, err){
         console.log(err);
@@ -38,6 +38,11 @@ class App extends Component {
   }
 
   render() {
+
+    if(!this.state.ready) {
+      return (<div className="App">Loading...</div>)
+    }
+
     return (
       <div className="App">
         <Header data={this.state.resumeData.main}/>

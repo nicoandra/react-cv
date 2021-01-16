@@ -1,41 +1,67 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import PropTypes from 'prop-types'
 
-class Contact extends Component {
 
-  handleChange (evt) {
-    const e = evt
-    console.log('Event!', e)
-  }
 
-  render () {
-    if (this.props.data) {
-      var name = this.props.data.name
-      var city = this.props.data.address.city
-      var state = this.props.data.address.state
-      var zip = this.props.data.address.zip
-      var phone = this.props.data.phone
-      var message = this.props.data.contactmessage
-    }
+function Contact(props) {
+   const [contactName, setContactName] = useState('')
+   const [contactEmail, setContactEmail] = useState('')
+   const [contactMessage, setContactMessage] = useState('')
+   const [contactSubject, setContactSubject] = useState('')
 
-    const contactForm = false && <div className='eight columns'>
-                                   <form
-                                     action=''
-                                     method='post'
-                                     id='contactForm'
-                                     name='contactForm'>
+   const postUrl = process.env.REACT_APP_CONTACT_FORM_POSTBACK_URL;
+
+   const name = props.data.name,
+         city = props.data.address.city,
+         state = props.data.address.state,
+         zip = props.data.address.zip,
+         phone = props.data.phone,
+         message = props.data.contactmessage
+
+   const resetForm = () => {
+      setContactName('')
+      setContactEmail('')
+      setContactMessage('')
+      setContactSubject('')
+   }
+
+
+   const onFormSubmit = () => {
+      window.grecaptcha.ready(function() {
+         window.grecaptcha.execute(process.env.REACT_APP_RECAPTCHA_SITE_KEY, {action: 'submit'}).then(function(token) {
+            postForm(token);
+         });
+       });
+   }
+
+   const postForm = (reCaptchaToken) => {
+      fetch(postUrl,{
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json'
+         },
+         body: JSON.stringify({contactName, contactEmail, contactMessage, contactSubject, reCaptchaToken})
+      }).then((r) => {
+         return r.json();
+      }).then((r) => {
+         console.log("All good so far", r);
+      }).catch((err) => {console.error("It died...", err)});
+   }
+
+   const contactForm = <div className='eight columns'>
+                                   
                                      <fieldset>
                                        <div>
                                          <label htmlFor='contactName'>
-                                           Name <span className='required'>*</span>
+                                           Name posting to {postUrl} <span className='required'>*</span>
                                          </label>
                                          <input
                                            type='text'
-                                           defaultValue=''
                                            size='35'
+                                           value={contactName}
                                            id='contactName'
                                            name='contactName'
-                                           onChange={this.handleChange} />
+                                           onChange={(evt) => setContactName(evt.target.value)} />
                                        </div>
                                        <div>
                                          <label htmlFor='contactEmail'>
@@ -43,11 +69,11 @@ class Contact extends Component {
                                          </label>
                                          <input
                                            type='text'
-                                           defaultValue=''
                                            size='35'
                                            id='contactEmail'
                                            name='contactEmail'
-                                           onChange={this.handleChange} />
+                                           value={contactEmail}
+                                           onChange={(evt) => setContactEmail(evt.target.value)} />
                                        </div>
                                        <div>
                                          <label htmlFor='contactSubject'>
@@ -55,30 +81,31 @@ class Contact extends Component {
                                          </label>
                                          <input
                                            type='text'
-                                           defaultValue=''
                                            size='35'
                                            id='contactSubject'
                                            name='contactSubject'
-                                           onChange={this.handleChange} />
+                                           value={contactSubject}
+                                           onChange={(evt) => setContactSubject(evt.target.value)} />
                                        </div>
                                        <div>
                                          <label htmlFor='contactMessage'>
                                            Message <span className='required'>*</span>
                                          </label>
                                          <textarea
-                                           cols='50'
+                                           cols='60'
                                            rows='15'
                                            id='contactMessage'
-                                           name='contactMessage'></textarea>
+                                           onChange={(evt) => setContactMessage(evt.target.value)}
+                                           name='contactMessage'
+                                           value={contactMessage} />
                                        </div>
                                        <div>
-                                         <button className='submit'>
-                                           Submit
-                                         </button>
+                                         <button className='submit' onClick={() => onFormSubmit()}>Submit</button>
+                                         <button className='reset' onClick={() => window.confirm("Are you sure you want to reset the form? You'll lose any changes you made.") && resetForm()}>Reset</button>
                                          <span id='image-loader'><img alt='' src='images/loader.gif' /></span>
                                        </div>
                                      </fieldset>
-                                   </form>
+                                   
                                    <div id='message-warning'>
                                      Error boy
                                    </div>
@@ -119,8 +146,6 @@ class Contact extends Component {
         </div>
       </section>
     )
-  }
-
 }
 
 Contact.propTypes = {

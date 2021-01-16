@@ -1,13 +1,11 @@
 {
   "bindings": [
     {
-      "authLevel": "function",
+      "authLevel": "anonymous",
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "methods": [
-        "post"
-      ]
+      "route": "{*segments}"
     },
     {
       "type": "http",
@@ -15,5 +13,5 @@
       "name": "res"
     }
   ],
-  "scriptFile": "../dist/contactform-onsubmit/index.js"
+  "scriptFile": "../dist/main/index.js"
 }
