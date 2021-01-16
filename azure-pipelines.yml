@@ -20,14 +20,6 @@ pr:
 
 variables:
 # Container registry service connection established during pipeline creation
-- name: dockerRegistryServiceConnection
-  value: 'cb295ce7-2beb-436a-8d5d-4be6579b4b3b'
-- name: imageRepository
-  value: 'react-cv'
-- name: containerRegistry
-  value: 'nicoandra.azurecr.io'
-- name: dockerfilePath
-  value: '$(Build.SourcesDirectory)/Dockerfile'
 - name: tag
   value: '$(Build.BuildId)'
 - name: commitHash
@@ -38,11 +30,11 @@ variables:
   value: $[eq(variables['build.sourceBranch'], 'refs/heads/main')]
 - name: isQaBranch
   value: $[startsWith(variables['build.sourceBranch'], 'refs/heads/qa')]
-- name: dockerTagName
+- name: targetAppName
   ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/qa') }}:
-    value: qa
+    value: nicoandra-qa
   ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/main') }}:
-    value: latest
+    value: nicoandra
     
 
 pool:
@@ -58,66 +50,10 @@ stages:
         echo "isMainBranch: $(isMainBranch)"
         echo "isQaBranch: $(isQaBranch)"
         echo "commitHash: $(commitHash)"
-        echo "dockerTagName $(dockerTagName)"
-- stage: Build
-  displayName: Build and push stage
-  jobs:
-  - job: Build
-    displayName: Build
-    condition: or(eq(variables.isMainBranch, true), eq(variables.isQaBranch, true))
-    steps:
-    - task: Docker@2
-      displayName: Build and push Latest
-      condition: and(false, eq(variables.isMainBranch, true))
-      inputs:
-        command: buildAndPush
-        repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
-        tags: |
-          $(tag)
-          latest
-    - task: Docker@2
-      displayName: Build and push RC
-      condition: and(false, eq(variables.isQaBranch, true))
-      inputs:
-        command: buildAndPush
-        repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
-        tags: |
-          $(tag)
-          qa
-
+        echo "targetAppName: $(targetAppName)"
 - stage: Deploy
   displayName: Deploy
   jobs:
-  - job: DeployAppService
-    displayName: Deploy as App Service - docker
-    condition: and(false, or(eq(variables.isMainBranch, true), eq(variables.isQaBranch, true)))
-    steps:
-    - task: AzureRmWebAppDeployment@4
-      displayName: Deploy to QA
-      condition: eq(variables.isQaBranch, true)
-      inputs:
-        ConnectionType: 'AzureRM'
-        azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
-        appType: 'webAppContainer'
-        WebAppName: 'nicoandra-qa'
-        DockerNamespace: 'nicoandra.azurecr.io'
-        DockerRepository: 'react-cv'
-        DockerImageTag: 'qa'
-    - task: AzureRmWebAppDeployment@4
-      displayName: Deploy to Prod
-      condition: eq(variables.isMainBranch, true)
-      inputs:
-        ConnectionType: 'AzureRM'
-        azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
-        appType: 'webAppContainer'
-        WebAppName: 'nicoandra'
-        DockerNamespace: 'nicoandra.azurecr.io'
-        DockerRepository: 'react-cv'
-        DockerImageTag: 'latest'
   - job: DeployBlobContainer
     displayName: Deploy as Storage Blob to container=$web
     condition: eq(variables.isMainBranch, true)
@@ -136,4 +72,5 @@ stages:
         scriptType: bash
         scriptLocation: inlineScript
         inlineScript: |
+          echo "With targetAppName=$(targetAppName)"
           az storage blob upload-batch --account-name nicoandra -s ./build -d \$web
