@@ -68,7 +68,7 @@ stages:
     steps:
     - task: Docker@2
       displayName: Build and push Latest
-      condition: eq(variables.isMainBranch, true)
+      condition: and(false, eq(variables.isMainBranch, true))
       inputs:
         command: buildAndPush
         repository: $(imageRepository)
@@ -79,7 +79,7 @@ stages:
           latest
     - task: Docker@2
       displayName: Build and push RC
-      condition: eq(variables.isQaBranch, true)
+      condition: and(false, eq(variables.isQaBranch, true))
       inputs:
         command: buildAndPush
         repository: $(imageRepository)
@@ -92,8 +92,9 @@ stages:
 - stage: Deploy
   displayName: Deploy
   jobs:
-  - job: Deploy
-    condition: or(eq(variables.isMainBranch, true), eq(variables.isQaBranch, true))
+  - job: DeployAppService
+    displayName: Deploy as App Service - docker
+    condition: and(false, or(eq(variables.isMainBranch, true), eq(variables.isQaBranch, true)))
     steps:
     - task: AzureRmWebAppDeployment@4
       displayName: Deploy to QA
@@ -117,3 +118,19 @@ stages:
         DockerNamespace: 'nicoandra.azurecr.io'
         DockerRepository: 'react-cv'
         DockerImageTag: 'latest'
+  - job: DeployBlobContainer
+    displayName: Deploy as Storage Blob to container=$web
+    condition: eq(variables.isQaBranch, true)
+    steps:
+    - bash: |
+        npm install
+        npm run build
+      displayName: Compile App to ./build
+    - task: AzureCLI@2
+      displayName: Copy to Blob Container
+      inputs:
+        azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
+        scriptType: bash
+        scriptLocation: inlineScript
+        inlineScript: |
+          az storage blob upload-batch --account-name nicoandra -s ./build -d \$web

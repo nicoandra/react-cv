@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 
 class Testimonials extends Component {
   render() {
@@ -34,5 +35,7 @@ class Testimonials extends Component {
     );
   }
 }
-
+Testimonials.propTypes = {
+   data: PropTypes.object
+ }
 export default Testimonials;

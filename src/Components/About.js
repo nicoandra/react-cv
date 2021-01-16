@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types'
 class About extends Component {
   render() {
 
@@ -51,5 +51,9 @@ class About extends Component {
     );
   }
 }
+
+About.propTypes = {
+   data: PropTypes.object
+ }
 
 export default About;

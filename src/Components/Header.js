@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types'
 class Header extends Component {
   render() {
 
@@ -33,8 +33,8 @@ class Header extends Component {
 
       <div className="row banner">
          <div className="banner-text">
-            <h1 className="responsive-headline">I'm {name}.</h1>
-            <h3>I'm a {city} based <span>{occupation}</span>. {description}.</h3>
+            <h1 className="responsive-headline">I&apos;m {name}.</h1>
+            <h3>I&apos;m a {city} based <span>{occupation}</span>. {description}.</h3>
             <hr />
             <ul className="social">
                {networks}
@@ -50,5 +50,8 @@ class Header extends Component {
     );
   }
 }
+Header.propTypes = {
+   data: PropTypes.object
+ }
 
 export default Header;
