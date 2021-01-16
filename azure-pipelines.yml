@@ -87,10 +87,6 @@ stages:
         mkdir toZip
         rm node_modules -r
         npm install --only=production
-        mv dist toZip/
-        mv main toZip/
-        mv node_modules toZip/
-        zip -r app.zip toZip
       workingDirectory: $(Build.SourcesDirectory)/nest-app
       displayName: Make lean
     - task: ArchiveFiles@2
@@ -98,9 +94,12 @@ stages:
         rootFolderOrFile: $(Build.SourcesDirectory)/nest-app/toZip
         includeRootFolder: false
         archiveType: zip
-        archiveFile: '$(Build.SourcesDirectory)/nest-app/app.zip' 
+        archiveFile: '$(System.ArtifactsDirectory)/app.zip' 
         replaceExistingArchive: true 
-    - bash: |
-        func azure functionapp publish nicoandra
-      workingDirectory: $(Build.SourcesDirectory)/nest-app
-      displayName: Shameless attempt to push
+    - task: AzureFunctionApp@1
+      displayName: Deploy FunctionApp
+      inputs:
+        azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
+        appType: functionAppLinux
+        appName: $(appName)
+        package: $(System.ArtifactsDirectory)/app.zip
