@@ -41,7 +41,8 @@ pool:
   vmImage: 'ubuntu-20.04'
 
 stages:
-- stage: "ShowVariables"
+- stage: Deploy
+  displayName: Deploy
   jobs:
   - job: "ShowVariables"
     steps:
@@ -51,9 +52,6 @@ stages:
         echo "isQaBranch: $(isQaBranch)"
         echo "commitHash: $(commitHash)"
         echo "targetAppName: $(targetAppName)"
-- stage: Deploy
-  displayName: Deploy
-  jobs:
   - job: DeployBlobContainer
     displayName: Deploy as Storage Blob to container=$web
     condition: eq(variables.isMainBranch, true)
