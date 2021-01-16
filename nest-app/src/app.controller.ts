@@ -16,10 +16,6 @@ export class AppController {
     @Req() req,
   ): Promise<ContactFormMessageExternalResponse> {
     const { reCaptchaToken } = body;
-    return Promise.resolve(<ContactFormMessageExternalResponse>{
-      error: 'No reCaptchaToken',
-      result: null,
-    });
     if (reCaptchaToken === undefined) {
       return Promise.resolve(<ContactFormMessageExternalResponse>{
         error: 'No reCaptchaToken',
@@ -30,8 +26,6 @@ export class AppController {
     const isHumanRequest = await this.appService.validateRecaptcha(
       reCaptchaToken,
     );
-
-    console.log('Message received', { ...body, isHumanRequest });
 
     const referrer = req.header('Referer');
     const request = <ContactFormSendPayload>{ ...body, referrer };
