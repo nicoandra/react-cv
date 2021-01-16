@@ -32,7 +32,7 @@ variables:
   value: $[startsWith(variables['build.sourceBranch'], 'refs/heads/qa')]
 - name: targetAppName
   ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/qa') }}:
-    value: nicoandra-qa
+    value: nicoandra
   ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/main') }}:
     value: nicoandra
     
