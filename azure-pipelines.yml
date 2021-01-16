@@ -87,6 +87,9 @@ stages:
         mkdir toZip
         rm node_modules -r
         npm install --only=production
+        mv dist toZip
+        mv node_modules toZip
+        mv main toZip
       workingDirectory: $(Build.SourcesDirectory)/nest-app
       displayName: Make lean
     - task: ArchiveFiles@2
