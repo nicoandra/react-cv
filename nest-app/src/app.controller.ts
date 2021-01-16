@@ -23,13 +23,21 @@ export class AppController {
       });
     }
 
+
+    return Promise.resolve(<ContactFormMessageExternalResponse>{
+      error: null,
+      result: true
+        ? 'Hardcoded Message has been sent. Thanks'
+        : 'Hardcoded Captcha worked, but the email failed AF! :x',
+    });
+
     const isHumanRequest = await this.appService.validateRecaptcha(
       reCaptchaToken,
     );
 
     const referrer = req.header('Referer');
     const request = <ContactFormSendPayload>{ ...body, referrer };
-    const hasBeenSent = this.appService.sendContactFormByEmail(request);
+    const hasBeenSent = isHumanRequest && this.appService.sendContactFormByEmail(request);
 
     return Promise.resolve(<ContactFormMessageExternalResponse>{
       error: null,
