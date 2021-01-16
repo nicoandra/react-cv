@@ -127,8 +127,8 @@ stages:
         npm run build
       displayName: Compile App to ./build
       env:
-      - REACT_APP_CONTACT_FORM_POSTBACK_URL=https://nicoandra.azurewebsites.net/api/contactform-onsubmit
-      - REACT_APP_RECAPTCHA_SITE_KEY=6LdvDi4aAAAAAO0wUdv-n40lIutg4slj9SQa7iqk
+        REACT_APP_CONTACT_FORM_POSTBACK_URL: https://nicoandra.azurewebsites.net/api/contactform-onsubmit
+        REACT_APP_RECAPTCHA_SITE_KEY: 6LdvDi4aAAAAAO0wUdv-n40lIutg4slj9SQa7iqk
     - task: AzureCLI@2
       displayName: Copy to Blob Container
       inputs:
