@@ -120,7 +120,7 @@ stages:
         DockerImageTag: 'latest'
   - job: DeployBlobContainer
     displayName: Deploy as Storage Blob to container=$web
-    condition: eq(variables.isQaBranch, true)
+    condition: eq(variables.isMainBranch, true)
     steps:
     - bash: |
         npm install
