@@ -104,5 +104,5 @@ stages:
       inputs:
         azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
         appType: functionAppLinux
-        appName: $(appName)
+        appName: $[variables.targetAppName]
         package: $(System.ArtifactsDirectory)/app.zip
