@@ -35,6 +35,8 @@ variables:
     value: nicoandra
   ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/main') }}:
     value: nicoandra
+- name: azureSubscription
+  value: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
     
 
 pool:
@@ -60,15 +62,17 @@ stages:
         npm install
         npm run build
       displayName: Compile App to ./build
+      workingDirectory: $(Build.SourcesDirectory)/ui-cv
       env:
         REACT_APP_CONTACT_FORM_POSTBACK_URL: https://nicoandra.azurewebsites.net/api/contactform-onsubmit
         REACT_APP_RECAPTCHA_SITE_KEY: 6LdvDi4aAAAAAO0wUdv-n40lIutg4slj9SQa7iqk
     - task: AzureCLI@2
       displayName: Copy to Blob Container
       inputs:
-        azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
+        azureSubscription: $(azureSubscription)
         scriptType: bash
         scriptLocation: inlineScript
+        workingDirectory: $(Build.SourcesDirectory)/ui-cv
         inlineScript: |
           echo "With targetAppName=$(targetAppName)"
           az storage blob upload-batch --account-name nicoandra -s ./build -d \$web
@@ -100,7 +104,7 @@ stages:
     - task: AzureFunctionApp@1
       displayName: Deploy FunctionApp
       inputs:
-        azureSubscription: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
+        azureSubscription: $(azureSubscription)
         appType: functionAppLinux
         appName: $(targetAppName)
         package: $(System.ArtifactsDirectory)/app.zip
