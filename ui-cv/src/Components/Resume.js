@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MarkdownLoader from './MarkdownLoader'
+import MarkdownLoader from "./MarkdownLoader";
 
 import PropTypes from "prop-types";
 
@@ -8,9 +8,21 @@ class Resume extends Component {
 		if (this.props.data) {
 			var skillmessage = this.props.data.skillmessage;
 			var work = this.props.data.work.map(function (work, index) {
-				const workTitle = (work.company.length ? <h3>{(work.link ? <a href={work.link} target="_blank">{work.company}</a> : work.company)}</h3> : false)
+				const workTitle = work.company.length ? (
+					<h3>
+						{work.link ? (
+							<a href={work.link} target="_blank">
+								{work.company}
+							</a>
+						) : (
+							work.company
+						)}
+					</h3>
+				) : (
+					false
+				);
 				return (
-					<div key={'work' + index}>
+					<div key={"work" + index}>
 						{workTitle}
 						<p className="info">
 							{work.title}

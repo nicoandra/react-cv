@@ -2,8 +2,8 @@ Designed, implemented and deployed a variety of micro-services on different doma
 
 ## Technologies
 
-* One
-* Two
-* Three
- 
+-   One
+-   Two
+-   Three
+
 Closing paragraph

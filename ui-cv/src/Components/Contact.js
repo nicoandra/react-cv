@@ -67,20 +67,26 @@ function Contact(props) {
 			});
 	};
 
-	const errorMessage = !loading && postResult.error !== null && postResult.result === null && (
-		<div id="message-warning">WRN: {postResult.error}</div>
-	);
-	const successMessage = !loading && postResult.error === null && postResult.result !== null && (
-		<div id="message-success">
-			<i className="fa fa-check">OK</i>
-			{postResult.result}
-			<br />
-		</div>
-	);
+	const errorMessage = !loading &&
+		postResult.error !== null &&
+		postResult.result === null && (
+			<div id="message-warning">WRN: {postResult.error}</div>
+		);
+	const successMessage = !loading &&
+		postResult.error === null &&
+		postResult.result !== null && (
+			<div id="message-success">
+				<i className="fa fa-check">OK</i>
+				{postResult.result}
+				<br />
+			</div>
+		);
 
-	const loadingSpinner = loading && <span id="image-loader">
-	<img alt="" src="images/loader.gif" />
-</span>;
+	const loadingSpinner = loading && (
+		<span id="image-loader">
+			<img alt="" src="images/loader.gif" />
+		</span>
+	);
 
 	const contactForm = (
 		<fieldset>
@@ -178,8 +184,10 @@ function Contact(props) {
 						<p className="address">
 							{name}
 							<br />
-							{city}, {state}<br />
-							{zip}<br />
+							{city}, {state}
+							<br />
+							{zip}
+							<br />
 						</p>
 					</div>
 				</aside>

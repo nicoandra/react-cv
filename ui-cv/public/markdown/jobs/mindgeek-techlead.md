@@ -2,8 +2,8 @@ Worked on Bug Bounty programs, audited code and proposed fixes, following them t
 
 ## Technologies
 
-* Burp Suite, Git
-* NodeJs, Python,
-* Three
- 
+-   Burp Suite, Git
+-   NodeJs, Python,
+-   Three
+
 Closing paragraph
