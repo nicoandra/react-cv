@@ -33,5 +33,5 @@ jobs:
         else
           echo "##vso[task.setvariable variable=${{ nameAndPath.key }};isOutput=true]false"
         fi
-      name: check_changes
+      name: check_changes_${{ nameAndPath.value }}
       displayName: 'Check changed files'
