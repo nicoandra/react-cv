@@ -65,7 +65,7 @@ stages:
 
   - job: DeployBlobContainer
     displayName: Deploy as Storage Blob to container=$web
-    condition: and(eq(variables.isMainBranch, true))
+    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.ui-cv'], 'true'), eq(variables.isMainBranch, true))
     steps:
     - bash: |
         npm install
@@ -87,7 +87,7 @@ stages:
           az storage blob upload-batch --account-name nicoandra -s ./build -d \$web
   - job: DeployFunctionApp
     displayName: Deploy Function App
-    condition: eq(variables.isMainBranch, true)
+    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.nest-app'], 'true'), eq(variables.isMainBranch, true))
     steps:
     - bash: |
         npm install
