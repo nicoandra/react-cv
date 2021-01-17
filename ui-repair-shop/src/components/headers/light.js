@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 
 import logo from "../../images/logo.svg";
@@ -54,6 +53,13 @@ export const MobileNavLinks = motion.custom(styled.div`
 
 export const DesktopNavLinks = tw.nav`
   hidden lg:flex flex-1 justify-between items-center
+`;
+
+export const Switcher = tw.div`block w-full max-w-xs sm:inline-block sm:w-auto border-2 rounded-sm px-1 py-1 mt-8`;
+
+export const SwitchButton = styled.button`
+  ${tw`w-1/2 sm:w-32 px-4 sm:px-8 py-3 rounded-sm focus:outline-none text-sm font-bold text-gray-100 transition duration-300`}
+  ${props => props.active && tw`bg-primary-500 text-gray-100`}
 `;
 
 export default ({ roundedHeaderButton = false, logoLink, links, className, collapseBreakpointClass = "lg" }) => {

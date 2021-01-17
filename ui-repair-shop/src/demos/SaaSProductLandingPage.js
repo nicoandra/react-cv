@@ -30,16 +30,11 @@ export default () => {
     i18n.changeLanguage(lng);
   };
 
-
-
   return (
     <AnimationRevealPage>
       <Hero roundedHeaderButton={true} heading={
         <Trans i18nKey="landing_page.hero.main_title">Get <HighlightedText>up and running</HighlightedText> again.</Trans>
       }/>
-
-      <button onClick={() => changeLanguage('fr')}>fr</button>
-      <button onClick={() => changeLanguage('en')}>en</button>
       <Features
         subheading={<Subheading>{t('landing_page.features.subheader', 'Features')}</Subheading>}
         heading={<Trans i18nKey="landing_page.features.main_title">Computer <HighlightedText>tech support</HighlightedText> and <HighlightedText>repair service</HighlightedText>.</Trans>}
@@ -47,22 +42,28 @@ export default () => {
       />
       
       <MainFeature
-        subheading={<Subheading>Quality Work</Subheading>}
+        heading={t('landing_page.mainFeature.heading', 'Get it now')}
+        subheading={<Subheading>{t('landing_page.mainFeature.subheading', 'The Subheading element')}</Subheading>}
         imageSrc={heroScreenshotImageSrc}
         imageBorder={true}
         imageDecoratorBlob={true}
       />
       <FeatureWithSteps
-        subheading={<Subheading>STEPS</Subheading>}
+        subheading={<Subheading>{t('landing_page.remoteSupport.heading', 'REMOTE SUPPORT')}</Subheading>}
         heading={
           <>
-            Easy to <HighlightedText>Get Started.</HighlightedText>
+            <Trans i18nKey="landing_page.remoteSupport.main_title">Easy to <HighlightedText>Get Started.</HighlightedText></Trans>
           </>
         }
         textOnLeft={false}
         imageSrc={macHeroScreenshotImageSrc}
         imageDecoratorBlob={true}
         decoratorBlobCss={tw`xl:w-40 xl:h-40 opacity-15 -translate-x-1/2 left-1/2`}
+        steps={[
+          {heading: t('landing_page.remoteSupport.step1.heading', 'Download'), description: "Get a renowned Remote Management tool."},
+          {heading: t('landing_page.remoteSupport.step2.heading', "Get the code"), description: "Run the application and get the Client and Secret codes."},
+          {heading: t('landing_page.remoteSupport.step3.heading', "Call us!"), description: "Give us a call to get your computer fixed, remotely!"},
+        ]}
       />
       <MainFeature2
         subheading={<Subheading>VALUES</Subheading>}
