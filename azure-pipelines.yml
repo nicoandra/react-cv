@@ -43,22 +43,32 @@ pool:
   vmImage: 'ubuntu-20.04'
 
 stages:
-- stage: Deploy
-  displayName: Deploy
+- stage: FindChangesNestApp
+  jobs:
+  - template: '.pipeline/job_check_changes.yml'
+    parameters:
+      path: "/nest-app/"
+      name: "nestApp"
+
+- stage: FindChangesUiCv
   jobs:
   - template: '.pipeline/job_check_changes.yml'
     parameters:
       path: "/ui-cv/"
       name: "uiCV"
-  - template: '.pipeline/job_check_changes.yml'
-    parameters:
-      path: "/nest-app/"
-      name: "nestApp"
+    
+- stage: FindChangesUiRepairShop
+  jobs:
   - template: '.pipeline/job_check_changes.yml'
     parameters:
       path: "/ui-repair-shop/"
       name: "uiRepairShop"
-  - job: "ShowVariables"
+    
+
+
+- stage: Deploy
+  displayName: Deploy
+  jobs:
     steps:
     - bash: |
         echo "sourceBranch: $(sourceBranch)"
