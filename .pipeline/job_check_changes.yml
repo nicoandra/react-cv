@@ -8,7 +8,6 @@ parameters:
 jobs:
 - job: CheckChanges
   displayName: 'Check changes'
-  name: check_changes
   steps:
   - ${{ each nameAndPath in parameters.paths }}:
     - bash: |
@@ -34,4 +33,5 @@ jobs:
         else
           echo "##vso[task.setvariable variable=${{ nameAndPath.key }};isOutput=true]false"
         fi
+      name: "check_changes_${{ nameAndPath.value }}"
       displayName: 'Check changed files'
