@@ -6,7 +6,7 @@ parameters:
     type: object
 
 jobs:
-- ${{ each nameAndPath in parameters.paths }}:
+${{ each nameAndPath in parameters.paths }}:
 - job: CheckChanges
   displayName: "Check changes in ${{ nameAndPath.value }}"
   steps:
