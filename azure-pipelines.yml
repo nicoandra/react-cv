@@ -60,7 +60,7 @@ stages:
   - template: '.pipeline/job_check_changes.yml'
     parameters:
       path: "/nest-app/"
-      name: "nestApp"
+      appName: "nestApp"
   - job: DeployFunctionApp
     displayName: Deploy Function App
     dependsOn: CheckChanges
@@ -100,7 +100,7 @@ stages:
   - template: '.pipeline/job_check_changes.yml'
     parameters:
       path: "/ui-cv/"
-      name: "uiCV"
+      appName: "uiCV"
   - job: DeployBlobContainer
     displayName: Deploy as Storage Blob to container=$web
     dependsOn: CheckChanges
@@ -130,4 +130,4 @@ stages:
   - template: '.pipeline/job_check_changes.yml'
     parameters:
       path: "/ui-repair-shop/"
-      name: "uiRepairShop"
+      appName: "uiRepairShop"
