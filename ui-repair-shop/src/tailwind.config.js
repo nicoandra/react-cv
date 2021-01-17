@@ -1,3 +1,31 @@
+
+const originalPrimary = {
+  100: '#a273ff',
+  200: '#935bff',
+  300: '#8344ff',
+  400: '#742cff',
+  500: '#6415FF',
+  600: '#5a13e6',
+  700: '#5011cc',
+  800: '#460fb3',
+  900: '#3c0d99',
+}
+
+const primary = {
+  // https://tailwind-colors.meidev.co/?state=XQAAAAJ4AQAAAAAAAABJINBt_IJioDSSQuDV48E84XfkJP9F7WAJ6EMkJ4remO__RUCogjh0EK3MUc5yOFYJAoqALSWAeYw3rqqRdOffnPj84SPDRaZmuZR-feGWAWFn8_j69kjmI74xGQ4vBbOBI_qcJ46Xu9CFUr2RTBZ5iQ2Re2mP7tgntyvvkDKHK70-bL1qDOmBg9cX0liexM2o1QsnDcxWFlBDssuSymxT_wa2cmccLkq4qS6__6488AA
+  50: '#a4fff3',
+  100: '#90ffdf',
+  200: '#7cf2cb',
+  300: '#68deb7',
+  400: '#54CAA3',
+  500: '#40b68f',
+  600: '#2ca27b',
+  700: '#188e67',
+  800: '#047a53',
+  900: '#00522b'
+}
+
+
 module.exports = {
   prefix: '',
   important: false,
@@ -11,23 +39,11 @@ module.exports = {
       "2xl": "1440px",
     },
     colors: {
+      primary,
       transparent: 'transparent',
 
       black: '#000',
       white: '#fff',
-
-      primary: {
-        100: '#a273ff',
-        200: '#935bff',
-        300: '#8344ff',
-        400: '#742cff',
-        500: '#6415FF',
-        600: '#5a13e6',
-        700: '#5011cc',
-        800: '#460fb3',
-        900: '#3c0d99',
-      },
-
       secondary: {
         100: '#7c8ba1',
         200: '#667892',

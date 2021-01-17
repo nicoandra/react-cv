@@ -1,6 +1,11 @@
 {
   "landing_page": {
-    "subheader_features": "Spécifications",
-    "main_title": "<1>Réparation</1> et <3>soutien technique</3> pour ordinateurs"
+    "hero": {
+      "main_title": "Rédemarrez votre <1>productivité</1> avec un ordinateur <1>performant</1>."
+    },    
+    "features": {
+      "subheader": "Services",
+      "main_title": "<1>Soutien technique</1> et <3>réparation d'ordinateurs</3> accessible pour <1>tous et toutes</1>."
+    }
   }
 }

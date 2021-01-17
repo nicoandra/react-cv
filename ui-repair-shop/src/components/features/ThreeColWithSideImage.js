@@ -5,17 +5,15 @@ import tw from "twin.macro";
 import { css } from "styled-components/macro";
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
-
 import defaultCardImage from "images/shield-icon.svg";
-
 import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
-
 import SupportIconImage from "images/support-icon.svg";
 import ShieldIconImage from "images/shield-icon.svg";
 import CustomizeIconImage from "images/customize-icon.svg";
 import FastIconImage from "images/fast-icon.svg";
 import ReliableIconImage from "images/reliable-icon.svg";
 import SimpleIconImage from "images/simple-icon.svg";
+import { useTranslation, Trans } from 'react-i18next';
 
 const Container = tw.div`relative`;
 
@@ -58,7 +56,7 @@ const DecoratorBlob = styled(SvgDecoratorBlob3)`
   ${tw`pointer-events-none absolute right-0 bottom-0 w-64 opacity-25 transform translate-x-32 translate-y-48 `}
 `;
 
-export default ({ cards = null, heading = "Amazing Features", subheading = "Features", description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." }) => {
+export default ({ cards = null, heading = "Amazing Features", subheading = "Features", description = "The description placeholder" }) => {
   /*
    * This componets has an array of object denoting the cards defined below. Each object in the cards array can have the key (Change it according to your need, you can also add more objects to have more cards in this feature component) or you can directly pass this using the cards prop:
    *  1) imageSrc - the image shown at the top of the card
@@ -70,14 +68,34 @@ export default ({ cards = null, heading = "Amazing Features", subheading = "Feat
   const defaultCards = [
     {
       imageSrc: ShieldIconImage,
-      title: "Secure",
-      description: "We strictly only deal with vendors that provide top notch security."
+      title: <Trans i18nKey="landing_page.features.cards.01.title">Technical Support</Trans>,
+      description: <Trans i18nKey="landing_page.features.cards.01.description">Software configuration and installation, Windows support, performance tuning.</Trans>
     },
-    { imageSrc: SupportIconImage, title: "24/7 Support" },
-    { imageSrc: CustomizeIconImage, title: "Customizable" },
-    { imageSrc: ReliableIconImage, title: "Reliable" },
-    { imageSrc: FastIconImage, title: "Fast" },
-    { imageSrc: SimpleIconImage, title: "Easy" }
+    {
+      imageSrc: ShieldIconImage,
+      title: <Trans i18nKey="landing_page.features.cards.02.title">Pick-up and Delivery</Trans>,
+      description: <Trans i18nKey="landing_page.features.cards.02.description">We can pick-up your device and deliver it back up and running.</Trans>
+    },
+    { 
+      imageSrc: FastIconImage, 
+      title: <Trans i18nKey="landing_page.features.cards.06.title">Free estimation</Trans>,
+      description: <Trans i18nKey="landing_page.features.cards.06.description">Whether your problem is data-loss, hardware or software misconfiguration: get a free quote before spending a single dime.</Trans>
+    },
+    {
+      imageSrc: ShieldIconImage,
+      title: <Trans i18nKey="landing_page.features.cards.03.title">Data recovery</Trans>,
+      description: <Trans i18nKey="landing_page.features.cards.03.description">We can recover files and folders from damaged hard-drives, USB flash drives, memory cards and other media in a timely fashion. We charge on data recovery only: no recovery means no charge.</Trans>
+    },
+    { 
+      imageSrc: FastIconImage, 
+      title: <Trans i18nKey="landing_page.features.cards.04.title">Fast and responsive</Trans>,
+      description: <Trans i18nKey="landing_page.features.cards.04.description">Get a quick answer and quick estimation</Trans>
+    },
+    { 
+      imageSrc: FastIconImage, 
+      title: <Trans i18nKey="landing_page.features.cards.05.title">Custom domains and emails</Trans>,
+      description: <Trans i18nKey="landing_page.features.cards.05.description">Get your own Internet domain, with unlimited email addresses</Trans>
+    },  
   ];
 
   if (!cards) cards = defaultCards;

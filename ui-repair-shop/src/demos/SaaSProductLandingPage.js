@@ -30,16 +30,22 @@ export default () => {
     i18n.changeLanguage(lng);
   };
 
+
+
   return (
     <AnimationRevealPage>
-      <Hero roundedHeaderButton={true} />
+      <Hero roundedHeaderButton={true} heading={
+        <Trans i18nKey="landing_page.hero.main_title">Get <HighlightedText>up and running</HighlightedText> again.</Trans>
+      }/>
 
       <button onClick={() => changeLanguage('fr')}>fr</button>
       <button onClick={() => changeLanguage('en')}>en</button>
       <Features
-        subheading={<Subheading>{t('landing_page.subheader_features', 'Features')}</Subheading>}
-        heading={<Trans i18nKey="landing_page.main_title">Computer <HighlightedText>tech support</HighlightedText> and <HighlightedText>repair service</HighlightedText>.</Trans>}
+        subheading={<Subheading>{t('landing_page.features.subheader', 'Features')}</Subheading>}
+        heading={<Trans i18nKey="landing_page.features.main_title">Computer <HighlightedText>tech support</HighlightedText> and <HighlightedText>repair service</HighlightedText>.</Trans>}
+        description={<Trans i18nKey="landing_page.features.description">Whether you're a student, professional or SME we have a solution for you.</Trans>}
       />
+      
       <MainFeature
         subheading={<Subheading>Quality Work</Subheading>}
         imageSrc={heroScreenshotImageSrc}
