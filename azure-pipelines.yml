@@ -43,23 +43,23 @@ pool:
   vmImage: 'ubuntu-20.04'
 
 stages:
-- stage: Deploy
-  displayName: Deploy
-  jobs:
-  - job: ShowVariables
-    steps:
-    - bash: |
-        echo "sourceBranch: $(sourceBranch)"
-        echo "isMainBranch: $(isMainBranch)"
-        echo "isQaBranch: $(isQaBranch)"
-        echo "commitHash: $(commitHash)"
-        echo "targetAppName: $(targetAppName)"
+# - stage: Deploy
+#   displayName: Deploy
+#   jobs:
+#   - job: ShowVariables
+#     steps:
+#     - bash: |
+#         echo "sourceBranch: $(sourceBranch)"
+#         echo "isMainBranch: $(isMainBranch)"
+#         echo "isQaBranch: $(isQaBranch)"
+#         echo "commitHash: $(commitHash)"
+#         echo "targetAppName: $(targetAppName)"
 
 - stage: NestApp
   jobs:
   - template: '.pipeline/job_check_changes.yml'
     parameters:
-      path: "/nest-app/"
+      path: "nest-app/"
       appName: "nestApp"
   - job: DeployFunctionApp
     displayName: Deploy Function App
@@ -99,7 +99,7 @@ stages:
   jobs:
   - template: '.pipeline/job_check_changes.yml'
     parameters:
-      path: "/ui-cv/"
+      path: "ui-cv/"
       appName: "uiCV"
   - job: DeployBlobContainer
     displayName: Deploy as Storage Blob to container=$web
@@ -129,5 +129,5 @@ stages:
   jobs:
   - template: '.pipeline/job_check_changes.yml'
     parameters:
-      path: "/ui-repair-shop/"
+      path: "ui-repair-shop/"
       appName: "uiRepairShop"
