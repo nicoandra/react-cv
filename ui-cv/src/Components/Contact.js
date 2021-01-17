@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 function Contact(props) {
@@ -15,7 +15,6 @@ function Contact(props) {
 		city = props.data.address.city,
 		state = props.data.address.state,
 		zip = props.data.address.zip,
-		phone = props.data.phone,
 		message = props.data.contactmessage;
 
 	const resetForm = () => {
@@ -57,7 +56,6 @@ function Contact(props) {
 			})
 			.then((r) => {
 				setLoading(false);
-				console.log("All good so far", r);
 				setPostResult(r);
 			})
 			.catch((err) => {
@@ -69,24 +67,32 @@ function Contact(props) {
 			});
 	};
 
-	const errorMessage = !loading && postResult.error !== null && (
-		<div id="message-warning">{postResult.error}</div>
-	);
-	const successMessage = !loading && postResult.message !== null && (
-		<div id="message-success">
-			<i className="fa fa-check"></i>
-			{postResult.message}
-			<br />
-		</div>
+	const errorMessage = !loading &&
+		postResult.error !== null &&
+		postResult.result === null && (
+			<div id="message-warning">WRN: {postResult.error}</div>
+		);
+	const successMessage = !loading &&
+		postResult.error === null &&
+		postResult.result !== null && (
+			<div id="message-success">
+				<i className="fa fa-check">OK</i>
+				{postResult.result}
+				<br />
+			</div>
+		);
+
+	const loadingSpinner = loading && (
+		<span id="image-loader">
+			<img alt="" src="images/loader.gif" />
+		</span>
 	);
 
-	const submitting = loading && <div>Posting message...</div>;
-	const contactForm = !loading && (
+	const contactForm = (
 		<fieldset>
 			<div>
 				<label htmlFor="contactName">
-					Name posting to {postUrl}{" "}
-					<span className="required">*</span>
+					Name<span className="required">*</span>
 				</label>
 				<input
 					type="text"
@@ -148,9 +154,7 @@ function Contact(props) {
 				>
 					Reset
 				</button>
-				<span id="image-loader">
-					<img alt="" src="images/loader.gif" />
-				</span>
+				{loadingSpinner}
 			</div>
 		</fieldset>
 	);
@@ -170,8 +174,6 @@ function Contact(props) {
 			<div className="row">
 				<div className="eight columns">
 					{contactForm}
-					{submitting}
-
 					{errorMessage}
 					{successMessage}
 				</div>
@@ -182,10 +184,10 @@ function Contact(props) {
 						<p className="address">
 							{name}
 							<br />
-							{city},{state}
+							{city}, {state}
+							<br />
 							{zip}
 							<br />
-							<span>{phone}</span>
 						</p>
 					</div>
 				</aside>
