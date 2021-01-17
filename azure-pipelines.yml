@@ -54,9 +54,18 @@ stages:
         echo "isQaBranch: $(isQaBranch)"
         echo "commitHash: $(commitHash)"
         echo "targetAppName: $(targetAppName)"
+
+
+  - template: '.pipeline/job_check_changes.yml'
+    parameters:
+      paths:
+      - ui-cv: "/ui-cv/"
+      - nest-app: "/nest-app/"
+      - ui-repair-shop: "/nest-app/"
+
   - job: DeployBlobContainer
     displayName: Deploy as Storage Blob to container=$web
-    condition: eq(variables.isMainBranch, true)
+    condition: and(eq(variables.isMainBranch, true))
     steps:
     - bash: |
         npm install
