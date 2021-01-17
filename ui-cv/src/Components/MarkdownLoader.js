@@ -18,4 +18,7 @@ function MarkdownLoader(props) {
 	return content.length && <Markdown source={content} />;
 }
 
+MarkdownLoader.propTypes = {
+	url: PropTypes.string
+}
 export default MarkdownLoader;

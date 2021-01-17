@@ -1,7 +1,7 @@
 <h1>Contact Form has been Filled</h1>
 
 <ul>
-    <% ["Name", "Email", "Message", "Subject", "referrer"].forEach(function(fieldName) {
+    <% Object.keys(locals).forEach(function(fieldName) {
         %>
         <li><b><%= fieldName %></b>: <%= locals[fieldName] %></li>
         <%

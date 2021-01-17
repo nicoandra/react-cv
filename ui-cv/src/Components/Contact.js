@@ -8,6 +8,7 @@ function Contact(props) {
 	const [contactEmail, setContactEmail] = useState("");
 	const [contactMessage, setContactMessage] = useState("");
 	const [contactSubject, setContactSubject] = useState("");
+	const [clientIp, setClientIp] = useState(false);
 
 	const postUrl = process.env.REACT_APP_CONTACT_FORM_POSTBACK_URL;
 
@@ -36,8 +37,13 @@ function Contact(props) {
 		});
 	};
 
-	const postForm = (reCaptchaToken) => {
+	const postForm = async (reCaptchaToken) => {
 		setLoading(true);
+
+		if(!clientIp) {
+			setClientIp(await fetch('https://api.ipify.org/?format=json').then(r=>r.json()).then(r => r.ip).catch(e => 'not-found'));
+		}
+
 		fetch(postUrl, {
 			method: "POST",
 			headers: {
@@ -49,6 +55,7 @@ function Contact(props) {
 				contactMessage,
 				contactSubject,
 				reCaptchaToken,
+				clientIp
 			}),
 		})
 			.then((r) => {
@@ -70,13 +77,13 @@ function Contact(props) {
 	const errorMessage = !loading &&
 		postResult.error !== null &&
 		postResult.result === null && (
-			<div id="message-warning">WRN: {postResult.error}</div>
+			<div id="message-warning">{postResult.error}</div>
 		);
 	const successMessage = !loading &&
 		postResult.error === null &&
 		postResult.result !== null && (
 			<div id="message-success">
-				<i className="fa fa-check">OK</i>
+				<i className="fa fa-check"></i>
 				{postResult.result}
 				<br />
 			</div>

@@ -23,14 +23,6 @@ export class AppController {
       });
     }
 
-
-    return Promise.resolve(<ContactFormMessageExternalResponse>{
-      error: null,
-      result: true
-        ? 'Hardcoded Message has been sent. Thanks'
-        : 'Hardcoded Captcha worked, but the email failed AF! :x',
-    });
-
     const isHumanRequest = await this.appService.validateRecaptcha(
       reCaptchaToken,
     );
