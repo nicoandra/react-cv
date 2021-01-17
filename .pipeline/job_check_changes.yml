@@ -1,17 +1,13 @@
 parameters:
-  - name: path
-    type: string
-    default: "not-set"
-  - name: paths
-    type: object
+  path: ''
+  variableName: ''
 
 jobs:
-${{ each nameAndPath in parameters.paths }}:
 - job: CheckChanges
-  displayName: "Check changes in ${{ nameAndPath.value }}"
+  displayName: 'Check changes'
   steps:
   - bash: |
-      PATH_FILTER="${{ nameAndPath.value }}"
+      PATH_FILTER="${{ parameters.path }}"
       CHANGED_FILES=$(git diff HEAD HEAD~ --name-only)
       MATCH_COUNT=0
 
@@ -29,9 +25,9 @@ ${{ each nameAndPath in parameters.paths }}:
 
       echo "$MATCH_COUNT match(es) for filter '$PATH_FILTER' found."
       if [[ $MATCH_COUNT -gt 0 ]]; then
-        echo "##vso[task.setvariable variable=${{ nameAndPath.key }};isOutput=true]true"
+        echo "##vso[task.setvariable variable=${{ parameters.variableName }};isOutput=true]true"
       else
-        echo "##vso[task.setvariable variable=${{ nameAndPath.key }};isOutput=true]false"
+        echo "##vso[task.setvariable variable=${{ parameters.variableName }};isOutput=true]false"
       fi
-    name: "check_changes"
+    name: check_changes
     displayName: 'Check changed files'

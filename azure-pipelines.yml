@@ -46,6 +46,18 @@ stages:
 - stage: Deploy
   displayName: Deploy
   jobs:
+  - template: '.pipeline/job_check_changes.yml'
+    parameters:
+      path: "/ui-cv/"
+      name: "uiCV"
+  - template: '.pipeline/job_check_changes.yml'
+    parameters:
+      path: "/nest-app/"
+      name: "nestApp"
+  - template: '.pipeline/job_check_changes.yml'
+    parameters:
+      path: "/ui-repair-shop/"
+      name: "uiRepairShop"
   - job: "ShowVariables"
     steps:
     - bash: |
@@ -54,18 +66,10 @@ stages:
         echo "isQaBranch: $(isQaBranch)"
         echo "commitHash: $(commitHash)"
         echo "targetAppName: $(targetAppName)"
-
-
-  - template: '.pipeline/job_check_changes.yml'
-    parameters:
-      paths:
-      - ui-cv: "/ui-cv/"
-      - nest-app: "/nest-app/"
-      - ui-repair-shop: "/nest-app/"
-
   - job: DeployBlobContainer
     displayName: Deploy as Storage Blob to container=$web
-    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.ui-cv'], 'true'), eq(variables.isMainBranch, true))
+    dependsOn: CheckChanges
+    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.uiCV'], 'true'), eq(variables.isMainBranch, true))
     steps:
     - bash: |
         npm install
@@ -87,7 +91,8 @@ stages:
           az storage blob upload-batch --account-name nicoandra -s ./build -d \$web
   - job: DeployFunctionApp
     displayName: Deploy Function App
-    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.nest-app'], 'true'), eq(variables.isMainBranch, true))
+    dependsOn: CheckChanges
+    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.nestApp'], 'true'), eq(variables.isMainBranch, true))
     steps:
     - bash: |
         npm install
