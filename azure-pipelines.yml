@@ -69,12 +69,14 @@ stages:
 - stage: Deploy
   displayName: Deploy
   jobs:
-  - bash: |
-      echo "sourceBranch: $(sourceBranch)"
-      echo "isMainBranch: $(isMainBranch)"
-      echo "isQaBranch: $(isQaBranch)"
-      echo "commitHash: $(commitHash)"
-      echo "targetAppName: $(targetAppName)"
+  - job: ShowVariables
+    steps:
+    - bash: |
+        echo "sourceBranch: $(sourceBranch)"
+        echo "isMainBranch: $(isMainBranch)"
+        echo "isQaBranch: $(isQaBranch)"
+        echo "commitHash: $(commitHash)"
+        echo "targetAppName: $(targetAppName)"
   - job: DeployBlobContainer
     displayName: Deploy as Storage Blob to container=$web
     dependsOn: CheckChanges
