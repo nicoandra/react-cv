@@ -43,29 +43,6 @@ pool:
   vmImage: 'ubuntu-20.04'
 
 stages:
-- stage: FindChangesNestApp
-  jobs:
-  - template: '.pipeline/job_check_changes.yml'
-    parameters:
-      path: "/nest-app/"
-      name: "nestApp"
-
-- stage: FindChangesUiCv
-  jobs:
-  - template: '.pipeline/job_check_changes.yml'
-    parameters:
-      path: "/ui-cv/"
-      name: "uiCV"
-    
-- stage: FindChangesUiRepairShop
-  jobs:
-  - template: '.pipeline/job_check_changes.yml'
-    parameters:
-      path: "/ui-repair-shop/"
-      name: "uiRepairShop"
-    
-
-
 - stage: Deploy
   displayName: Deploy
   jobs:
@@ -77,29 +54,13 @@ stages:
         echo "isQaBranch: $(isQaBranch)"
         echo "commitHash: $(commitHash)"
         echo "targetAppName: $(targetAppName)"
-  - job: DeployBlobContainer
-    displayName: Deploy as Storage Blob to container=$web
-    dependsOn: CheckChanges
-    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.uiCV'], 'true'), eq(variables.isMainBranch, true))
-    steps:
-    - bash: |
-        npm install
-        npm run build
-      displayName: Compile App to ./build
-      workingDirectory: $(Build.SourcesDirectory)/ui-cv
-      env:
-        REACT_APP_CONTACT_FORM_POSTBACK_URL: https://nicoandra.azurewebsites.net/api/contactform-onsubmit
-        REACT_APP_RECAPTCHA_SITE_KEY: 6LdvDi4aAAAAAO0wUdv-n40lIutg4slj9SQa7iqk
-    - task: AzureCLI@2
-      displayName: Copy to Blob Container
-      inputs:
-        azureSubscription: $(azureSubscription)
-        scriptType: bash
-        scriptLocation: inlineScript
-        workingDirectory: $(Build.SourcesDirectory)/ui-cv
-        inlineScript: |
-          echo "With targetAppName=$(targetAppName)"
-          az storage blob upload-batch --account-name nicoandra -s ./build -d \$web
+
+- stage: NestApp
+  jobs:
+  - template: '.pipeline/job_check_changes.yml'
+    parameters:
+      path: "/nest-app/"
+      name: "nestApp"
   - job: DeployFunctionApp
     displayName: Deploy Function App
     dependsOn: CheckChanges
@@ -132,4 +93,41 @@ stages:
         azureSubscription: $(azureSubscription)
         appType: functionAppLinux
         appName: $(targetAppName)
-        package: $(System.ArtifactsDirectory)/app.zip
+        package: $(System.ArtifactsDirectory)/app.zip      
+
+- stage: uiCV
+  jobs:
+  - template: '.pipeline/job_check_changes.yml'
+    parameters:
+      path: "/ui-cv/"
+      name: "uiCV"
+  - job: DeployBlobContainer
+    displayName: Deploy as Storage Blob to container=$web
+    dependsOn: CheckChanges
+    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.uiCV'], 'true'), eq(variables.isMainBranch, true))
+    steps:
+    - bash: |
+        npm install
+        npm run build
+      displayName: Compile App to ./build
+      workingDirectory: $(Build.SourcesDirectory)/ui-cv
+      env:
+        REACT_APP_CONTACT_FORM_POSTBACK_URL: https://nicoandra.azurewebsites.net/api/contactform-onsubmit
+        REACT_APP_RECAPTCHA_SITE_KEY: 6LdvDi4aAAAAAO0wUdv-n40lIutg4slj9SQa7iqk
+    - task: AzureCLI@2
+      displayName: Copy to Blob Container
+      inputs:
+        azureSubscription: $(azureSubscription)
+        scriptType: bash
+        scriptLocation: inlineScript
+        workingDirectory: $(Build.SourcesDirectory)/ui-cv
+        inlineScript: |
+          echo "With targetAppName=$(targetAppName)"
+          az storage blob upload-batch --account-name nicoandra -s ./build -d \$web      
+    
+- stage: uiRepairShop
+  jobs:
+  - template: '.pipeline/job_check_changes.yml'
+    parameters:
+      path: "/ui-repair-shop/"
+      name: "uiRepairShop"
