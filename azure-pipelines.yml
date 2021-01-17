@@ -32,7 +32,7 @@ variables:
   value: $[startsWith(variables['build.sourceBranch'], 'refs/heads/qa')]
 - name: targetAppName
   ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/qa') }}:
-    value: nicoandra
+    value: stagingnicoandra
   ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/main') }}:
     value: nicoandra
 - name: azureSubscription
@@ -104,7 +104,7 @@ stages:
   - job: DeployBlobContainer
     displayName: Deploy as Storage Blob to container=$web
     dependsOn: CheckChanges
-    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.uiCV'], 'true'), eq(variables.isMainBranch, true))
+    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.uiCV'], 'true'), or(eq(variables.isQaBranch, true), eq(variables.isMainBranch, true)))
     steps:
     - bash: |
         npm install
@@ -123,7 +123,7 @@ stages:
         workingDirectory: $(Build.SourcesDirectory)/ui-cv
         inlineScript: |
           echo "With targetAppName=$(targetAppName)"
-          az storage blob upload-batch --account-name nicoandra -s ./build -d \$web      
+          az storage blob upload-batch --account-name $(targetAppName) -s ./build -d \$web      
     
 - stage: uiRepairShop
   jobs:
