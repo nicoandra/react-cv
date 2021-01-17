@@ -69,14 +69,21 @@
 				"content": "SQS, S3, Kubernetes, Docker"
 			},
 			{
-				"name": "Programming Languages",
-				"content": "TypeScript, JavaScript, PHP, React, Python"
+				"name": "Backend programming Languages",
+				"content": "TypeScript, JavaScript ES6, PHP 7.1+, Python 3.7+"
 			},
+			{
+				"name": "Frontend programming Languages",
+				"content": "TypeScript, JavaScript ES6, React 17.0+"
+			},			
 			{
 				"name": "CI/CD",
 				"content": "Jenkins Blue Ocean (basic), Azure Pipelines (basic)"
 			},
-			{ "name": "Monitoring and Alerting", "content": "DataDog, Sentry" }
+			{ 
+				"name": "Monitoring and Alerting", 
+				"content": "DataDog APM and Logs, NewRelic, Sentry, PagerDuty" 
+			}
 		]
 	},
 	"testimonials": {
