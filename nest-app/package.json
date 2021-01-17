@@ -20,7 +20,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "start:azure": "npm run build && func host start",
-    "move-templates": "mv ./dist/templates ./dist/src/templates"
+    "move-templates": "cp ./src/templates ./dist/src/templates -r"
   },
   "dependencies": {
     "@azure/functions": "^1.0.3",

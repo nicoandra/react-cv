@@ -11,7 +11,7 @@ class Resume extends Component {
 				const workTitle = work.company.length ? (
 					<h3>
 						{work.link ? (
-							<a href={work.link} target="_blank">
+							<a href={work.link} target="_blank" rel="noreferrer">
 								{work.company}
 							</a>
 						) : (

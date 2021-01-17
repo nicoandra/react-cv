@@ -31,8 +31,7 @@
 	},
 	"resume": {
 		"skillmessage": false,
-		"work": [
-			{
+		"work": [{
 				"company": "SSENSE",
 				"link": "https://ssense.com",
 				"location": "Montréal, Québec, Canada",
