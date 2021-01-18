@@ -1,3 +1,4 @@
 export default {
-    siteName: "Tech-Nico"
+    siteName: "Nico Computer Repair Shop",
+    siteTitle: "Nico Computer Repair Shop - Soutien technique / Computer Repair"
 }
