@@ -1,9 +1,10 @@
-Designed, implemented and deployed a variety of micro-services on different domains
+Designed, implemented and deployed a variety of micro-services on different domains; helping on the peeling-off from a legacy monolith
 
-## Technologies
+### Technologies
 
--   One
--   Two
--   Three
+- NodeJs, TypeScript, PHP, Python 3.8, React
+- PostgreSQL, Redis, DocumentDB
+- Docker, Jenkins, Jest
+- AWS S3, SQS, ElastiCache
 
 Closing paragraph
