@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import logo from "../../images/logo.svg";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
+import Config from "../../config"
 
 const Header = tw.header`
   flex justify-between items-center
@@ -92,14 +93,12 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
         return <SwitchButton active={lang === i18n.language} key={idx} onClick={() => changeLanguage(lang)}>{lang.toUpperCase()}</SwitchButton>
       })}
     </Switcher>
-    <NavLink href="/remote-support">{t('header.features', "Remote Support")}</NavLink>
-    <NavLink href="#">{t('header.pricing', "Pricing")}</NavLink>
+    <NavLink href="/remote-support">{t('header.nav.remote_support', "Remote Support")}</NavLink>
+    <NavLink href="/secure-backup">{t('header.nav.secure_backup', "Secure Backup")}</NavLink>
     <NavLink href="#">{t('header.contact', "Contact")}</NavLink>
     {signup}
   </NavLinks>
   ];
-
-
 
 
   const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
@@ -108,7 +107,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
   const defaultLogoLink = (
     <LogoLink href="/">
       <img src={logo} alt="logo" />
-      Treact
+      {Config.siteName}
     </LogoLink>
   );
 

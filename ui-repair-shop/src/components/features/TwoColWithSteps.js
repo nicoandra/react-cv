@@ -15,6 +15,8 @@ const TextColumn = styled(Column)(props => [
   props.textOnLeft ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`
 ]);
 
+const TextSingleColumn = tw(Column)`md:w-full mt-16 md:mt-0 md:mr-12 lg:mr-16 md:order-first`;
+
 const Image = styled.img(props => [
   props.imageRounded && tw`rounded`,
   props.imageBorder && tw`border`,
@@ -38,6 +40,7 @@ const StepNumber = tw.div`font-semibold text-4xl leading-none text-gray-400`;
 const StepText = tw.div`mt-3 md:mt-0 md:ml-6`;
 const StepHeading = tw.h6`leading-none text-xl font-semibold`;
 const StepDescription = tw.p`mt-3 max-w-xs leading-loose text-sm text-gray-600 font-medium`;
+const StepDescriptionFullWidth = tw.p`mt-3 leading-loose text-sm text-gray-600 font-medium`;
 
 export default ({
   subheading = "Our Expertise",
@@ -54,6 +57,7 @@ export default ({
   textOnLeft = true,
   steps = null,
   decoratorBlobCss = null,
+  columnCount=2
 }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
 
@@ -74,13 +78,35 @@ export default ({
 
   if (!steps) steps = defaultSteps;
 
+  const imageColumn = columnCount > 1 && <ImageColumn>
+    <Image src={imageSrc} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded} />
+      {imageDecoratorBlob && <DecoratorBlob css={decoratorBlobCss} />}
+    </ImageColumn>
+
   return (
     <Container>
-      <TwoColumn>
-        <ImageColumn>
-          <Image src={imageSrc} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded} />
-          {imageDecoratorBlob && <DecoratorBlob css={decoratorBlobCss} />}
-        </ImageColumn>
+      {columnCount == 1 && <TwoColumn>
+        <TextSingleColumn textOnLeft={textOnLeft}>
+          <TextContent>
+            <Subheading>{subheading}</Subheading>
+            <Heading>{heading}</Heading>
+            <Steps>
+              {steps.map((step, index) => (
+                <Step key={index}>
+                  <StepNumber>{(index+1).toString().padStart(2,'0')}</StepNumber>
+                  <StepText>
+                    <StepHeading>{step.heading}</StepHeading>
+                    <StepDescriptionFullWidth>{step.description}</StepDescriptionFullWidth>
+                  </StepText>
+                </Step>
+              ))}
+            </Steps>
+          </TextContent>
+        </TextSingleColumn>
+      </TwoColumn>}
+
+      {columnCount == 2 && <TwoColumn>
+        {imageColumn}
         <TextColumn textOnLeft={textOnLeft}>
           <TextContent>
             <Subheading>{subheading}</Subheading>
@@ -98,7 +124,7 @@ export default ({
             </Steps>
           </TextContent>
         </TextColumn>
-      </TwoColumn>
+      </TwoColumn>}
     </Container>
   );
 };

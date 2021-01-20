@@ -97,6 +97,7 @@ import SaaSProductLandingPage from 'demos/SaaSProductLandingPage.js'
 // import SignupPage from "pages/Signup.js"
 // import PricingPage from "pages/Pricing.js"
 import RemoteSupportPage from 'pages/RemoteSupport.js'
+import SecureBackupPage from 'pages/SecureBackup.js'
 // import ContactUsPage from "pages/ContactUs.js"
 // import BlogIndexPage from "pages/BlogIndex.js"
 // import TermsOfServicePage from "pages/TermsOfService.js"
@@ -119,6 +120,9 @@ export default function App () {
       <Switch>
         <Route path='/remote-support'>
           <RemoteSupportPage />
+        </Route>
+        <Route path='/secure-backup'>
+          <SecureBackupPage />
         </Route>
         <Route path='/'>
           <SaaSProductLandingPage />

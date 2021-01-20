@@ -6,7 +6,8 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import Header from "components/headers/light.js";
 import Footer from "components/footers/FiveColumnWithBackground.js";
 import MainFeature1 from "components/features/TwoColWithButton.js";
-import MainFeatureSteps from "components/features/TwoColWithSteps.js";
+// import MainFeature2 from "components/features/TwoColSingleFeatureWithStats.js";
+// import MainFeature3 from "components/features/TwoColSingleFeatureWithStats2.js";
 import Features from "components/features/ThreeColSimple.js";
 // import Features from "components/features/ThreeColWithSideImage.js";
 import TeamCardGrid from "components/cards/ProfileThreeColGrid.js";
@@ -16,7 +17,6 @@ import ShieldIconImage from "images/shield-icon.svg";
 import CustomerLoveIconImage from "images/simple-icon.svg";
 import Config from "../config"
 
-const HighlightedText = tw.span`text-primary-500`;
 const Subheading = tw.span`uppercase tracking-wider text-sm`;
 export default () => {
 
@@ -25,36 +25,8 @@ export default () => {
   return (
     <AnimationRevealPage>
       <Header />
-      <Features
-        subheading={<Subheading>On-Demand support</Subheading>}
-        heading="Online, quick technical support"
-        description=""
-        cards={[
-          {
-            imageSrc: SupportIconImage,
-            title: "Hardware",
-            description: "Some hardware problems can be detected remotely, although not solved without physical intervention."
-          },
-          {
-            imageSrc: ShieldIconImage,
-            title: "Software",
-            description: "Most software and configuration problems can be solved remotely, like configuring a printer, a scanner or installing Office."
-          },
-          {
-            imageSrc: CustomerLoveIconImage,
-            title: "Backup configuation",
-            description: "We can configure your Secure Backup solution remotely and get it running in no time. Don't risk losing any important file!"
-          },
-        ]}
-        linkText=""
-      />      
-      <MainFeatureSteps
-        columnCount={1}
-        subheading={<Subheading>Remote support</Subheading>}
-        heading={<React.Fragment>Get <HighlightedText>professional</HighlightedText> technical remote support from a specialist</React.Fragment>}
-      ></MainFeatureSteps>
       <MainFeature1
-        subheading={<Subheading>Remote support</Subheading>}
+        subheading={<Subheading>Secure Backup</Subheading>}
         heading="Get the required software"
         buttonRounded={false}
         description="The first step to get support is obtaining AeroAdmin for Windows and Linux or TeamViewer for Mac, the software that allows remote support. Get either one by clicking the link below."
@@ -73,6 +45,7 @@ export default () => {
         imageSrc="https://images.unsplash.com/3/doctype-hi-res.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=768&q=80"
         textOnLeft={true}
       />
+
       <MainFeature1
         subheading={<Subheading>Contact us</Subheading>}
         heading="Reach out to us"
@@ -91,7 +64,29 @@ export default () => {
         imageSrc="https://images.unsplash.com/3/doctype-hi-res.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=768&q=80"
         textOnLeft={true}
       />         
-
+      <Features
+        subheading={<Subheading>Our Values</Subheading>}
+        heading="We follow these."
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        cards={[
+          {
+            imageSrc: SupportIconImage,
+            title: "Hardware",
+            description: "Some hardware problems can be detected remotely, although not solved without physical intervention."
+          },
+          {
+            imageSrc: ShieldIconImage,
+            title: "Software",
+            description: "Most software and configuration problems can be solved remotely."
+          },
+          {
+            imageSrc: CustomerLoveIconImage,
+            title: "Backup configuation",
+            description: "We can configure your Secure Backup solution remotely and get it running in no time. Don't lose any file!"
+          },
+        ]}
+        linkText=""
+      />
       {teamGrid}
       <Footer />
     </AnimationRevealPage>
