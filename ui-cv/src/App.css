@@ -1,0 +1,12 @@
+section#resume div.row.work div.main-col div.markdownLoader li {
+    line-height: 24px;
+}
+
+section#resume div.main-col {
+    padding-right: 5%;
+}
+
+section#resume div.row.work div.main-col div.markdownLoader h3 {
+    font-size: 20px;
+    line-height: 24px;
+}

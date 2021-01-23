@@ -1,8 +1,6 @@
-Designed, implemented and deployed a variety of micro-services on different domains; helping on the peeling-off from a legacy monolith
-
+Design, document, develop, test and deploy the cloud-based services needed to perform operations in the Pricing domain; aiming for availability, scalability, simplicity, predictability and performance.
 
 ### Responsibilities:
-* Design, document, develop, test and deploy the cloud-based services needed to perform operations in the Pricing domain; aiming for availability, scalability, simplicity, predictability and performance.
 * Developing different services in TypeScript, Python and Object-Oriented PHP.
 * Peeling-off features from a legacy monolithic application by converting synchronous operations into event notifications for asynchronous processing.
 * Follow company standards on what comes down to resource management in Kubernetes and Lambda, using Helm and Severless configurations.

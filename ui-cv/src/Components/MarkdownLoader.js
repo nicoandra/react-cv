@@ -15,7 +15,7 @@ function MarkdownLoader(props) {
 			setContent(r);
 		});
 
-	return content.length && <Markdown source={content} />;
+	return content.length && <Markdown className="markdownLoader" source={content} />;
 }
 
 MarkdownLoader.propTypes = {
