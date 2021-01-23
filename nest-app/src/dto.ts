@@ -1,9 +1,10 @@
+import { IsEmail, IsNotEmpty, IsAlphanumeric} from 'class-validator';
 export class ContactFormMessageExternalRequest {
-  reCaptchaToken: string;
-  contactName: string;
-  contactEmail: string;
-  contactMessage: string;
-  contactSubject: string;
+  @IsNotEmpty() @IsAlphanumeric() reCaptchaToken: string;
+  @IsNotEmpty() contactName: string;
+  @IsEmail() contactEmail: string;
+  @IsNotEmpty() contactMessage: string;
+  @IsNotEmpty() contactSubject: string;
 }
 
 export class ContactFormMessageExternalResponse {

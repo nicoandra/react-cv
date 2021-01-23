@@ -9,6 +9,7 @@ function Contact(props) {
 	const [contactMessage, setContactMessage] = useState("");
 	const [contactSubject, setContactSubject] = useState("");
 	const [clientIp, setClientIp] = useState(false);
+	const [formErrors, setFormErrors] = useState({})
 
 	const postUrl = process.env.REACT_APP_CONTACT_FORM_POSTBACK_URL;
 
@@ -59,6 +60,9 @@ function Contact(props) {
 			}),
 		})
 			.then((r) => {
+				if(!r.ok) {
+					throw new Error("Things didn't go as expected.")
+				}
 				return r.json();
 			})
 			.then((r) => {
