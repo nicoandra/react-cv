@@ -11,7 +11,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Post('/contactform-onsubmit')
-  async getHelloAgain(
+  async contactFormSubmit(
     @Body() body: ContactFormMessageExternalRequest,
     @Req() req,
   ): Promise<ContactFormMessageExternalResponse> {
@@ -38,4 +38,17 @@ export class AppController {
         : 'Captcha worked, but the email failed AF! :x',
     });
   }
+
+
+
+  @Post('/serverboot-onsubmit')
+  async serverBootSubmit(
+    @Body() body,
+    @Req() req,
+  ): Promise<string> {
+
+    console.log("The body is", body)
+    return "The body is" + body
+
+  }  
 }
