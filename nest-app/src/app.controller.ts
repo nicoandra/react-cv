@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, Req } from '@nestjs/common';
 import { AppService } from './app.service';
 import {
   ContactFormMessageExternalRequest,
@@ -41,14 +41,15 @@ export class AppController {
 
 
 
-  @Post('/serverboot-onsubmit')
+  @Post('/serverboot-onsubmit/:accessId')
   async serverBootSubmit(
     @Body() body,
+    @Query('accessId') accessId: string,
     @Req() req,
   ): Promise<string> {
 
     console.log("The body is", body)
-    return "The body is" + body
+    return "the-network-hash"
 
   }  
 }
