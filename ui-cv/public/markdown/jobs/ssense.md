@@ -18,7 +18,6 @@ Design, document, develop, test and deploy the cloud-based services needed to pe
 * Works iteratively, bringing value and gathering knowledge on every cycle.
 * Enjoys environments with diversity of people, cultures, backgrounds, programming languages, technologies and mindsets.
 * Enjoys when the solutions provided are valuable, accepted and stakeholders feel statisfaction.
-* Enjoys learning new technologies, even some that might seem useless, but
 
 ### Technologies
 - Node JS, TypeScript, PHP 7+, Python 3.8+, React 18+
