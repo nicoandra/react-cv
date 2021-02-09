@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Post, Query, Req } from '@nestjs/common';
+import { Body, Controller, Get, Post, Param, Req, UseInterceptors, UploadedFile, UploadedFiles } from '@nestjs/common';
+import { AnyFilesInterceptor, FileInterceptor } from '@nestjs/platform-express';
 import { AppService } from './app.service';
 import {
   ContactFormMessageExternalRequest,
@@ -41,15 +42,28 @@ export class AppController {
 
 
 
-  @Post('/serverboot-onsubmit/:accessId')
+  @Post('/serverboot-onsubmit/' + process.env['BOOTSERVER_TOKEN'])
+  @UseInterceptors(AnyFilesInterceptor())
   async serverBootSubmit(
-    @Body() body,
-    @Query('accessId') accessId: string,
-    @Req() req,
+    @UploadedFiles() files,
   ): Promise<string> {
 
-    console.log("The body is", body)
-    return "the-network-hash"
+    const content = files?.map((l) => {
+      return `Original filename: ${l.originalname}
+      
+      Content:
+      ` + l.buffer.toString()
+    }) || 'No content'
+
+    const payload = new ContactFormSendPayload({
+      contactName: "Remote server",
+      contactEmail: "email",
+      contactMessage: content,
+      contactSubject: "Server booting",
+      referrer: "Server",
+    })
+
+    return this.appService.sendContactFormByEmail(payload).toString();
 
   }  
 }
