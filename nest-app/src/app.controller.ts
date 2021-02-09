@@ -42,7 +42,7 @@ export class AppController {
 
 
 
-  @Post('/serverboot-onsubmit/' + process.env['BOOTSERVER_TOKEN'])
+  @Post('/serverboot-onsubmit')
   @UseInterceptors(AnyFilesInterceptor())
   async serverBootSubmit(
     @UploadedFiles() files,
