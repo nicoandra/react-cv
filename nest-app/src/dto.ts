@@ -18,4 +18,8 @@ export class ContactFormSendPayload {
   contactMessage: string;
   contactSubject: string;
   referrer: string;
+
+  constructor(partial: Partial<ContactFormSendPayload>) {
+    Object.assign(this, partial);
+  }  
 }
