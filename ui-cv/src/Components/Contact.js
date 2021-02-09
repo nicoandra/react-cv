@@ -59,6 +59,9 @@ function Contact(props) {
 			}),
 		})
 			.then((r) => {
+				if(!r.ok) {
+					throw new Error("Things didn't go as expected.")
+				}
 				return r.json();
 			})
 			.then((r) => {

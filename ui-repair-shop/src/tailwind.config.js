@@ -1,4 +1,5 @@
 
+
 const originalPrimary = {
   100: '#a273ff',
   200: '#935bff',
@@ -24,6 +25,30 @@ const primary = {
   800: '#047a53',
   900: '#00522b'
 }
+ const secondary = {
+  100: '#7c8ba1',
+  200: '#667892',
+  300: '#506582',
+  400: '#3a5173',
+  500: '#243E63',
+  600: '#203859',
+  700: '#1d324f',
+  800: '#192b45',
+  900: '#16253b',
+};
+
+const yellow = {
+  50: "#FFFBEB",
+  100: "#FEF3C7",
+  200: "#FDE68A",
+  300: "#FCD34D",
+  400: "#FBBF24",
+  500: "#F59E0B",
+  600: "#D97706",
+  700: "#B45309",
+  800: "#92400E",
+  900: "#78350F",
+};
 
 
 module.exports = {
@@ -39,22 +64,13 @@ module.exports = {
       "2xl": "1440px",
     },
     colors: {
-      primary,
+      primary: yellow,
+      secondary,
       transparent: 'transparent',
 
       black: '#000',
       white: '#fff',
-      secondary: {
-        100: '#7c8ba1',
-        200: '#667892',
-        300: '#506582',
-        400: '#3a5173',
-        500: '#243E63',
-        600: '#203859',
-        700: '#1d324f',
-        800: '#192b45',
-        900: '#16253b',
-      },
+
 
       gray: {
         "lightest": "#fff",

@@ -44,6 +44,5 @@ export class AppService {
       template: 'contactform-post',
       context,
     });
-    return Promise.resolve(true);
   }
 }

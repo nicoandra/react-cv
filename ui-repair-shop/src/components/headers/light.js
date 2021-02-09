@@ -3,12 +3,13 @@ import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
+import { useTranslation } from 'react-i18next';
 
 import logo from "../../images/logo.svg";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
+import Config from "../../config"
 
 const Header = tw.header`
   flex justify-between items-center
@@ -56,6 +57,13 @@ export const DesktopNavLinks = tw.nav`
   hidden lg:flex flex-1 justify-between items-center
 `;
 
+export const Switcher = tw.div`block w-full max-w-xs sm:inline-block sm:w-auto border-2 rounded-sm px-1 py-1 mt-8`;
+
+export const SwitchButton = styled.button`
+  ${tw`w-1/2 sm:w-16 px-2 sm:px-2 py-3 rounded-sm focus:outline-none text-sm font-bold text-gray-500 transition duration-300`}
+  ${props => props.active && tw`bg-primary-500 text-gray-100`}
+`;
+
 export default ({ roundedHeaderButton = false, logoLink, links, className, collapseBreakpointClass = "lg" }) => {
   /*
    * This header component accepts an optionals "links" prop that specifies the links to render in the navbar.
@@ -70,18 +78,28 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
    * changing the defaultLinks variable below below.
    * If you manipulate links here, all the styling on the links is already done for you. If you pass links yourself though, you are responsible for styling the links or use the helper styled components that are defined here (NavLink)
    */
+  
+  const { t, i18n } = useTranslation(); 
+
+  const changeLanguage = lng => {
+    i18n.changeLanguage(lng);
+  };
+  const signup = false && <PrimaryLink href="#">{t('header.signup', "Sign up")}</PrimaryLink>
+
   const defaultLinks = [
     <NavLinks key={1}>
-      <NavLink href="/#">About</NavLink>
-      <NavLink href="/#">Blog</NavLink>
-      <NavLink href="/#">Pricing</NavLink>
-      <NavLink href="/#">Contact Us</NavLink>
-      <NavLink href="/#" tw="lg:ml-12!">
-        Login
-      </NavLink>
-      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/#">Sign Up</PrimaryLink>
-    </NavLinks>
+    <Switcher>
+      {["en", "fr"].map((lang, idx) => {
+        return <SwitchButton active={lang === i18n.language} key={idx} onClick={() => changeLanguage(lang)}>{lang.toUpperCase()}</SwitchButton>
+      })}
+    </Switcher>
+    <NavLink href="/remote-support">{t('header.nav.remote_support', "Remote Support")}</NavLink>
+    <NavLink href="/secure-backup">{t('header.nav.secure_backup', "Secure Backup")}</NavLink>
+    <NavLink href="#">{t('header.contact', "Contact")}</NavLink>
+    {signup}
+  </NavLinks>
   ];
+
 
   const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
   const collapseBreakpointCss = collapseBreakPointCssMap[collapseBreakpointClass];
@@ -89,7 +107,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
   const defaultLogoLink = (
     <LogoLink href="/">
       <img src={logo} alt="logo" />
-      Treact
+      {Config.siteName}
     </LogoLink>
   );
 
