@@ -67,7 +67,7 @@ stages:
   - job: DeployFunctionApp
     displayName: Deploy Function App
     dependsOn: CheckChanges
-    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.nestApp'], 'true'), eq(variables.isMainBranch, true))
+    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.nestApp'], 'true'),  or(eq(variables.isQaBranch, true), eq(variables.isMainBranch, true), eq(variables.isRelease, true)))
     steps:
     - bash: |
         npm install
@@ -107,7 +107,7 @@ stages:
   - job: DeployBlobContainer
     displayName: Deploy as Storage Blob to container=$web
     dependsOn: CheckChanges
-    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.uiCV'], 'true'), or(eq(variables.isQaBranch, true), eq(variables.isMainBranch, true)))
+    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.uiCV'], 'true'), or(eq(variables.isQaBranch, true), eq(variables.isMainBranch, true), eq(variables.isRelease, true)))
     steps:
     - bash: |
         npm install
