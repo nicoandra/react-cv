@@ -30,6 +30,8 @@ variables:
   value: $[eq(variables['build.sourceBranch'], 'refs/heads/main')]
 - name: isQaBranch
   value: $[startsWith(variables['build.sourceBranch'], 'refs/heads/qa')]
+- name: isRelease
+  value: $[startsWith(variables['build.sourceBranch'], 'refs/tags/v')]
 - name: targetAppName
   ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/qa') }}:
     value: stagingnicoandra
