@@ -6,3 +6,4 @@ The bug was causing deadlocks when the application would crash after acquiring a
 The fix was done in a backwards-compatible fashion and users would need to opt-in.
 
 [Issue](https://github.com/shaypal5/cachier/issues/37) - [Pull request](https://github.com/shaypal5/cachier/pull/36)
+
