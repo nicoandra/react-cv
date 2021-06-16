@@ -26,16 +26,12 @@ variables:
   value: '$(Build.SourceVersion)'
 - name: sourceBranch
   value: $[variables['build.sourceBranch']]
-- name: isMainBranch
-  value: $[eq(variables['build.sourceBranch'], 'refs/heads/main')]
-- name: isQaBranch
-  value: $[startsWith(variables['build.sourceBranch'], 'refs/heads/qa')]
-- name: isRelease
+- name: isQaRelease
+  value: $[or(startsWith(variables['build.sourceBranch'], 'refs/heads/qa'), startsWith(variables['build.sourceBranch'], 'refs/heads/main'))]
+- name: isProductionRelease
   value: $[startsWith(variables['build.sourceBranch'], 'refs/tags/v')]
 - name: targetAppName
-  ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/qa') }}:
-    value: stagingnicoandra
-  ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/main') }}:
+  ${{ if or(startsWith(variables['build.sourceBranch'], 'refs/heads/qa'), startsWith(variables['build.sourceBranch'], 'refs/heads/main')) }}:
     value: stagingnicoandra
   ${{ if startsWith(variables['build.sourceBranch'], 'refs/tags/v') }}:
     value: nicoandra
@@ -67,7 +63,7 @@ stages:
   - job: DeployFunctionApp
     displayName: Deploy Function App
     dependsOn: CheckChanges
-    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.nestApp'], 'true'),  or(eq(variables.isQaBranch, true), eq(variables.isMainBranch, true), eq(variables.isRelease, true)))
+    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.nestApp'], 'true'), or(eq(variables.isQaRelease, true), eq(variables.isProdRelease, true)))
     steps:
     - bash: |
         npm install
@@ -107,7 +103,7 @@ stages:
   - job: DeployBlobContainer
     displayName: Deploy as Storage Blob to container=$web
     dependsOn: CheckChanges
-    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.uiCV'], 'true'), or(eq(variables.isQaBranch, true), eq(variables.isMainBranch, true), eq(variables.isRelease, true)))
+    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.uiCV'], 'true'), or(eq(variables.isQaRelease, true), eq(variables.isProdRelease, true)))
     steps:
     - bash: |
         npm install
