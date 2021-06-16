@@ -34,10 +34,11 @@ variables:
   ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/qa') }}:
     value: stagingnicoandra
   ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/main') }}:
+    value: stagingnicoandra
+  ${{ if startsWith(variables['build.sourceBranch'], 'refs/tags/v') }}:
     value: nicoandra
 - name: azureSubscription
   value: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
-    
 
 pool:
   vmImage: 'ubuntu-20.04'
