@@ -68,6 +68,15 @@ class Resume extends Component {
 						</div>
 					</div>
 				</div>
+
+				<div className="row open-source">
+					<div className="three columns header-col">
+						<h1>
+							<span>Open Source Contributions</span>
+						</h1>
+					</div>
+					<div className="nine columns main-col"><MarkdownLoader url="/markdown/open-source.md" /></div>
+				</div>				
 			</section>
 		);
 	}
