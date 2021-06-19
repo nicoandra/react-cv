@@ -1,19 +1,20 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 
 class Footer extends Component {
 	render() {
-		if (this.props.data) {
-			var networks = this.props.data.social.map(function (network) {
-				return (
-					<li key={network.name}>
-						<a href={network.url}>
-							<i className={network.className}></i>
-						</a>
-					</li>
-				);
-			});
+		if (!this.props.data) {
+			return (< Fragment/>)
 		}
+		var networks = this.props.data.social.map(function (network) {
+			return (
+				<li key={network.name}>
+					<a href={network.url}>
+						<i className={network.className}></i>
+					</a>
+				</li>
+			);
+		});
 
 		return (
 			<footer>
@@ -22,7 +23,7 @@ class Footer extends Component {
 						<ul className="social-links">{networks}</ul>
 
 						<ul className="copyright">
-							<li>&copy; Copyright 2017 Tim Baker</li>
+							<li>From a design made by Tim Baker, &copy; Copyright 2017</li>
 							<li>
 								Design by{" "}
 								<a

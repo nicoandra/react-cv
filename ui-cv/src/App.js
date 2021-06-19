@@ -21,11 +21,12 @@ class App extends Component {
 		$.ajax({
 			url: "/resumeData.json",
 			dataType: "json",
-			cache: false,
+			cache: true,
 			success: function (data) {
 				this.setState({ resumeData: data, ready: true });
 			}.bind(this),
 			error: function (xhr, status, err) {
+				// TODO Add a nicer error message
 				console.log(err);
 			},
 		});
