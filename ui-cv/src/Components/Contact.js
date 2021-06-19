@@ -205,7 +205,7 @@ function Contact(props) {
 						<p className="address">
 							{name}
 							<br />
-							{city}, {state}
+							{city}, {state}, {zip}
 							<br />
 							<ul class="social-links">{networks}</ul>
 						</p>
