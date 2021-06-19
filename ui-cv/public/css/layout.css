@@ -996,6 +996,21 @@ call-to-action .button {
 	color: #11abb0;
 	font-size: 13px;
 }
+
+
+#contact aside ul.social-links {
+	margin: 0;
+	padding: 0;
+}
+
+#contact aside ul.social-links li {
+	color: #11abb0;
+	font-size: 13px;
+	display: inline-block;
+	margin: 0 10px 0 0;
+	font-size: 20px;
+}
+
 #message-warning,
 #message-success {
 	background: #0f0f0f;

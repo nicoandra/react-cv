@@ -6,7 +6,7 @@ class Footer extends Component {
 		if (!this.props.data) {
 			return (< Fragment/>)
 		}
-		var networks = this.props.data.social.map(function (network) {
+		const networks = this.props.data.social.map(function (network) {
 			return (
 				<li key={network.name}>
 					<a href={network.url}>
