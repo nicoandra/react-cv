@@ -18,14 +18,14 @@ class About extends Component {
 		return (
 			<section id="about">
 				<div className="row">
-					<div className="three columns">
+					<div className={`${this.props.columnSizes[0]} columns`}>
 						<img
 							className="profile-pic"
 							src={profilepic}
-							alt="Tim Baker Profile Pic"
+							alt="Nicolás Andrade"
 						/>
 					</div>
-					<div className="nine columns main-col">
+					<div className={`${this.props.columnSizes[1]} columns`}>
 						<h2>About Me</h2>
 
 						<p>{bio}</p>
@@ -64,6 +64,7 @@ class About extends Component {
 
 About.propTypes = {
 	data: PropTypes.object,
+	columnSizes: PropTypes.array
 };
 
 export default About;
