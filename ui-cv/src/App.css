@@ -1,7 +1,23 @@
 
+section#resume .main-col {
+    padding-right: 10%;
+}
+
 @media screen {
+    header#home {
+        height: 739px;
+    }
+
+    header#home span.print {
+        display: none;
+    }
+
     header .social span {
         display: none
+    }
+
+    .print {
+        display: none;
     }
 
     section#about .print {
@@ -65,31 +81,76 @@
         display: none;
     }
 
+    header#home {
+        margin-bottom: 12px;
+    }
+    header#home span.screen {
+        display: none;
+    }
+
+    header#home .print .contact ul li {
+        list-style: none;
+        list-style-type: circle;
+        display: inline;
+        margin-right: 10px;
+    }
+
+    div#root div.App {
+        margin: 10px;
+    }
+
+    section ul li {
+        line-height: 20px;
+    }
+
+    section ul {
+        margin-top: 4px;
+    }
+
     section>div.row div.header-col>h1 {
         font-size: 30px;
         border-bottom: #ddd solid 1px;
     }
 
-    header#home h1,
     header#home h3 {
         width: 50%;
+    }
+
+    header#home h1,
+    header#home h3 {
         display: inline;
         float: left;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
     header#home h1 {
         font-size: 3em;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-    }
-    header#home h3 {
-        font-size: 1em;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
     }
 
-    header ul.social {
-        margin-left: auto;
-        margin-right: auto;
-        width: 80%
+    header#home h3 {
+        font-size: 1em;
+    }
+
+    section#about {
+        display: none;
+    }
+
+    header#home div.contact {
+        text-align: center;
+    }
+
+    header#home div.contact ul {
+        margin-bottom: 0px;
+    }
+
+    div.banner-text hr {
+        margin-bottom: 10px;
+    }
+
+    section#resume .main-col {
+        padding-right: 5%;
+        padding-left: 5%;
     }
 
     header ul.social li {
@@ -156,9 +217,6 @@ section#resume h3 {
 
 section#resume .header-col {
     padding-bottom: 9px;
-}
-section#resume .main-col {
-    padding-right: 10%;
 }
 
 section#resume .info {

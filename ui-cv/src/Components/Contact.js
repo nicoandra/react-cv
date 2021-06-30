@@ -16,6 +16,7 @@ function Contact(props) {
 		city = props.data.address.city,
 		state = props.data.address.state,
 		zip = props.data.address.zip,
+		phoneNumber = props.data.phone,
 		message = props.data.contactmessage;
 
 	const resetForm = () => {
@@ -203,6 +204,8 @@ function Contact(props) {
 							{name}
 							<br />
 							{city}, {state}, {zip}
+							<br />
+							Phone or SMS: {phoneNumber}
 							<br />
 						</p>
 						<ul className="social-links">{networks}</ul>

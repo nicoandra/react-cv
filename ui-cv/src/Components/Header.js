@@ -56,26 +56,51 @@ class Header extends Component {
 
 		return (
 			<header id="home">
-				<NavBar visible={false} />
-				<div className="row banner">
-					<div className="banner-text">
-						<h1 className="responsive-headline">
-							{name}
-						</h1>
-						<h3>
-							<span id="onScreenIntro">I&apos;m a {city} based <span>{occupation}</span>.</span>
-							{description}
-						</h3>
-						<hr />
-						<ul className="social">{networks}</ul>
+				<span className="print">
+					<div className="row">
+						<div className="five columns"><h1>{name}</h1></div>
+						<div className="seven columns">{description}</div>
 					</div>
-				</div>
+					<div className="row">
+						<div className="twelve columns contact">
+							<ul>
+								<li>Call or SMS: {this.props.data.phone}</li>
+								<li>{this.props.data.address.city}, {this.props.data.address.state}</li>
+								{this.props.data.social.map(function (network) {
+									return (
+										<li key={network.name}>
+											{network.url.replace('https://', '')}
+										</li>
+									);
+								})}
+							</ul>
+						</div>
+					</div>
 
-				<p className="scrolldown">
-					<a className="smoothscroll" href="#about">
-						<i className="icon-down-circle"></i>
-					</a>
-				</p>
+				</span>
+
+				<span className="screen">
+					<NavBar visible={false} />
+					<div className="row banner">
+						<div className="banner-text">
+							<h1 className="responsive-headline">
+								{name}
+							</h1>
+							<h3>
+								<span id="onScreenIntro">I&apos;m a {city} based <span>{occupation}</span>.</span>
+								{description}
+							</h3>
+							<hr />
+							<ul className="social">{networks}</ul>
+						</div>
+					</div>
+
+					<p className="scrolldown">
+						<a className="smoothscroll" href="#about">
+							<i className="icon-down-circle"></i>
+						</a>
+					</p>
+				</span>
 			</header>
 		);
 	}
