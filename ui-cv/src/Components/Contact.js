@@ -57,24 +57,21 @@ function Contact(props) {
 				reCaptchaToken,
 				clientIp
 			}),
-		})
-			.then((r) => {
-				if(!r.ok) {
-					throw new Error("Things didn't go as expected.")
-				}
-				return r.json();
-			})
-			.then((r) => {
-				setLoading(false);
-				setPostResult(r);
-			})
-			.catch((err) => {
-				setLoading(false);
-				setPostResult({
-					result: null,
-					error: "Was not able to submit the form. Retry later.",
-				});
+		}).then((r) => {
+			if(!r.ok) {
+				throw new Error("Things didn't go as expected.")
+			}
+			return r.json();
+		}).then((r) => {
+			setLoading(false);
+			setPostResult(r);
+		}).catch((err) => {
+			setLoading(false);
+			setPostResult({
+				result: null,
+				error: "Was not able to submit the form. Retry later.",
 			});
+		});
 	};
 
 	const errorMessage = !loading &&

@@ -1,11 +1,11 @@
 {
 	"main": {
 		"name": "Nicolás Andrade",
-		"occupation": "Software Developer",
+		"occupation": "Tech Lead -  Senior Software Developer",
 		"description": "with experience in high-traffic, high-throughput and highly-available backend event-based systems",
 		"image": "profilepic.jpg",
-		"bio": "bio section where .",
-		"contactmessage": "get in touch info",
+		"bio": "Born and raised in Buenos Aires, Argentina; moved to Montréal at age of 25. I've been developing web applications and services since the age of 20.",
+		"contactmessage": "Reach out by filling in the form below",
 		"email": "noemail@email.com",
 		"phone": "555-555-5555",
 		"address": {
@@ -16,18 +16,15 @@
 		},
 		"website": "http://www.nmac.com.ar",
 		"resumedownload": "http://www.nmac.com.ar",
-		"social": [
-			{
-				"name": "linkedin",
-				"url": "https://www.linkedin.com/in/nicoandrade/",
-				"className": "fa fa-linkedin"
-			},
-			{
-				"name": "github",
-				"url": "http://github.com/nicoandra",
-				"className": "fa fa-github"
-			}
-		]
+		"social": [{
+			"name": "linkedin",
+			"url": "https://www.linkedin.com/in/nicoandrade/",
+			"className": "fa fa-linkedin"
+		},{
+			"name": "github",
+			"url": "http://github.com/nicoandra",
+			"className": "fa fa-github"
+		}]
 	},
 	"resume": {
 		"skillmessage": false,
@@ -61,15 +58,15 @@
 			},
 			{
 				"name": "Databases and Data storage",
-				"content": "PostgreSQL, MySQL, MongoDB, DynamoDB, DocumentDB, Redis"
+				"content": "Worked with PostgreSQL, MySQL, MongoDB, DynamoDB, DocumentDB, Redis, ElasticSearch. Experience with query execution plan, replication, sharding, views and other features in both baremetal self-hosted and cloud environments."
 			},
 			{
 				"name": "Cloud Services and Infrastructure",
-				"content": "SQS, S3, Kubernetes, Docker"
+				"content": "SQS, S3, SNS, Kubernetes, Docker, EKS"
 			},
 			{
 				"name": "Backend programming Languages",
-				"content": "TypeScript, JavaScript ES6, PHP 7.1+, Python 3.7+"
+				"content": "TypeScript, JavaScript ES6, PHP 7.1+, Python 3.8+"
 			},
 			{
 				"name": "Frontend programming Languages",
@@ -77,15 +74,15 @@
 			},
 			{
 				"name": "Design patterns",
-				"content": "Event-based architecture"
+				"content": "Event-based architecture, Unit and Integration tests"
 			},						
 			{
 				"name": "CI/CD",
-				"content": "Jenkins Blue Ocean (basic), Azure Pipelines (basic)"
+				"content": "Experience with Jenkins Blue Ocean and Azure Pipelines (basic)"
 			},
 			{ 
-				"name": "Monitoring and Alerting", 
-				"content": "DataDog APM and Logs, NewRelic, Sentry, PagerDuty" 
+				"name": "Quality, Monitoring and Alerting", 
+				"content": "DataDog APM and Logs, NewRelic, Sentry, PagerDuty, SonarQube" 
 			},
 			{ 
 				"name": "Documentation and visualization", 
