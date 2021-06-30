@@ -332,7 +332,6 @@ ul#nav li.current a {
 	text-align: left;
 }
 .bars .skills {
-	margin-top: 36px;
 	list-style: none;
 }
 .bars ul.skills li.skillCell {
@@ -356,13 +355,6 @@ ul#nav li.current a {
 	background: rgb(107, 10, 10);
 	border-radius: 3px;
 }
-/*
-.bars li {
-   position: relative;
-  	margin-bottom: 60px;
-  	background: #ccc;
-  	border-radius: 3px;
-}*/
 
 .bar-expand {
 	position: absolute;

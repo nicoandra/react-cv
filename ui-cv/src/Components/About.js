@@ -21,7 +21,7 @@ function About({data, columnSizes}) {
 					<img
 						className="profile-pic"
 						src={profilepic}
-						alt="Tim Baker Profile Pic"
+						alt="Nicolás Andrade"
 					/>
 				</div>
 				<div className={`${columnSizes[1]} columns`}>
