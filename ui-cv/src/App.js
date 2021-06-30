@@ -21,11 +21,12 @@ class App extends Component {
 		$.ajax({
 			url: "/resumeData.json",
 			dataType: "json",
-			cache: false,
+			cache: true,
 			success: function (data) {
 				this.setState({ resumeData: data, ready: true });
 			}.bind(this),
 			error: function (xhr, status, err) {
+				// TODO Add a nicer error message
 				console.log(err);
 			},
 		});
@@ -40,11 +41,14 @@ class App extends Component {
 			return <div className="App">Loading...</div>;
 		}
 
+		const columnSizes = ['two', 'ten'];
+		// const columnSizes = ['three', 'nine'];
+
 		return (
 			<div className="App">
 				<Header data={this.state.resumeData.main} />
-				<About data={this.state.resumeData.main} />
-				<Resume data={this.state.resumeData.resume} />
+				<About data={this.state.resumeData.main} columnSizes={columnSizes}/>
+				<Resume data={this.state.resumeData.resume} columnSizes={columnSizes}/>
 				<Testimonials data={this.state.resumeData.testimonials} />
 				<Contact data={this.state.resumeData.main} />
 				<Footer data={this.state.resumeData.main} />

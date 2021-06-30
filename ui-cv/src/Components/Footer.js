@@ -22,7 +22,7 @@ function Footer ({data}) {
 					<ul className="social-links">{networks}</ul>
 
 					<ul className="copyright">
-						<li>&copy; Copyright 2017 Tim Baker</li>
+						<li>From a design made by Tim Baker, &copy; Copyright 2017 - Version {process.env['REACT_APP_VERSION']}</li>
 						<li>
 							Design by{" "}
 							<a

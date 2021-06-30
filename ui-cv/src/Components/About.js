@@ -1,6 +1,6 @@
 import React from "react";
 
-function About({data}) {
+function About({data, columnSizes}) {
 
 	if (!data) {
 		return "";
@@ -17,14 +17,14 @@ function About({data}) {
 	return (
 		<section id="about">
 			<div className="row">
-				<div className="three columns">
+				<div className={`${columnSizes[0]} columns`}>
 					<img
 						className="profile-pic"
 						src={profilepic}
 						alt="Tim Baker Profile Pic"
 					/>
 				</div>
-				<div className="nine columns main-col">
+				<div className={`${columnSizes[1]} columns`}>
 					<h2>About Me</h2>
 					<p>{bio}</p>
 					<div className="row">

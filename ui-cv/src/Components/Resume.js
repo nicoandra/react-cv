@@ -46,22 +46,21 @@ class Resume extends Component {
 		return (
 			<section id="resume">
 				<div className="row work">
-					<div className="three columns header-col">
+					<div className={`${this.props.columnSizes[0]} columns header-col`}>
 						<h1>
 							<span>Work</span>
 						</h1>
 					</div>
-					<div className="nine columns main-col">{work}</div>
+					<div className={`${this.props.columnSizes[1]} columns main-col`}>{work}</div>
 				</div>
 
 				<div className="row skill">
-					<div className="three columns header-col">
+					<div className={`${this.props.columnSizes[0]} columns header-col`}>
 						<h1>
 							<span>Skills</span>
 						</h1>
 					</div>
-
-					<div className="nine columns main-col">
+					<div className={`${this.props.columnSizes[1]} columns main-col`}>
 						{skillmessage && <p>{skillmessage}</p>}
 						<div className="bars">
 							<ul className="skills">{skills}</ul>
@@ -70,12 +69,14 @@ class Resume extends Component {
 				</div>
 
 				<div className="row open-source">
-					<div className="three columns header-col">
+					<div className={`${this.props.columnSizes[0]} columns header-col`}>
 						<h1>
-							<span>Open Source Contributions</span>
+							<span>Contributions to Open Source projects</span>
 						</h1>
 					</div>
-					<div className="nine columns main-col"><MarkdownLoader url="/markdown/open-source.md" /></div>
+					<div className={`${this.props.columnSizes[1]} columns main-col`}>
+						<MarkdownLoader url="/markdown/open-source.md" />
+					</div>
 				</div>				
 			</section>
 		);
@@ -84,5 +85,7 @@ class Resume extends Component {
 
 Resume.propTypes = {
 	data: PropTypes.object,
+	columnSizes: PropTypes.array
+
 };
 export default Resume;

@@ -113,6 +113,7 @@ stages:
       env:
         REACT_APP_CONTACT_FORM_POSTBACK_URL: https://nicoandra.azurewebsites.net/api/contactform-onsubmit
         REACT_APP_RECAPTCHA_SITE_KEY: 6LdvDi4aAAAAAO0wUdv-n40lIutg4slj9SQa7iqk
+        REACT_APP_VERSION: $(Build.SourceBranchName)
     - task: AzureCLI@2
       displayName: Copy to Blob Container
       inputs:
