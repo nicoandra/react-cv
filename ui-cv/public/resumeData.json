@@ -4,7 +4,7 @@
 		"occupation": "Tech Lead -  Senior Software Developer",
 		"description": "with experience in high-traffic, high-throughput and highly-available backend event-based systems",
 		"image": "profilepic.jpg",
-		"bio": "Born and raised in Buenos Aires, Argentina; moved to Montréal at age of 25. I've been developing web applications and services since the age of 20.",
+		"bio": "Curious and creative software developer with 15+ years experience in web and software development, database design, scalability, reliability and responsiveness. Experience with NodeJs, TypeScript, Python, virtualization and cloud environments.",
 		"contactmessage": "Reach out by filling in the form below",
 		"email": "noemail@email.com",
 		"phone": "555-555-5555",
@@ -54,7 +54,8 @@
 		"skills": [
 			{
 				"name": "Spoken languages",
-				"content": "English, Français, Español"
+				"content": "English, Français, Español",
+				"items": ["English", "Français", "Español"]
 			},
 			{
 				"name": "Databases and Data storage",

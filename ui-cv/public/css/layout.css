@@ -289,7 +289,9 @@ ul#nav li.current a {
 	padding-bottom: 6px;
 }
 #resume h3 {
-	font: 25px/30px "opensans-bold", sans-serif;
+	font: 20px/25px "opensans-bold", sans-serif;
+	display: inline;
+	padding-right: 15px;
 }
 
 #resume .header-col {

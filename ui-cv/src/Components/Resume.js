@@ -8,27 +8,18 @@ function Resume({data, columnSizes }) {
 
 	var skillmessage = data.skillmessage;
 	var work = data.work.map(function (work, index) {
-		const workTitle = work.company.length ? (
-			<h3>
-				{work.link ? (
-					<a href={work.link} target="_blank" rel="noreferrer">
-						{work.company}
-					</a>
-				) : (
-					work.company
-				)}
-			</h3>
-		) : (
-			false
-		);
+
 		return (
-			<div key={"work" + index}>
-				{workTitle}
-				<p className="info">
-					{work.title}
-					<span>&bull;</span>{" "}
-					<em className="date">{work.years}</em>
-				</p>
+			<div key={"work" + index} class="row">
+				<div class="row">
+					<h3>{work.title}</h3>
+					<span className="info">
+						{work.company}
+						<span>&bull;</span>{" "}
+						<em className="date">{work.years}</em>
+					</span>
+				</div>
+				
 				<MarkdownLoader url={work.markdownTemplate} />
 			</div>
 		);
@@ -44,21 +35,19 @@ function Resume({data, columnSizes }) {
 	return (
 		<section id="resume">
 			<div className="row work">
-				<div className={`${columnSizes[0]} columns header-col`}>
-					<h1>
-						<span>Work</span>
-					</h1>
+				<div className={`twelve columns header-col`}>
+					<h1><span>Work Experience</span></h1>
 				</div>
-				<div className={`${columnSizes[1]} columns main-col`}>{work}</div>
+				<div className={`twelve columns main-col`}>{work}</div>
 			</div>
 
 			<div className="row skill">
-				<div className={`${columnSizes[0]} columns header-col`}>
+				<div className={`twelve columns header-col`}>
 					<h1>
 						<span>Skills</span>
 					</h1>
 				</div>
-				<div className={`${columnSizes[1]} columns main-col`}>
+				<div className={`twelve columns main-col`}>
 					{skillmessage && <p>{skillmessage}</p>}
 					<div className="bars">
 						<ul className="skills">{skills}</ul>
