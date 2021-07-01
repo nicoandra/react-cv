@@ -100,8 +100,16 @@
     }
 }
 
-section#resume div.skills div.skill em, 
-section#hobbies div.hobby em ,
+section {
+    padding-bottom: 20px;
+}
+
+section#resume>div.row {
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
 section div.grid-wrapper div.as-table em {
     font-weight: bold;
 }
@@ -158,6 +166,6 @@ section#resume .info {
     margin-top: 9px;
 }
 
-section#resume div.work div.main-col div.row {
-    margin-bottom: 10px;
+section#resume div.work div.main-col>div.row {
+    margin-bottom: 20px;
 }
