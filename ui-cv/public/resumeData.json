@@ -34,21 +34,38 @@
 				"location": "Montréal, Québec, Canada",
 				"title": "Senior Software Developer - Tech Lead",
 				"years": "November 2018 - Present",
-				"markdownTemplate": "/markdown/jobs/ssense.md"
+				"markdownTemplate": "/markdown/jobs/ssense.md",
+				"technologies": [
+					{"name": "Programming languages", "content":"Node JS, TypeScript, PHP 7+, Python 3.8+, React 18+"},
+					{"name": "Databases and data storage", "content":"PostgreSQL, Redis, DocumentDB, ElastiCache, MySQL, MongoDb, ElasticSearch"},
+					{"name": "Development tools and flows", "content":"Docker, DockerHub, Jenkins, Helm, Serverless, Elastic Container Repository"},
+					{"name": "Web Services and Infrastructure", "content":"AWS S3, SQS, Kubernetes, DataDog Alerting and APM"}
+				]
 			},
 			{
 				"company": "Mindgeek",
 				"location": "Montréal, Québec, Canada",
 				"title": "Lead Code Auditor",
 				"years": "March 2007 - February 2010",
-				"markdownTemplate": "/markdown/jobs/mindgeek-security.md"
+				"markdownTemplate": "/markdown/jobs/mindgeek-security.md",
+				"technologies": [
+					{"name": "Bug bounty platforms", "content":"HackerOne"},
+					{"name": "Auditing tools", "content":"PHP X-Debug, PHP Code Sniffer and Static code analysis tools, Burp Suite, OWASP ZAP, SQLMap, DirBuster"},
+					{"name": "Reverse engineering", "content":"JadX, Android Studio"}
+				]
 			},
 			{
 				"company": "Mindgeek",
 				"location": "Montréal, Québec, Canada",
 				"title": "Tech Lead",
 				"years": "March 2007 - February 2010",
-				"markdownTemplate": "/markdown/jobs/mindgeek-techlead.md"
+				"markdownTemplate": "/markdown/jobs/mindgeek-techlead.md",
+				"technologies": [
+					{"name": "Programming languages", "content":"PHP 5 through 7, JavaScript, Bash"},
+					{"name": "Databases and data storage", "content":"Redis, MySQL, HP Vertica, MemCached"},
+					{"name": "Development tools and flows", "content":"Vagrant, Docker, Linux, Subversion"},
+					{"name": "Infrastructure", "content": "HAProxy, multiple edge-CDN providers"}
+				]
 			}
 		],
 		"skills": [
@@ -87,6 +104,15 @@
 			{"name":"Performance", "content":""}
 		]
 	},
+	"blogPosts": {
+		"title":"Blog Articles",
+		"items": [
+			{
+				"title": "Guard Clauses: Three Guidelines to Ensure Code Simplicity for Software Developers", 
+				"link":"https://medium.com/ssense-tech/guard-clauses-three-guidelines-to-ensure-code-simplicity-for-software-developers-ad1e844be75", 
+				"brief":"A philosophycal approach to writing simpler code by leveraging guard clauses, or earlier returns."}
+		]
+	},
 	"testimonials": {
 		"testimonials": [
 			{ "text": "Not a bad guy, he helped me a few times when visiting BestBuy", "user": "Dad" },
@@ -98,7 +124,7 @@
 	},
 	"hobbies": {
 		"title": "Hobbies and volunteering",
-		"hobbies": [
+		"items": [
 			{"name": "Music", "content":"(attempting to) play bass guitar and ukulele."},
 			{"name": "DIY Home Automation", "content":"building a smart home without using cloud services, leveraging HomeAssistant and custom-made devices with NodeMCU, Arduino, Zigbee2Mqtt and other technologies."},
 			{"name": "DIY Home Design", "content":"using SweetHome3d for planning home and condominium renovations."},

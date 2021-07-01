@@ -2,11 +2,20 @@ import React from "react";
 import MarkdownLoader from "./MarkdownLoader";
 import nextId from "react-id-generator";
 
+import GridWrapper from './GridWrapper'
+
 function Resume({ data }) {
 	if (!data) {
 		return ""
 	}
 	const work = data.work.map(function (work, index) {
+		const technologies = work.technologies?.map(function (technology) {
+			return (<div className='technology' key={nextId()}>
+				<em>{technology.name}</em>
+				<p>{technology.content}</p>
+			</div>);
+		})
+
 		return (
 			<div key={"work" + index} className="row">
 				<div className="row header-col">
@@ -19,10 +28,10 @@ function Resume({ data }) {
 				</div>
 
 				<MarkdownLoader url={work.markdownTemplate} />
+				<GridWrapper >{technologies}</GridWrapper>
 			</div>
 		);
 	});
-
 
 	const skills = data.skills.map(function (skills) {
 		return (<div className='skill' key={nextId()}>
@@ -37,7 +46,7 @@ function Resume({ data }) {
 				<div className={`twelve columns header-col`}>
 					<h1><span>Work Experience</span></h1>
 				</div>
-				<div className={`twelve columns main-col`}>{work}</div>
+				<div className='twelve columns main-col'>{work}</div>
 			</div>
 
 			<div className="row skills">
@@ -46,11 +55,7 @@ function Resume({ data }) {
 						<span>Skills</span>
 					</h1>
 				</div>
-				<div className={`twelve columns`}>
-					<div className="as-table">
-						{skills}
-					</div>
-				</div>
+				<GridWrapper className="column">{skills}</GridWrapper>
 			</div>
 
 			<div className="row open-source">

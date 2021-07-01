@@ -1,12 +1,5 @@
 Joined as Senior Software Developer and shortly after got promoted to Tech Lead. My main responsabilities are to design, document, develop, test and deploy the cloud-based services needed to perform operations in the Pricing domain; aiming for availability, scalability, simplicity, predictability and performance.
 
-### Technologies
-- **Programming languages** Node JS, TypeScript, PHP 7+, Python 3.8+, React 18+
-- **Databases and data storage** PostgreSQL, Redis, DocumentDB, ElastiCache, MySQL, MongoDb, ElasticSearch
-- **Development tools and flows** Docker, DockerHub, Jenkins, Helm, Serverless, Elastic Container Repository
-- **Web Services and Infrastructure** AWS S3, SQS, Kubernetes, DataDog Alerting and APM
-
-
 ### Main Responsibilities:
 * Coach and support the development team in charge of the different services in TypeScript, Python and Object-Oriented PHP my team maintains through pull-requests 
 * Lead the strategy to peel-off features out of the legacy monolithic stack, converting them to asynchronous operations based on event notifications for scalability.

@@ -1,7 +1,8 @@
 import React from "react";
 
 function Testimonials({data}) {
-	if (!data) {
+	if (!data || true) {
+		// Testimonials disabled for now
 		return ""
 	}
 	const testimonials = data.testimonials.map(function (

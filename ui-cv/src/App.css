@@ -11,7 +11,6 @@
         padding: 0 0px;
     }
 
-
     section#resume div.row.work div.main-col div.markdownLoader li {
         line-height: 24px;
     }
@@ -50,32 +49,7 @@
         margin-bottom: 6px;
     }
 
-    section#resume div.skills div.skill em, 
-    section#hobbies div.hobby em {
-        font-weight: bold;
-    }
 
-    section#resume div.skills div.as-table,
-    section#hobbies div.as-table {
-        display: inline-grid;
-        grid-template-columns: 33% 33% 33%;
-        grid-template-rows: auto; 
-        column-gap: 25px;
-        row-gap: 15px;
-    }
-
-    section#hobbies {
-        background: #fff;
-        padding-top: 0px;
-        padding-bottom: 72px;
-        overflow: hidden;
-    }
-
-    section#hobbies div.hobby {
-        margin-bottom: 48px;
-        padding-bottom: 24px;
-        border-bottom: 1px solid #e8e8e8;
-    }
 }
 
 @media print {
@@ -91,4 +65,99 @@
     div.rc-anchor {
         display: none;
     }
+
+    section>div.row div.header-col>h1 {
+        font-size: 30px;
+        border-bottom: #ddd solid 1px;
+    }
+
+    header#home h1,
+    header#home h3 {
+        width: 50%;
+        display: inline;
+        float: left;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    header#home h1 {
+        font-size: 3em;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    header#home h3 {
+        font-size: 1em;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    header ul.social {
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%
+    }
+
+    header ul.social li {
+        display: inline;
+        margin: 0.5em;
+        width: 50%;
+    }
+}
+
+section#resume div.skills div.skill em, 
+section#hobbies div.hobby em ,
+section div.grid-wrapper div.as-table em {
+    font-weight: bold;
+}
+
+section div.grid-wrapper {
+    padding: 0px;
+}
+
+section div.as-table {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: auto; 
+    column-gap: 25px;
+    row-gap: 15px;
+}
+
+section div.as-table>div {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+section#hobbies {
+    background: #fff;
+    padding-top: 0px;
+    padding-bottom: 72px;
+    overflow: hidden;
+}
+
+section#hobbies div.hobby {
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+section#resume h3 {
+    font-size: 20px/25px;
+    font-family: "opensans-bold", sans-serif;
+    display: inline;
+    padding-right: 15px;
+}
+
+section#resume .header-col {
+    padding-bottom: 9px;
+}
+section#resume .main-col {
+    padding-right: 10%;
+}
+
+section#resume .info {
+    font-size: 16px/24px;
+    font-family: "librebaskerville-italic", serif;
+    color: #6e7881;
+    margin-bottom: 18px;
+    margin-top: 9px;
+}
+
+section#resume div.work div.main-col div.row {
+    margin-bottom: 10px;
 }

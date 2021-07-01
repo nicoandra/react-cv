@@ -1,10 +1,11 @@
 import React from "react";
 import nextId from "react-id-generator";
+import GridWrapper from './GridWrapper'
 
 function Hobbies({data}) {
 	if(!data) return ""
 
-	const hobbies = data.hobbies.map(function (hobby) {
+	const hobbies = data.items.map(function (hobby) {
 		return (<div className='hobby' key={nextId()}>
 			<em>{hobby.name}</em>
 			<p>{hobby.content}</p>
@@ -16,11 +17,7 @@ function Hobbies({data}) {
 				<div className='twelve columns header-col'>
 					<h1><span>{data.title}</span></h1>
 				</div>
-				<div className='twelve columns'>
-					<div className="as-table">
-						{hobbies}
-					</div>
-				</div>
+				<GridWrapper className="column">{hobbies}</GridWrapper>
 			</div>
 		</section>
 

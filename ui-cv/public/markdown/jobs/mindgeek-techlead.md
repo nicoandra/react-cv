@@ -7,9 +7,3 @@ After five successful years in the Tubes department, I requested to be transferr
 As the new Tech Lead, with the help of my team and the support of our director, we managed to restructure the entire team to increase productivity by encouraging open communication, redesigned the internal workflow to better cover our needs, and had high influence and participation in the most complex and important projects such as database migration and scalability improvement.
 
 I also participated in the talent acquisition process, in the design and development of the new framework, among other projects.
-
-### Technologies
-- **Programming languages** PHP 5 through 7, JavaScript, Bash
-- **Databases and data storage** Redis, MySQL, HP Vertica, MemCached
-- **Development tools and flows** Vagrant, Docker, Linux
-- **Infrastructure** HAProxy, multiple edge-CDN providers

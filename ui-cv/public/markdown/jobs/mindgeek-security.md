@@ -9,9 +9,3 @@ Being the Tech Lead of the Internal Product Security Team, my responsabilities a
 - Triage submissions received through the different bug bounty programs, assess their impact and follow up with security researchers.
 - Provide proof of concepts to the Development Team in charge of different products
 - Work closely to the Engineering team and the hosting services provider regarding the different aspects of security of the infrastructure.
-
-
-### Technologies
-- **Bug bounty platforms** HackerOne
-- **Auditing tools** PHP X-Debug, PHP Code Sniffer and Static code analysis tools, Burp Suite, OWASP ZAP, SQLMap
-- **Reverse engineering** JadX, Android Studio
