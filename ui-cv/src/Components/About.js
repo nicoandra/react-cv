@@ -45,14 +45,12 @@ function About({data, columnSizes}) {
 							</p>
 						</div>
 						<div className="columns download">
-							<p class="screen">
-								<a href={resumeUrl} className="button">
+							<p>
+								<button onClick={window.print} className="button screen">
 									<i className="fa fa-print"></i>
 									Print Resume
-								</a>
-							</p>
-							<p class="print">
-								<a href={resumeUrl} className="button">
+								</button>
+								<a href={resumeUrl} className="button print">
 									<i className="fa fa-link"></i>
 									Visit website
 								</a>
