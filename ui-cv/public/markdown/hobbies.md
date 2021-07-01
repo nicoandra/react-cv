@@ -1,0 +1,3 @@
+- **Music** (attempting to) play bass guitar and ukulele
+- **DIY Home Automation** building a smart home without using cloud services, leveraging HomeAssistant and custom-made devices with NodeMCU, Arduino, Zigbee2Mqtt and other technologies.
+- **DIY Home and Furniture design** using SweetHome3d

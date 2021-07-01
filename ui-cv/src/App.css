@@ -45,10 +45,10 @@ section#resume div.skills div.as-table {
     row-gap: 15px;
 }
 
-section#resume div.skills div.as-table div.as-row {
 
-}
-
-section#resume div.skills div.skill {
-
+section#hobbies {
+	background: #fff;
+	padding-top: 90px;
+	padding-bottom: 72px;
+	overflow: hidden;
 }

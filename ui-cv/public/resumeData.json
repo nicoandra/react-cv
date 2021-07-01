@@ -54,8 +54,7 @@
 		"skills": [
 			{
 				"name": "Spoken languages",
-				"content": "English, Français, Español",
-				"items": ["English", "Français", "Español"]
+				"content": "English, Français, Español"
 			},
 			{
 				"name": "Databases and Data storage",
@@ -63,15 +62,15 @@
 			},
 			{
 				"name": "Cloud Services and Infrastructure",
-				"content": "SQS, S3, SNS, Kubernetes, Docker, EKS, CloudWatch, DataDog APM and Logs, NewRelic, Sentry, PagerDuty"
+				"content": "AWS IAM Roles, API Gateway, SQS, S3, SNS, Kubernetes, Docker, EKS, CloudWatch, DataDog APM and Logs, NewRelic, Sentry, PagerDuty"
 			},
 			{
 				"name": "Programming Languages",
 				"content": "TypeScript, JavaScript ES6, PHP 7.1+, Python 3.8+, React 17.0+"
 			},
 			{
-				"name": "Testing suites",
-				"content": "TypeScript, JavaScript ES6, "
+				"name": "Development tools and practices",
+				"content": "Linux and OSX, Docker, Git, Git Flow and Trunk-Based development"
 			},
 			{
 				"name": "Design patterns",
@@ -84,7 +83,8 @@
 			{ 
 				"name": "Documentation and visualization", 
 				"content": "LucidCharts, C4 Models, Swagger API Documentation" 
-			}
+			},
+			{"name":"Performance", "content":""}
 		]
 	},
 	"testimonials": {
