@@ -50,7 +50,7 @@ class App extends Component {
 				<Header data={this.state.resumeData.main} />
 				<About data={this.state.resumeData.main} columnSizes={columnSizes}/>
 				<Resume data={this.state.resumeData.resume} columnSizes={columnSizes}/>
-				<Hobbies />
+				<Hobbies data={this.state.resumeData.hobbies} />
 				<Testimonials data={this.state.resumeData.testimonials} />
 				<Contact data={this.state.resumeData.main} />
 				<Footer data={this.state.resumeData.main} />

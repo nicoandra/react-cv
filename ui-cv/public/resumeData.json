@@ -1,7 +1,7 @@
 {
 	"main": {
 		"name": "Nicolás Andrade",
-		"occupation": "Tech Lead -  Senior Software Developer",
+		"occupation": "Tech Lead - Senior Software Developer",
 		"description": "with experience in high-traffic, high-throughput and highly-available backend event-based systems",
 		"image": "profilepic.jpg",
 		"bio": "Curious and creative software developer with 15+ years experience in web and software development, database design, scalability, reliability and responsiveness. Experience with NodeJs, TypeScript, Python, virtualization and cloud environments.",
@@ -70,7 +70,7 @@
 			},
 			{
 				"name": "Development tools and practices",
-				"content": "Linux and OSX, Docker, Git, Git Flow and Trunk-Based development"
+				"content": "VisualStudio Code (with DevContainers), Linux and OSX, Docker, Git, Git Flow and Trunk-Based development"
 			},
 			{
 				"name": "Design patterns",
@@ -94,6 +94,16 @@
 				"text": "He fixed my computer for years, thanks for your great service!",
 				"user": "Mom"
 			}
+		]
+	},
+	"hobbies": {
+		"title": "Hobbies and volunteering",
+		"hobbies": [
+			{"name": "Music", "content":"(attempting to) play bass guitar and ukulele."},
+			{"name": "DIY Home Automation", "content":"building a smart home without using cloud services, leveraging HomeAssistant and custom-made devices with NodeMCU, Arduino, Zigbee2Mqtt and other technologies."},
+			{"name": "DIY Home Design", "content":"using SweetHome3d for planning home and condominium renovations."},
+			{"name": "Condominium treasurer", "content":"Role I had between 2013 through 2017 and since 2021 till present."}
+
 		]
 	}
 }

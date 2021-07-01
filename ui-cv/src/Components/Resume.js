@@ -1,7 +1,7 @@
 import React from "react";
 import MarkdownLoader from "./MarkdownLoader";
 
-function Resume({ data, columnSizes }) {
+function Resume({ data }) {
 	if (!data) {
 		return ""
 	}

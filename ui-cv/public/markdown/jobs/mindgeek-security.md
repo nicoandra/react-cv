@@ -12,5 +12,6 @@ Being the Tech Lead of the Internal Product Security Team, my responsabilities a
 
 
 ### Technologies
+- **Bug bounty platforms** HackerOne
 - **Auditing tools** PHP X-Debug, PHP Code Sniffer and Static code analysis tools, Burp Suite, OWASP ZAP, SQLMap
 - **Reverse engineering** JadX, Android Studio

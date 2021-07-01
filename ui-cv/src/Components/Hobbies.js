@@ -1,18 +1,28 @@
 import React from "react";
-import MarkdownLoader from "./MarkdownLoader";
 
-function Hobbies(props) {
+function Hobbies({data}) {
+	if(!data) return ""
+
+	const hobbies = data.hobbies.map(function (hobby) {
+		return (<div className='hobby'>
+			<em>{hobby.name}</em>
+			<p>{hobby.content}</p>
+		</div>);
+	})
     return (
 		<section id="hobbies">
-            <div class="row">
-			<div className={`twelve columns header-col`}>
-                    <h1><span>Hobbies</span></h1>
-                </div>
-            </div>
-			<div className={`twelve columns main-col`}>
-				<MarkdownLoader url="/markdown/hobbies.md" />
+            <div className="row">
+				<div className='twelve columns header-col'>
+					<h1><span>{data.title}</span></h1>
+				</div>
+				<div className='twelve columns'>
+					<div className="as-table">
+						{hobbies}
+					</div>
+				</div>
 			</div>
 		</section>
+
 	);    
 }
 
