@@ -7,8 +7,8 @@ function Resume({ data, columnSizes }) {
 	}
 	const work = data.work.map(function (work, index) {
 		return (
-			<div key={"work" + index} class="row">
-				<div class="row header-col">
+			<div key={"work" + index} className="row">
+				<div className="row header-col">
 					<h3>{work.title}</h3>
 					<span className="info">
 						{work.company}
@@ -21,18 +21,14 @@ function Resume({ data, columnSizes }) {
 			</div>
 		);
 	});
-	
+
+
 	const skills = data.skills.map(function (skills) {
-		return (<div className='four columns skill'>
+		return (<div className='skill'>
 			<em>{skills.name}</em>
 			<p>{skills.content}</p>
 		</div>);
-	}).reduce((prev, current, index) => {
-		const targetIndex = parseInt(index / 3);
-		if (prev[targetIndex] === undefined) prev[targetIndex] = [];
-		prev[targetIndex].push(current);
-		return prev;
-	}, []).map(x => <div class="row">{x}</div>);
+	})
 
 	return (
 		<section id="resume">
@@ -50,7 +46,7 @@ function Resume({ data, columnSizes }) {
 					</h1>
 				</div>
 				<div className={`twelve columns`}>
-					<div className="bars row">
+					<div className="as-table">
 						{skills}
 					</div>
 				</div>

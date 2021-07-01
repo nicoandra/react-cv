@@ -204,8 +204,8 @@ function Contact(props) {
 							<br />
 							{city}, {state}, {zip}
 							<br />
-							<ul class="social-links">{networks}</ul>
 						</p>
+						<ul className="social-links">{networks}</ul>
 					</div>
 				</aside>
 			</div>
