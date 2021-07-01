@@ -1,5 +1,6 @@
 import React from "react";
 import MarkdownLoader from "./MarkdownLoader";
+import nextId from "react-id-generator";
 
 function Resume({ data }) {
 	if (!data) {
@@ -24,7 +25,7 @@ function Resume({ data }) {
 
 
 	const skills = data.skills.map(function (skills) {
-		return (<div className='skill'>
+		return (<div className='skill' key={nextId()}>
 			<em>{skills.name}</em>
 			<p>{skills.content}</p>
 		</div>);

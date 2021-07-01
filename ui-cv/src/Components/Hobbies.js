@@ -1,10 +1,11 @@
 import React from "react";
+import nextId from "react-id-generator";
 
 function Hobbies({data}) {
 	if(!data) return ""
 
 	const hobbies = data.hobbies.map(function (hobby) {
-		return (<div className='hobby'>
+		return (<div className='hobby' key={nextId()}>
 			<em>{hobby.name}</em>
 			<p>{hobby.content}</p>
 		</div>);

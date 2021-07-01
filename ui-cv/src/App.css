@@ -67,5 +67,7 @@
 }
 
 @media print {
-    
+    nav#nav-wrap, div.banner span#onScreenIntro, div.banner span.social {
+        display: none;
+    }
 }
