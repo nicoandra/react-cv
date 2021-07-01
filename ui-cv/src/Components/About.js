@@ -12,7 +12,7 @@ function About({data, columnSizes}) {
 	const { city, state, zip } = data.address;
 	const phone = data.phone;
 	const email = data.email;
-	const resumeDownload = data.resumedownload;
+	const resumeUrl = data.resumeUrl;
 	
 	return (
 		<section id="about">
@@ -28,7 +28,7 @@ function About({data, columnSizes}) {
 					<h2>About Me</h2>
 					<p>{bio}</p>
 					<div className="row">
-						<div className="columns contact-details">
+						<div className="columns contact-details screen">
 							<h2>Contact Details</h2>
 							<p className="address">
 								<span>{name}</span>
@@ -45,10 +45,16 @@ function About({data, columnSizes}) {
 							</p>
 						</div>
 						<div className="columns download">
-							<p>
-								<a href={resumeDownload} className="button">
-									<i className="fa fa-download"></i>
-									Download Resume
+							<p class="screen">
+								<a href={resumeUrl} className="button">
+									<i className="fa fa-print"></i>
+									Print Resume
+								</a>
+							</p>
+							<p class="print">
+								<a href={resumeUrl} className="button">
+									<i className="fa fa-link"></i>
+									Visit website
 								</a>
 							</p>
 						</div>

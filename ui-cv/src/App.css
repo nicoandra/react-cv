@@ -1,5 +1,17 @@
 
 @media screen {
+    header .social span {
+        display: none
+    }
+
+    section#about .print {
+        display: none;
+    }
+    section#about .columns.contact-details {
+        padding: 0 0px;
+    }
+
+
     section#resume div.row.work div.main-col div.markdownLoader li {
         line-height: 24px;
     }
@@ -67,7 +79,16 @@
 }
 
 @media print {
-    nav#nav-wrap, div.banner span#onScreenIntro, div.banner span.social {
+    nav#nav-wrap, 
+    div.banner span#onScreenIntro, 
+    div.banner span.social,
+    header .social a,
+    header p.scrolldown,
+    section#about .screen,
+    section#contact,
+    section#testimonials,
+    footer,
+    div.rc-anchor {
         display: none;
     }
 }
