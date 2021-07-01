@@ -8,10 +8,9 @@ function Resume({data, columnSizes }) {
 
 	var skillmessage = data.skillmessage;
 	var work = data.work.map(function (work, index) {
-
 		return (
 			<div key={"work" + index} class="row">
-				<div class="row">
+				<div class="row header-col">
 					<h3>{work.title}</h3>
 					<span className="info">
 						{work.company}
@@ -56,12 +55,10 @@ function Resume({data, columnSizes }) {
 			</div>
 
 			<div className="row open-source">
-				<div className={`${columnSizes[0]} columns header-col`}>
-					<h1>
-						<span>Contributions to Open Source projects</span>
-					</h1>
+			<div className={`twelve columns header-col`}>
+					<h1><span>Open Source Contributions</span></h1>
 				</div>
-				<div className={`${columnSizes[1]} columns main-col`}>
+				<div className={`twelve columns main-col`}>
 					<MarkdownLoader url="/markdown/open-source.md" />
 				</div>
 			</div>				

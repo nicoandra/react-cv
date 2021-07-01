@@ -7,6 +7,28 @@ section#resume div.main-col {
 }
 
 section#resume div.row.work div.main-col div.markdownLoader h3 {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 24px;
+}
+
+section#resume div.markdownLoader {
+    margin-left: 15px;
+    margin-bottom: 30px;
+}
+
+section#resume p {
+    margin: 0 0 10px 0;
+}
+
+section#resume div.markdownLoader h3 {
+    margin-top: 30px;
+    display: block;
+}
+
+div.markdownLoader ul, div.markdownLoader ol {
+    margin-bottom: 6px;
+    margin-top: 6px;
+}
+div.markdownLoader ul li {
+    margin-bottom: 6px;
 }

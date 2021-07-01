@@ -1,9 +1,7 @@
-# Cachier
-Persistent, stale-free, local and cross-machine caching for Python functions. It can be installed with `pip install cachier`
+### Cachier, bug fix
+Cachier is a persistent, stale-free, local and cross-machine caching for Python functions. It can be installed with `pip install cachier` and used as a decorator.
 
-The bug was causing deadlocks when the application would crash after acquiring a log and before releasing it.
-
-The fix was done in a backwards-compatible fashion and users would need to opt-in.
+The bug was causing deadlocks when the application would crash after acquiring a log and before releasing it, as locks would never expire. The fix was done in a backwards-compatible fashion and users would need to opt-in.
 
 [Issue](https://github.com/shaypal5/cachier/issues/37) - [Pull request](https://github.com/shaypal5/cachier/pull/36)
 
