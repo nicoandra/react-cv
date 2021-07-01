@@ -59,31 +59,27 @@
 			},
 			{
 				"name": "Databases and Data storage",
-				"content": "Worked with PostgreSQL, MySQL, MongoDB, DynamoDB, DocumentDB, Redis, ElasticSearch. Experience with query execution plan, replication, sharding, views and other features in both baremetal self-hosted and cloud environments."
+				"content": "PostgreSQL, MySQL, MongoDB, DynamoDB, DocumentDB, Redis, ElasticSearch. Experience with query optimisation, execution plan, replication, sharding, materialized views and other features in both baremetal self-hosted and cloud environments."
 			},
 			{
 				"name": "Cloud Services and Infrastructure",
-				"content": "SQS, S3, SNS, Kubernetes, Docker, EKS"
+				"content": "SQS, S3, SNS, Kubernetes, Docker, EKS, CloudWatch, DataDog APM and Logs, NewRelic, Sentry, PagerDuty"
 			},
 			{
-				"name": "Backend programming Languages",
-				"content": "TypeScript, JavaScript ES6, PHP 7.1+, Python 3.8+"
+				"name": "Programming Languages",
+				"content": "TypeScript, JavaScript ES6, PHP 7.1+, Python 3.8+, React 17.0+"
 			},
 			{
-				"name": "Frontend programming Languages",
-				"content": "TypeScript, JavaScript ES6, React 17.0+"
+				"name": "Testing suites",
+				"content": "TypeScript, JavaScript ES6, "
 			},
 			{
 				"name": "Design patterns",
-				"content": "Event-based architecture, Unit and Integration tests"
+				"content": "CQRS, MVC, Event-based architecture, Unit and Integration tests"
 			},						
 			{
-				"name": "CI/CD",
-				"content": "Experience with Jenkins Blue Ocean and Azure Pipelines (basic)"
-			},
-			{ 
-				"name": "Quality, Monitoring and Alerting", 
-				"content": "DataDog APM and Logs, NewRelic, Sentry, PagerDuty, SonarQube" 
+				"name": "Quality and CI/CD",
+				"content": "Jenkins Blue Ocean, Azure Pipelines (basic); Mocha, Python UnitTest, Jest, SonarQube"
 			},
 			{ 
 				"name": "Documentation and visualization", 

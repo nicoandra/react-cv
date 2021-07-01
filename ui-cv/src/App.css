@@ -32,3 +32,7 @@ div.markdownLoader ul, div.markdownLoader ol {
 div.markdownLoader ul li {
     margin-bottom: 6px;
 }
+
+section#resume div.skills div.skill em {
+    font-weight: bold;
+}
