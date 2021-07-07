@@ -26,7 +26,6 @@
 
     section#resume div.markdownLoader,
     section#hobbies div.markdownLoader {
-        margin-left: 15px;
         margin-bottom: 30px;
     }
 
@@ -129,6 +128,10 @@ section div.as-table {
 section div.as-table>div {
     overflow-wrap: break-word;
     word-wrap: break-word;
+}
+
+section div.as-table>div p {
+    margin: 0px 0px 10px 0px;
 }
 
 section#hobbies {
