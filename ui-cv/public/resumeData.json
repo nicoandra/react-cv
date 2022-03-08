@@ -39,7 +39,7 @@
 					{"name": "Programming languages", "content":"Node JS, TypeScript, PHP 7+, Python 3.8+, React 18+"},
 					{"name": "Databases and data storage", "content":"PostgreSQL, Redis, DocumentDB, ElastiCache, MySQL, MongoDb, ElasticSearch"},
 					{"name": "Development tools and flows", "content":"Docker, DockerHub, Jenkins, Helm, Serverless, Elastic Container Repository"},
-					{"name": "Web Services and Infrastructure", "content":"AWS S3, SQS, Kubernetes, DataDog Alerting and APM"}
+					{"name": "Web Services and Infrastructure", "content":"AWS S3, SQS, Kubernetes, Step-Functions, DataDog Alerting and APM"}
 				]
 			},
 			{
@@ -79,7 +79,7 @@
 			},
 			{
 				"name": "Cloud Services and Infrastructure",
-				"content": "AWS IAM Roles, API Gateway, SQS, S3, SNS, Kubernetes, Docker, EKS, CloudWatch, DataDog APM and Logs, NewRelic, Sentry, PagerDuty"
+				"content": "AWS IAM Roles, API Gateway, SQS, S3, SNS, State machines / Step Functions, Kubernetes, Docker, EKS, CloudWatch, DataDog APM and Logs, NewRelic, Sentry, PagerDuty"
 			},
 			{
 				"name": "Programming Languages",
@@ -87,7 +87,7 @@
 			},
 			{
 				"name": "Development tools and practices",
-				"content": "VisualStudio Code (with DevContainers), Linux and OSX, Docker, Git, Git Flow and Trunk-Based development"
+				"content": "Visual Studio Code (with DevContainers), Linux and OSX, Docker, Git, Git Flow and Trunk-Based development"
 			},
 			{
 				"name": "Design patterns",
@@ -128,7 +128,7 @@
 			{"name": "Music", "content":"(attempting to) play bass guitar and ukulele."},
 			{"name": "DIY Home Automation", "content":"building a smart home without using cloud services, leveraging HomeAssistant and custom-made devices with NodeMCU, Arduino, Zigbee2Mqtt and other technologies."},
 			{"name": "DIY Home Design", "content":"using SweetHome3d for planning home and condominium renovations."},
-			{"name": "Condominium treasurer", "content":"Role I had between 2013 through 2017 and since 2021 till present."}
+			{"name": "Condominium treasurer", "content":"Role I had between 2013 through 2017 and during 2021."}
 
 		]
 	}
