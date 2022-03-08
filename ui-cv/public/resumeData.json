@@ -4,9 +4,9 @@
 		"occupation": "Software Developer",
 		"description": "with experience in high-traffic, high-throughput and highly-available backend event-based systems",
 		"image": "profilepic.jpg",
-		"bio": "bio section where .",
+		"bio": "Curious and creative software developer with 15+ years experience in web and software development, database design, scalability, reliability and responsiveness. Experience with NodeJs, TypeScript, Python, virtualization and cloud environments.",
 		"contactmessage": "get in touch info",
-		"email": "noemail@email.com",
+		"linkedInUrl": "https://www.linkedin.com/in/nicoandrade/",
 		"phone": "555-555-5555",
 		"address": {
 			"street": "",
@@ -65,7 +65,7 @@
 			},
 			{
 				"name": "Cloud Services and Infrastructure",
-				"content": "SQS, S3, Kubernetes, Docker"
+				"content": "AWS SQS, AWS S3, AWS Step Functions / State Machines, Kubernetes, Docker"
 			},
 			{
 				"name": "Backend programming Languages",

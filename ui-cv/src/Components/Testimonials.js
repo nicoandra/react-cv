@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 
 class Testimonials extends Component {
 	render() {
+		// No testimonials for now
+		return <br/>
+
 		if (this.props.data) {
 			var testimonials = this.props.data.testimonials.map(function (
 				testimonials
