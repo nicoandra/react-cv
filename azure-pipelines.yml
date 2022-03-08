@@ -123,8 +123,7 @@ stages:
         workingDirectory: $(Build.SourcesDirectory)/ui-cv
         inlineScript: |
           echo "With targetAppName=$(targetAppName)"
-          az storage blob upload-batch --overwrite --account-name $(targetAppName) -s ./build -d \$web      
-    
+          az storage blob upload-batch --overwrite --account-name $(targetAppName) -s ./build -d \$web
 - stage: uiRepairShop
   jobs:
   - template: '.pipeline/job_check_changes.yml'
