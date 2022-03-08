@@ -1,79 +1,73 @@
-import React, { Component } from "react";
+import React from "react";
 import MarkdownLoader from "./MarkdownLoader";
+import nextId from "react-id-generator";
 
-import PropTypes from "prop-types";
+import GridWrapper from './GridWrapper'
 
-class Resume extends Component {
-	render() {
-		if (this.props.data) {
-			var skillmessage = this.props.data.skillmessage;
-			var work = this.props.data.work.map(function (work, index) {
-				const workTitle = work.company.length ? (
-					<h3>
-						{work.link ? (
-							<a href={work.link} target="_blank" rel="noreferrer">
-								{work.company}
-							</a>
-						) : (
-							work.company
-						)}
-					</h3>
-				) : (
-					false
-				);
-				return (
-					<div key={"work" + index}>
-						{workTitle}
-						<p className="info">
-							{work.title}
-							<span>&bull;</span>{" "}
-							<em className="date">{work.years}</em>
-						</p>
-						<MarkdownLoader url={work.markdownTemplate} />
-					</div>
-				);
-			});
-			var skills = this.props.data.skills.map(function (skills) {
-				return (
-					<li className="skillCell" key={skills.name}>
-						<em>{skills.name}</em>
-						<p>{skills.content}</p>
-					</li>
-				);
-			});
-		}
+function Resume({ data }) {
+	if (!data) {
+		return ""
+	}
+	const work = data.work.map(function (work, index) {
+		const technologies = work.technologies?.map(function (technology) {
+			return (<div className='technology' key={nextId()}>
+				<em>{technology.name}</em>
+				<p>{technology.content}</p>
+			</div>);
+		})
 
 		return (
-			<section id="resume">
-				<div className="row work">
-					<div className="three columns header-col">
-						<h1>
-							<span>Work</span>
-						</h1>
-					</div>
-					<div className="nine columns main-col">{work}</div>
+			<div key={"work" + index} className="row">
+				<div className="row header-col">
+					<h3>{work.title}</h3>
+					<span className="info">
+						{work.company}
+						<span>&bull;</span>{" "}
+						<em className="date">{work.years}</em>
+					</span>
 				</div>
 
-				<div className="row skill">
-					<div className="three columns header-col">
-						<h1>
-							<span>Skills</span>
-						</h1>
-					</div>
-
-					<div className="nine columns main-col">
-						{skillmessage && <p>{skillmessage}</p>}
-						<div className="bars">
-							<ul className="skills">{skills}</ul>
-						</div>
-					</div>
-				</div>
-			</section>
+				<MarkdownLoader url={work.markdownTemplate} />
+				<GridWrapper >{technologies}</GridWrapper>
+			</div>
 		);
-	}
+	});
+
+	const skills = data.skills.map(function (skills) {
+		return (<div className='skill' key={nextId()}>
+			<em>{skills.name}</em>
+			<p>{skills.content}</p>
+		</div>);
+	})
+
+	return (
+		<section id="resume">
+			<div className="row work">
+				<div className={`twelve columns header-col`}>
+					<h1><span>Work Experience</span></h1>
+				</div>
+				<div className='twelve columns main-col'>{work}</div>
+			</div>
+
+			<div className="row skills">
+				<div className={`twelve columns header-col`}>
+					<h1>
+						<span>Skills</span>
+					</h1>
+				</div>
+				<GridWrapper className="column">{skills}</GridWrapper>
+			</div>
+
+			<div className="row open-source">
+				<div className={`twelve columns header-col`}>
+					<h1><span>Open Source Contributions</span></h1>
+				</div>
+				<div className={`twelve columns main-col`}>
+					<MarkdownLoader url="/markdown/open-source.md" />
+				</div>
+			</div>
+		</section>
+	);
 }
 
-Resume.propTypes = {
-	data: PropTypes.object,
-};
 export default Resume;

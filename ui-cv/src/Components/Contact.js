@@ -57,24 +57,21 @@ function Contact(props) {
 				reCaptchaToken,
 				clientIp
 			}),
-		})
-			.then((r) => {
-				if(!r.ok) {
-					throw new Error("Things didn't go as expected.")
-				}
-				return r.json();
-			})
-			.then((r) => {
-				setLoading(false);
-				setPostResult(r);
-			})
-			.catch((err) => {
-				setLoading(false);
-				setPostResult({
-					result: null,
-					error: "Was not able to submit the form. Retry later.",
-				});
+		}).then((r) => {
+			if(!r.ok) {
+				throw new Error("Things didn't go as expected.")
+			}
+			return r.json();
+		}).then((r) => {
+			setLoading(false);
+			setPostResult(r);
+		}).catch((err) => {
+			setLoading(false);
+			setPostResult({
+				result: null,
+				error: "Was not able to submit the form. Retry later.",
 			});
+		});
 	};
 
 	const errorMessage = !loading &&
@@ -169,6 +166,17 @@ function Contact(props) {
 		</fieldset>
 	);
 
+
+	const networks = props.data.social.map(function (network) {
+		return (
+			<li key={network.name}>
+				<a href={network.url}>
+					<i className={network.className}></i>
+				</a>
+			</li>
+		);
+	});
+
 	return (
 		<section id="contact">
 			<div className="row section-head">
@@ -182,23 +190,22 @@ function Contact(props) {
 				</div>
 			</div>
 			<div className="row">
-				<div className="eight columns">
+				<div className="nine columns">
 					{contactForm}
 					{errorMessage}
 					{successMessage}
 				</div>
 
-				<aside className="four columns footer-widgets">
+				<aside className="three columns footer-widgets">
 					<div className="widget widget_contact">
-						<h4>Address and Phone</h4>
+						<h4>Contact information</h4>
 						<p className="address">
 							{name}
 							<br />
-							{city}, {state}
-							<br />
-							{zip}
+							{city}, {state}, {zip}
 							<br />
 						</p>
+						<ul className="social-links">{networks}</ul>
 					</div>
 				</aside>
 			</div>

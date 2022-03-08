@@ -1,12 +1,13 @@
 {
 	"main": {
 		"name": "Nicolás Andrade",
-		"occupation": "Software Developer",
-		"description": "with experience in high-traffic, high-throughput and highly-available backend event-based systems",
+		"occupation": "Tech Lead - Senior Software Developer",
+		"description": "Senior Software Developer with experience in high-traffic, high-throughput and highly-available backend event-based systems.",
 		"image": "profilepic.jpg",
 		"bio": "Curious and creative software developer with 15+ years experience in web and software development, database design, scalability, reliability and responsiveness. Experience with NodeJs, TypeScript, Python, virtualization and cloud environments.",
-		"contactmessage": "get in touch info",
 		"linkedInUrl": "https://www.linkedin.com/in/nicoandrade/",
+		"contactmessage": "Reach out by filling in the form below",
+		"email": "noemail@email.com",
 		"phone": "555-555-5555",
 		"address": {
 			"street": "",
@@ -15,19 +16,16 @@
 			"zip": "H2K"
 		},
 		"website": "http://www.nmac.com.ar",
-		"resumedownload": "http://www.nmac.com.ar",
-		"social": [
-			{
-				"name": "linkedin",
-				"url": "https://www.linkedin.com/in/nicoandrade/",
-				"className": "fa fa-linkedin"
-			},
-			{
-				"name": "github",
-				"url": "http://github.com/nicoandra",
-				"className": "fa fa-github"
-			}
-		]
+		"resumeUrl": "http://www.nmac.com.ar",
+		"social": [{
+			"name": "linkedin",
+			"url": "https://www.linkedin.com/in/nicoandrade/",
+			"className": "fa fa-linkedin"
+		},{
+			"name": "github",
+			"url": "http://github.com/nicoandra",
+			"className": "fa fa-github"
+		}]
 	},
 	"resume": {
 		"skillmessage": false,
@@ -35,23 +33,40 @@
 				"company": "SSENSE",
 				"link": "https://ssense.com",
 				"location": "Montréal, Québec, Canada",
-				"title": "Tech Lead",
+				"title": "Senior Software Developer - Tech Lead",
 				"years": "November 2018 - Present",
-				"markdownTemplate": "/markdown/jobs/ssense.md"
+				"markdownTemplate": "/markdown/jobs/ssense.md",
+				"technologies": [
+					{"name": "Programming languages", "content":"Node JS, TypeScript, PHP 7+, Python 3.8+, React 18+"},
+					{"name": "Databases and data storage", "content":"PostgreSQL, Redis, DocumentDB, ElastiCache, MySQL, MongoDb, ElasticSearch"},
+					{"name": "Development tools and flows", "content":"Docker, DockerHub, Jenkins, Helm, Serverless, Elastic Container Repository"},
+					{"name": "Web Services and Infrastructure", "content":"AWS S3, SQS, Kubernetes, Step-Functions, DataDog Alerting and APM"}
+				]
 			},
 			{
 				"company": "Mindgeek",
 				"location": "Montréal, Québec, Canada",
 				"title": "Lead Code Auditor",
 				"years": "March 2007 - February 2010",
-				"markdownTemplate": "/markdown/jobs/mindgeek-security.md"
+				"markdownTemplate": "/markdown/jobs/mindgeek-security.md",
+				"technologies": [
+					{"name": "Bug bounty platforms", "content":"HackerOne"},
+					{"name": "Auditing tools", "content":"PHP X-Debug, PHP Code Sniffer and Static code analysis tools, Burp Suite, OWASP ZAP, SQLMap, DirBuster"},
+					{"name": "Reverse engineering", "content":"JadX, Android Studio"}
+				]
 			},
 			{
-				"company": "",
+				"company": "Mindgeek",
 				"location": "Montréal, Québec, Canada",
 				"title": "Tech Lead",
 				"years": "March 2007 - February 2010",
-				"markdownTemplate": "/markdown/jobs/mindgeek-techlead.md"
+				"markdownTemplate": "/markdown/jobs/mindgeek-techlead.md",
+				"technologies": [
+					{"name": "Programming languages", "content":"PHP 5 through 7, JavaScript, Bash"},
+					{"name": "Databases and data storage", "content":"Redis, MySQL, HP Vertica, MemCached"},
+					{"name": "Development tools and flows", "content":"Vagrant, Docker, Linux, Subversion"},
+					{"name": "Infrastructure", "content": "HAProxy, multiple edge-CDN providers"}
+				]
 			}
 		],
 		"skills": [
@@ -61,45 +76,61 @@
 			},
 			{
 				"name": "Databases and Data storage",
-				"content": "PostgreSQL, MySQL, MongoDB, DynamoDB, DocumentDB, Redis"
+				"content": "PostgreSQL, MySQL, MongoDB, DynamoDB, DocumentDB, Redis, ElasticSearch. Experience with query optimisation, execution plan, replication, sharding, materialized views and other features in both baremetal self-hosted and cloud environments."
 			},
 			{
 				"name": "Cloud Services and Infrastructure",
-				"content": "AWS SQS, AWS S3, AWS Step Functions / State Machines, Kubernetes, Docker"
+				"content": "AWS IAM Roles, API Gateway, SQS, S3, SNS, State machines / Step Functions, Kubernetes, Docker, EKS, CloudWatch, DataDog APM and Logs, NewRelic, Sentry, PagerDuty"
 			},
 			{
-				"name": "Backend programming Languages",
-				"content": "TypeScript, JavaScript ES6, PHP 7.1+, Python 3.7+"
+				"name": "Programming Languages",
+				"content": "TypeScript, JavaScript ES6, PHP 7.1+, Python 3.8+, React 17.0+"
 			},
 			{
-				"name": "Frontend programming Languages",
-				"content": "TypeScript, JavaScript ES6, React 17.0+"
+				"name": "Development tools and practices",
+				"content": "Visual Studio Code (with DevContainers), Linux and OSX, Docker, Git, Git Flow and Trunk-Based development"
 			},
 			{
 				"name": "Design patterns",
-				"content": "Event-based architecture"
+				"content": "CQRS, MVC, Event-based architecture, Unit and Integration tests"
 			},						
 			{
-				"name": "CI/CD",
-				"content": "Jenkins Blue Ocean (basic), Azure Pipelines (basic)"
-			},
-			{ 
-				"name": "Monitoring and Alerting", 
-				"content": "DataDog APM and Logs, NewRelic, Sentry, PagerDuty" 
+				"name": "Quality and CI/CD",
+				"content": "Jenkins Blue Ocean, Azure Pipelines (basic); Mocha, Python UnitTest, Jest, SonarQube"
 			},
 			{ 
 				"name": "Documentation and visualization", 
 				"content": "LucidCharts, C4 Models, Swagger API Documentation" 
-			}
+			},
+			{"name":"Performance", "content":""}
+		]
+	},
+	"blogPosts": {
+		"title":"Blog Articles",
+		"items": [
+			{
+				"title": "Guard Clauses: Three Guidelines to Ensure Code Simplicity for Software Developers", 
+				"link":"https://medium.com/ssense-tech/guard-clauses-three-guidelines-to-ensure-code-simplicity-for-software-developers-ad1e844be75", 
+				"brief":"A philosophycal approach to writing simpler code by leveraging guard clauses, or earlier returns."}
 		]
 	},
 	"testimonials": {
 		"testimonials": [
-			{ "text": "Not a bad guy", "user": "Dad" },
+			{ "text": "Not a bad guy, he helped me a few times when visiting BestBuy", "user": "Dad" },
 			{
 				"text": "He fixed my computer for years, thanks for your great service!",
 				"user": "Mom"
 			}
+		]
+	},
+	"hobbies": {
+		"title": "Hobbies and volunteering",
+		"items": [
+			{"name": "Music", "content":"(attempting to) play bass guitar and ukulele."},
+			{"name": "DIY Home Automation", "content":"building a smart home without using cloud services, leveraging HomeAssistant and custom-made devices with NodeMCU, Arduino, Zigbee2Mqtt and other technologies."},
+			{"name": "DIY Home Design", "content":"using SweetHome3d for planning home and condominium renovations."},
+			{"name": "Condominium treasurer", "content":"Role I had between 2013 through 2017 and during 2021."}
+
 		]
 	}
 }

@@ -7,13 +7,11 @@ function MarkdownLoader(props) {
 
 	fetch(props.url, {
 		method: "GET",
-	})
-		.then((r) => {
-			return r.text();
-		})
-		.then((r) => {
-			setContent(r);
-		});
+	}).then((r) => {
+		return r.text();
+	}).then((r) => {
+		setContent(r);
+	});
 
 	return content.length && <Markdown className="markdownLoader" source={content} />;
 }

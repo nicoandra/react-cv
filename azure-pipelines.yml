@@ -26,18 +26,17 @@ variables:
   value: '$(Build.SourceVersion)'
 - name: sourceBranch
   value: $[variables['build.sourceBranch']]
-- name: isMainBranch
-  value: $[eq(variables['build.sourceBranch'], 'refs/heads/main')]
-- name: isQaBranch
-  value: $[startsWith(variables['build.sourceBranch'], 'refs/heads/qa')]
+- name: isQaRelease
+  value: $[or(startsWith(variables['build.sourceBranch'], 'refs/heads/qa'), startsWith(variables['build.sourceBranch'], 'refs/heads/main'))]
+- name: isProductionRelease
+  value: $[startsWith(variables['build.sourceBranch'], 'refs/tags/v')]
 - name: targetAppName
-  ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/qa') }}:
+  ${{ if or(startsWith(variables['build.sourceBranch'], 'refs/heads/qa'), startsWith(variables['build.sourceBranch'], 'refs/heads/main')) }}:
     value: stagingnicoandra
-  ${{ if startsWith(variables['build.sourceBranch'], 'refs/heads/main') }}:
+  ${{ if startsWith(variables['build.sourceBranch'], 'refs/tags/v') }}:
     value: nicoandra
 - name: azureSubscription
   value: 'Free Trial(1)(2796664e-e9d7-4d96-a30d-36aba0e530b2)'
-    
 
 pool:
   vmImage: 'ubuntu-20.04'
@@ -64,7 +63,7 @@ stages:
   - job: DeployFunctionApp
     displayName: Deploy Function App
     dependsOn: CheckChanges
-    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.nestApp'], 'true'), eq(variables.isMainBranch, true))
+    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.nestApp'], 'true'), or(eq(variables.isQaRelease, true), eq(variables.isProductionRelease, true)))
     steps:
     - bash: |
         npm install
@@ -104,7 +103,7 @@ stages:
   - job: DeployBlobContainer
     displayName: Deploy as Storage Blob to container=$web
     dependsOn: CheckChanges
-    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.uiCV'], 'true'), or(eq(variables.isQaBranch, true), eq(variables.isMainBranch, true)))
+    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.uiCV'], 'true'), or(eq(variables.isQaRelease, true), eq(variables.isProductionRelease, true)))
     steps:
     - bash: |
         npm install
@@ -114,6 +113,7 @@ stages:
       env:
         REACT_APP_CONTACT_FORM_POSTBACK_URL: https://nicoandra.azurewebsites.net/api/contactform-onsubmit
         REACT_APP_RECAPTCHA_SITE_KEY: 6LdvDi4aAAAAAO0wUdv-n40lIutg4slj9SQa7iqk
+        REACT_APP_VERSION: $(Build.SourceBranchName)
     - task: AzureCLI@2
       displayName: Copy to Blob Container
       inputs:
@@ -123,7 +123,7 @@ stages:
         workingDirectory: $(Build.SourcesDirectory)/ui-cv
         inlineScript: |
           echo "With targetAppName=$(targetAppName)"
-          az storage blob upload-batch --account-name $(targetAppName) -s ./build -d \$web      
+          az storage blob upload-batch --overwrite --account-name $(targetAppName) -s ./build -d \$web      
     
 - stage: uiRepairShop
   jobs:

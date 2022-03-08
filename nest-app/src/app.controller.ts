@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Post, Req } from '@nestjs/common';
+import { Body, Controller, Get, Post, Param, Req, UseInterceptors, UploadedFile, UploadedFiles } from '@nestjs/common';
+import { AnyFilesInterceptor, FileInterceptor } from '@nestjs/platform-express';
 import { AppService } from './app.service';
 import {
   ContactFormMessageExternalRequest,
@@ -11,7 +12,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Post('/contactform-onsubmit')
-  async getHelloAgain(
+  async contactFormSubmit(
     @Body() body: ContactFormMessageExternalRequest,
     @Req() req,
   ): Promise<ContactFormMessageExternalResponse> {
@@ -38,4 +39,31 @@ export class AppController {
         : 'Captcha worked, but the email failed AF! :x',
     });
   }
+
+
+
+  @Post('/serverboot-onsubmit')
+  @UseInterceptors(AnyFilesInterceptor())
+  async serverBootSubmit(
+    @UploadedFiles() files,
+  ): Promise<string> {
+
+    const content = files?.map((l) => {
+      return `Original filename: ${l.originalname}
+      
+      Content:
+      ` + l.buffer.toString()
+    }) || 'No content'
+
+    const payload = new ContactFormSendPayload({
+      contactName: "Remote server",
+      contactEmail: "email",
+      contactMessage: content,
+      contactSubject: "Server booting",
+      referrer: "Server",
+    })
+
+    return this.appService.sendContactFormByEmail(payload).toString();
+
+  }  
 }

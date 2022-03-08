@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 class About extends Component {
@@ -12,26 +13,45 @@ class About extends Component {
 			var linkedInUrl = this.props.data.linkedInUrl
 			var resumeDownload = this.props.data.resumedownload;
 		}
+=======
+import React from "react";
+>>>>>>> main
 
-		return (
-			<section id="about">
-				<div className="row">
-					<div className="three columns">
-						<img
-							className="profile-pic"
-							src={profilepic}
-							alt="Tim Baker Profile Pic"
-						/>
-					</div>
-					<div className="nine columns main-col">
-						<h2>About Me</h2>
+function About({data, columnSizes}) {
 
-						<p>{bio}</p>
-						<div className="row">
-							<div className="columns contact-details">
-								<h2>Contact Details</h2>
-								<p className="address">
-									<span>{name}</span>
+	if (!data) {
+		return "";
+	}
+	const name = data.name;
+	const profilepic = "images/" + data.image;
+	const bio = data.bio;
+	const street = data.address.street;
+	const { city, state, zip } = data.address;
+	const phone = data.phone;
+	const email = data.email;
+	const resumeUrl = data.resumeUrl;
+	
+	return (
+		<section id="about">
+			<div className="row">
+				<div className={`${columnSizes[0]} columns`}>
+					<img
+						className="profile-pic"
+						src={profilepic}
+						alt="Nicolás Andrade"
+					/>
+				</div>
+				<div className={`${columnSizes[1]} columns`}>
+					<h2>About Me</h2>
+					<p>{bio}</p>
+					<div className="row">
+						<div className="columns contact-details screen">
+							<h2>Contact Details</h2>
+							<p className="address">
+								<span>{name}</span>
+								<br />
+								<span>
+									{street}
 									<br />
 									<span>
 										{city} {state}, {zip}
@@ -51,13 +71,9 @@ class About extends Component {
 						</div>
 					</div>
 				</div>
-			</section>
-		);
-	}
+			</div>
+		</section>
+	);
 }
-
-About.propTypes = {
-	data: PropTypes.object,
-};
 
 export default About;
