@@ -6,12 +6,9 @@ class About extends Component {
 			var name = this.props.data.name;
 			var profilepic = "images/" + this.props.data.image;
 			var bio = this.props.data.bio;
-			var street = this.props.data.address.street;
 			var city = this.props.data.address.city;
 			var state = this.props.data.address.state;
 			var zip = this.props.data.address.zip;
-			var phone = this.props.data.phone;
-			var email = this.props.data.email;
 			var linkedInUrl = this.props.data.linkedInUrl
 			var resumeDownload = this.props.data.resumedownload;
 		}
@@ -40,7 +37,7 @@ class About extends Component {
 										{city} {state}, {zip}
 									</span>
 									<br />
-									<span><a href={linkedInUrl} target="_blank">LinkedIn Profile</a></span>
+									<span><a href={linkedInUrl} target="_blank" rel="noreferrer">LinkedIn Profile</a></span>
 								</p>
 							</div>
 							<div className="columns download">

@@ -4,8 +4,10 @@ import PropTypes from "prop-types";
 class Testimonials extends Component {
 	render() {
 		// No testimonials for now
+		// eslint-disable-next-line
 		return <br/>
 
+		// eslint-disable-next-line
 		if (this.props.data) {
 			var testimonials = this.props.data.testimonials.map(function (
 				testimonials
@@ -20,7 +22,8 @@ class Testimonials extends Component {
 				);
 			});
 		}
-
+		
+		// eslint-disable-next-line
 		return (
 			<section id="testimonials">
 				<div className="text-container">
