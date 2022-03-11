@@ -9,6 +9,7 @@ import Contact from "./Components/Contact";
 import Testimonials from "./Components/Testimonials";
 import Hobbies from './Components/Hobbies'
 
+// TODO Convert from Class to Function 
 class App extends Component {
 	constructor(props) {
 		super(props);
