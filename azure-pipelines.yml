@@ -42,17 +42,17 @@ pool:
   vmImage: 'ubuntu-20.04'
 
 stages:
-# - stage: Deploy
-#   displayName: Deploy
-#   jobs:
-#   - job: ShowVariables
-#     steps:
-#     - bash: |
-#         echo "sourceBranch: $(sourceBranch)"
-#         echo "isMainBranch: $(isMainBranch)"
-#         echo "isQaBranch: $(isQaBranch)"
-#         echo "commitHash: $(commitHash)"
-#         echo "targetAppName: $(targetAppName)"
+- stage: Debug
+  displayName: Debug Values
+  jobs:
+  - job: ShowVariables
+    steps:
+    - bash: |
+        echo "sourceBranch: $(sourceBranch)"
+        echo "isMainBranch: $(isMainBranch)"
+        echo "isQaBranch: $(isQaBranch)"
+        echo "commitHash: $(commitHash)"
+        echo "targetAppName: $(targetAppName)"
 
 - stage: NestApp
   jobs:
