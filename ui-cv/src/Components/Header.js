@@ -63,7 +63,7 @@ class Header extends Component {
 							{name}
 						</h1>
 						<h3>
-							<span id="onScreenIntro">I&apos;m a {city} based <span>{occupation}</span>.{" "}</span>
+							<span id="onScreenIntro">I&apos;m a {city} based <span>{occupation}</span>.</span>
 							{description}
 						</h3>
 						<hr />
