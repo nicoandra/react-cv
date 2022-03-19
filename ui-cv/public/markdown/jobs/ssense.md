@@ -1,15 +1,14 @@
-Joined as Senior Software Developer and shortly after got promoted to Tech Lead. My main responsabilities are to design, document, develop, test and deploy the cloud-based services needed to perform operations in the Pricing domain; aiming for availability, scalability, simplicity, predictability and performance.
+Lead software developer of the Pricing domain, aiming for availability, scalability, simplicity, predictability and performance on the price calculation for all products around the globe.
 
 ### Main Responsibilities:
-* Coach and support the development team in charge of the different services in TypeScript, Python and Object-Oriented PHP my team maintains through pull-requests 
-* Lead the strategy to peel-off features out of the legacy monolithic stack, converting them to asynchronous operations based on event notifications for scalability.
-* Collaborate on building the company standards on what comes down to resource management.
-* Benchmark and stress-test services to adjust the allocated resources and autoscaling thresholds of the different components of the applications.
-* Fill in detailed incident reports for any service disruption or incident affecting customers or stakeholders, following the 5-why's technique, with timelines, mitigation strategies and actions to avoid future occurrences.
-* Identify and eliminate bottlenecks, find opportunities for performance improvement and cost reduction across the applications in the domain.
-* Providing guidance to the team to develop following best practices, through code reviews, face-to-face meetings and team ceremonies.
-* Ensure good monitoring of applications, aiming to respect all service-level objectives and emitting alerts upon any incident or significant service disruption.
-* Encourage and guide the team to solve problems, make decisions and take ownership of their accomplishments and work.
+* Coaching and supporting the development team.
+* Peeling-off features out of the legacy monolithic stack, converting them to asynchronous operations based on event notifications for scalability.
+* Collaborating on building the company standards for software development.
+* Benchmarking services, fine-tuning resources and autoscaling thresholds of the different components of the applications.
+* Completing detailed incident reports for any service disruption or incident affecting customers or stakeholders, following the 5-why's technique, planning mitigation strategies and preventive actions.
+* Identifying and eliminating bottlenecks, find opportunities for performance improvement and cost reduction across the applications in the domain.
+* Providing guidance to the team to follow best practices, through code reviews, one-on-one meetings and team ceremonies.
+* Monitoring service availability and acting upon incidents in the Production environment.
 
 ### Characteristics as a Tech Lead
 * Actively encourages team members to voice out and explore different ideas, experiences and perspectives; encourage to think out of the box and be disruptive.
