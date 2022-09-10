@@ -1,0 +1,11 @@
+{
+	"azureFunctions.projectSubpath": "nest-app",
+	"azureFunctions.deploySubpath": "nest-app",
+	"azureFunctions.postDeployTask": "npm install",
+	"azureFunctions.projectLanguage": "TypeScript",
+	"azureFunctions.projectRuntime": "~3",
+	"azureFunctions.preDeployTask": "npm prune",
+	"files.associations": {
+		"*.yaml": "home-assistant"
+	}
+}
