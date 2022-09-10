@@ -48,7 +48,7 @@
 				"company": "Mindgeek",
 				"location": "Montréal, Québec, Canada",
 				"title": "Lead Code Auditor",
-				"years": "March 2007 - February 2010",
+				"years": "February 2017 - November 2018",
 				"markdownTemplate": "/markdown/jobs/mindgeek-security.md",
 				"technologies": [
 					{"name": "Bug bounty platforms", "content":"HackerOne"},
@@ -60,7 +60,7 @@
 				"company": "Mindgeek",
 				"location": "Montréal, Québec, Canada",
 				"title": "Tech Lead",
-				"years": "March 2007 - February 2010",
+				"years": "October 2010 - February 2017",
 				"markdownTemplate": "/markdown/jobs/mindgeek-techlead.md",
 				"technologies": [
 					{"name": "Programming languages", "content":"PHP 5 through 7, JavaScript, Bash"},
