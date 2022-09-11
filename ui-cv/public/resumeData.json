@@ -81,7 +81,7 @@
 			},
 			{
 				"name": "Cloud Services and Infrastructure",
-				"content": "AWS IAM Roles, API Gateway, SQS, S3, SNS, State machines / Step Functions, Kubernetes, Docker, EKS, CloudWatch, DataDog APM and Logs, NewRelic, Sentry, PagerDuty"
+				"content": "AWS IAM Roles, API Gateway, SQS, S3, SNS, State machines / Step Functions, Kubernetes, Docker, EKS, CloudWatch, DataDog APM and Logs, NewRelic, PagerDuty"
 			},
 			{
 				"name": "Programming Languages",
