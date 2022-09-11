@@ -122,8 +122,9 @@ stages:
         scriptLocation: inlineScript
         workingDirectory: $(Build.SourcesDirectory)/ui-cv
         inlineScript: |
+          set -e
           echo "With targetAppName=$(targetAppName)"
-          az storage blob upload-batch --account-name $(targetAppName) -s ./build -d \$web
+          az storage blob upload-batch --account-name $(targetAppName) -s ./build -d \$web --overwrite true
 - stage: uiRepairShop
   jobs:
   - template: '.pipeline/job_check_changes.yml'
