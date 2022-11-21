@@ -1,3 +1,6 @@
+### Lambda functions using Docker in AWS, enabled with Serverless-Offline
+[Serverless-offline-lambda-docker](https://www.npmjs.com/package/serverless-offline-lambda-docker-plugin) is a Serverless plugin which allows developers to run Serverless Offline in their local environments; but to use Docker Images when deploying the stack to AWS Cloudformation. It was built to ease Serverless development but leverage Docker images in AWS in a transparent and simple way.
+
 ### Cachier, bug fix
 Cachier is a persistent, stale-free, local and cross-machine caching for Python functions. It can be installed with `pip install cachier` and used as a decorator.
 
