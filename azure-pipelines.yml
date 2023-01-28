@@ -130,10 +130,8 @@ stages:
     dependsOn: DeployBlobContainer
     steps:
     - bash: |
-        apt-get install chromium --yes
-        npm run build
         chromium --headless --disable-gpu --print-to-pdf https://www.nmac.com.ar/
-      displayName: Install Chromium and Build PDF
+      displayName: Build PDF
       workingDirectory: $(Build.SourcesDirectory)/ui-cv
     - task: AzureCLI@2
       displayName: Copy PDF to Blob Container
@@ -146,7 +144,7 @@ stages:
           set -e
           echo "With targetAppName=$(targetAppName)"
           mv output.pdf NicolasAndrade-SeniorStaffDeveloper.pdf
-          az storage blob upload --account-name $(targetAppName) -f NicolasAndrade-SeniorStaffDeveloper.pdf -d \$web --overwrite true
+          az storage blob upload --account-name $(targetAppName) -f NicolasAndrade-SeniorStaffDeveloper.pdf -c \$web --overwrite true
 - stage: uiRepairShop
   jobs:
   - template: '.pipeline/job_check_changes.yml'
