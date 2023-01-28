@@ -135,6 +135,18 @@ stages:
         chromium --headless --disable-gpu --print-to-pdf https://www.nmac.com.ar/
       displayName: Install Chromium and Build PDF
       workingDirectory: $(Build.SourcesDirectory)/ui-cv
+    - task: AzureCLI@2
+      displayName: Copy PDF to Blob Container
+      inputs:
+        azureSubscription: $(azureSubscription)
+        scriptType: bash
+        scriptLocation: inlineScript
+        workingDirectory: $(Build.SourcesDirectory)/ui-cv
+        inlineScript: |
+          set -e
+          echo "With targetAppName=$(targetAppName)"
+          mv output.pdf NicolasAndrade-SeniorStaffDeveloper.pdf
+          az storage blob upload --account-name $(targetAppName) -f NicolasAndrade-SeniorStaffDeveloper.pdf -d \$web --overwrite true
 - stage: uiRepairShop
   jobs:
   - template: '.pipeline/job_check_changes.yml'
