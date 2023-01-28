@@ -64,12 +64,12 @@ class Header extends Component {
 					<div className="row">
 						<div className="twelve columns contact">
 							<ul>
-								<li>Call or SMS: {this.props.data.phone}</li>
-								<li>{this.props.data.address.city}, {this.props.data.address.state}</li>
+								<li>{this.props.data.phone}, {this.props.data.address.city}, {this.props.data.address.state}</li>
+								<li><a href={this.props.data.website}>{this.props.data.website.replace('https://www.', '')}</a></li>
 								{this.props.data.social.map(function (network) {
 									return (
 										<li key={network.name}>
-											{network.url.replace('https://', '')}
+											<a href={network.url}>{network.url.replace('https://', '')}</a>
 										</li>
 									);
 								})}
