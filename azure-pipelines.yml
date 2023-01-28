@@ -37,9 +37,9 @@ variables:
     value: nicoandra
 - name: cvApplicationUrl
   ${{ if or(startsWith(variables['build.sourceBranch'], 'refs/heads/qa'), startsWith(variables['build.sourceBranch'], 'refs/heads/main')) }}:
-    value: stagingnicoandra.z27.web.core.windows.net
+    value: https://stagingnicoandra.z27.web.core.windows.net/
   ${{ if startsWith(variables['build.sourceBranch'], 'refs/tags/v') }}:
-    value: nicoandra.z27.web.core.windows.net
+    value: https://nicoandra.z27.web.core.windows.net/
 - name: azureSubscription
   value: 'Deployment'
 
