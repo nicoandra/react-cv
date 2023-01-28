@@ -5,7 +5,7 @@ section#resume .main-col {
 
 @media screen {
     header#home {
-        height: 739px;
+        min-height: 739px;
     }
 
     header#home span.print {
@@ -63,11 +63,22 @@ section#resume .main-col {
     div.markdownLoader ul li {
         margin-bottom: 6px;
     }
-
-
 }
 
 @media print {
+
+    body {
+        font-size: small;
+    }
+
+    div.header-col h1 span {
+         font-size: 1em;
+    }
+
+    h3 {
+        font-size: 1.2em;
+    }
+
     nav#nav-wrap, 
     div.banner span#onScreenIntro, 
     div.banner span.social,
@@ -86,6 +97,10 @@ section#resume .main-col {
     }
     header#home span.screen {
         display: none;
+    }
+
+    header#home .print .contact {
+        text-align: center;
     }
 
     header#home .print .contact ul li {
@@ -153,6 +168,10 @@ section#resume .main-col {
         display: inline;
         margin: 0.5em;
         width: 50%;
+    }
+
+    div.grecaptcha-badge {
+        display: none;
     }
 }
 

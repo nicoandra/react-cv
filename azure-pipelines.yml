@@ -99,7 +99,7 @@ stages:
   - template: '.pipeline/job_check_changes.yml'
     parameters:
       path: "ui-cv/"
-      appName: "uiCV"
+      appName: "uiCV"    
   - job: DeployBlobContainer
     displayName: Deploy as Storage Blob to container=$web
     dependsOn: CheckChanges
@@ -125,6 +125,16 @@ stages:
           set -e
           echo "With targetAppName=$(targetAppName)"
           az storage blob upload-batch --account-name $(targetAppName) -s ./build -d \$web --overwrite true
+  - job: BuildPdf
+    displayName: Installs Chromium and builds the printable version of the CV
+    dependsOn: DeployBlobContainer
+    steps:
+    - bash: |
+        apt-get install chromium --yes
+        npm run build
+        chromium --headless --disable-gpu --print-to-pdf https://www.nmac.com.ar/
+      displayName: Install Chromium and Build PDF
+      workingDirectory: $(Build.SourcesDirectory)/ui-cv
 - stage: uiRepairShop
   jobs:
   - template: '.pipeline/job_check_changes.yml'
