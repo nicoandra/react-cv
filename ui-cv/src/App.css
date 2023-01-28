@@ -136,10 +136,6 @@ section#resume .main-col {
         display: none;
     }
 
-    header#home div.contact {
-        text-align: center;
-    }
-
     header#home div.contact ul {
         margin-bottom: 0px;
     }
