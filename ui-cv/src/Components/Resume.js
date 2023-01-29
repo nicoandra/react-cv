@@ -42,21 +42,19 @@ function Resume({ data }) {
 
 	return (
 		<section id="resume">
-			<div className="row work">
-				<div className={`twelve columns header-col`}>
-					<h1><span>Work Experience</span></h1>
+			<div className="row resume">
+				<div className={`two columns header-col skills`}>
+					<h1><span>Skills</span></h1>
+					{skills}
 				</div>
-				<div className='twelve columns main-col'>{work}</div>
+				<div className={`ten columns header-col work`}>
+					<div className={`twelve columns header-col`}>
+						<h1><span>Work Experience</span></h1>
+					</div>
+					<div className='twelve columns main-col'>{work}</div>
+				</div>
 			</div>
 
-			<div className="row skills">
-				<div className={`twelve columns header-col`}>
-					<h1>
-						<span>Skills</span>
-					</h1>
-				</div>
-				<GridWrapper className="column">{skills}</GridWrapper>
-			</div>
 
 			<div className="row open-source">
 				<div className={`twelve columns header-col`}>

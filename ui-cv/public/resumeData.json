@@ -72,16 +72,16 @@
 		],
 		"skills": [
 			{
+				"name": "Cloud Services and Infrastructure",
+				"content": "AWS IAM Roles, API Gateway, SQS, S3, SNS, State machines / Step Functions, Kubernetes, Docker, EKS, CloudWatch, DataDog APM and Logs, NewRelic, PagerDuty"
+			},
+			{
 				"name": "Spoken languages",
 				"content": "English, Français, Español"
 			},
 			{
 				"name": "Databases and Data storage",
 				"content": "PostgreSQL, MySQL, MongoDB, DynamoDB, DocumentDB, Redis, ElasticSearch. Experience with query optimisation, execution plan, replication, sharding, materialized views and other features in both baremetal self-hosted and cloud environments."
-			},
-			{
-				"name": "Cloud Services and Infrastructure",
-				"content": "AWS IAM Roles, API Gateway, SQS, S3, SNS, State machines / Step Functions, Kubernetes, Docker, EKS, CloudWatch, DataDog APM and Logs, NewRelic, PagerDuty"
 			},
 			{
 				"name": "Programming Languages",
@@ -103,7 +103,7 @@
 				"name": "Documentation and visualization", 
 				"content": "LucidCharts, C4 Models, Swagger API Documentation" 
 			},
-			{"name":"Performance", "content":""}
+			{"name":"Open Source Contributions", "content":"Different Serverless Plugins and contributions to other projects"}
 		]
 	},
 	"blogPosts": {
