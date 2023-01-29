@@ -3,6 +3,45 @@ section#resume .main-col {
     padding-right: 10%;
 }
 
+section#resume div.skills {
+    font-size: 0.9em;
+    line-height: 150%;
+}
+section#resume div.skills em {
+    font-size: 100%;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-style: normal;
+}
+
+section#resume div.skills h1 {
+    margin-bottom: 20px;
+}
+
+section#resume div.skills>div {
+    margin-bottom: 15px;
+}
+
+section#resume p,
+section#hobbies p  {
+    margin: 0 0 10px 0;
+    line-height: 150%;
+}
+
+header#home p {
+    line-height: 20px;
+    margin: 0px
+}
+
+header#home div.row div.columns {
+    padding: 0px;
+}
+
+div.columns.grid-wrapper div.as-table div.technology {
+    line-height: 150%;
+}
+
 @media screen {
     header#home {
         min-height: 739px;
@@ -27,7 +66,7 @@ section#resume .main-col {
         padding: 0 0px;
     }
 
-    section#resume div.row.work div.main-col div.markdownLoader li {
+    section#resume div.work div.main-col div.markdownLoader li {
         line-height: 24px;
     }
 
@@ -35,7 +74,7 @@ section#resume .main-col {
         padding-right: 5%;
     }
 
-    section#resume div.row.work div.main-col div.markdownLoader h3 {
+    section#resume div.work div.main-col div.markdownLoader h3 {
         font-size: 18px;
         line-height: 24px;
     }
@@ -43,11 +82,6 @@ section#resume .main-col {
     section#resume div.markdownLoader,
     section#hobbies div.markdownLoader {
         margin-bottom: 30px;
-    }
-
-    section#resume p,
-    section#hobbies p  {
-        margin: 0 0 10px 0;
     }
 
     section#resume div.markdownLoader h3,
@@ -61,12 +95,11 @@ section#resume .main-col {
         margin-top: 6px;
     }
     div.markdownLoader ul li {
-        margin-bottom: 6px;
+        margin-bottom: 10px;
     }
 }
 
 @media print {
-
     body {
         font-size: small;
     }
@@ -228,10 +261,6 @@ section#resume h3 {
     font-family: "opensans-bold", sans-serif;
     display: inline;
     padding-right: 15px;
-}
-
-section#resume .header-col {
-    padding-bottom: 9px;
 }
 
 section#resume .info {

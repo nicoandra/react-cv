@@ -4,11 +4,19 @@ import nextId from "react-id-generator";
 
 import GridWrapper from './GridWrapper'
 
-function Resume({ data }) {
-	if (!data) {
+function Resume({ resume, hobbies }) {
+	if (!resume) {
 		return ""
 	}
-	const work = data.work.map(function (work, index) {
+
+	const hobbiesList = hobbies.items.map(function (hobby) {
+		return (<div key={nextId()}>
+			<em>{hobby.name}</em>
+			<p>{hobby.content}</p>
+		</div>);
+	})
+
+	const work = resume.work.map(function (work, index) {
 		const technologies = work.technologies?.map(function (technology) {
 			return (<div className='technology' key={nextId()}>
 				<em>{technology.name}</em>
@@ -33,7 +41,7 @@ function Resume({ data }) {
 		);
 	});
 
-	const skills = data.skills.map(function (skills) {
+	const skills = resume.skills.map(function (skills) {
 		return (<div className='skill' key={nextId()}>
 			<em>{skills.name}</em>
 			<p>{skills.content}</p>
@@ -43,11 +51,13 @@ function Resume({ data }) {
 	return (
 		<section id="resume">
 			<div className="row resume">
-				<div className={`two columns header-col skills`}>
+				<div className={`three columns header-col skills`}>
 					<h1><span>Skills</span></h1>
 					{skills}
+					<h1><span>Hobbies</span></h1>
+					{hobbiesList}
 				</div>
-				<div className={`ten columns header-col work`}>
+				<div className={`nine columns header-col work`}>
 					<div className={`twelve columns header-col`}>
 						<h1><span>Work Experience</span></h1>
 					</div>

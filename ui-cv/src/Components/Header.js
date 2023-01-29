@@ -39,9 +39,7 @@ class Header extends Component {
 	render() {
 		if (this.props.data) {
 			var name = this.props.data.name;
-			var occupation = this.props.data.occupation;
 			var description = this.props.data.description;
-			var city = this.props.data.address.city;
 			var networks = this.props.data.social.map(function (network) {
 				return (
 					<li key={network.name}>
@@ -59,7 +57,7 @@ class Header extends Component {
 				<span className="print">
 					<div className="row">
 						<div className="five columns"><h1>{name}</h1></div>
-						<div className="seven columns">{description}</div>
+						<div className="seven columns"><p>{description}</p></div>
 					</div>
 					<div className="row">
 						<div className="twelve columns contact">
@@ -87,8 +85,8 @@ class Header extends Component {
 								{name}
 							</h1>
 							<h3>
-								<span id="onScreenIntro">I&apos;m a {city} based <span>{occupation}</span>.</span>
-								{description}
+								<span id="onScreenIntro">{description}</span>
+								
 							</h3>
 							<hr />
 							<ul className="social">{networks}</ul>

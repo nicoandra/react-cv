@@ -102,8 +102,7 @@
 			{ 
 				"name": "Documentation and visualization", 
 				"content": "LucidCharts, C4 Models, Swagger API Documentation" 
-			},
-			{"name":"Open Source Contributions", "content":"Different Serverless Plugins and contributions to other projects"}
+			}
 		]
 	},
 	"blogPosts": {
