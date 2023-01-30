@@ -38,7 +38,7 @@
 				"years": "November 2017 - January 2023",
 				"markdownTemplate": "/markdown/jobs/ssense.md",
 				"technologies": [
-					{"name": "Programming languages", "content":"Node JS, TypeScript, PHP 7+, Python 3.8+, React 18+"},
+					{"name": "Programming languages", "content":"NodeJs, TypeScript, PHP 7+, Python 3.8+, React 18+"},
 					{"name": "Databases and data storage", "content":"PostgreSQL, Redis, DocumentDB, ElastiCache, MySQL, MongoDb, ElasticSearch"},
 					{"name": "Development tools and flows", "content":"Docker, DockerHub, Jenkins, Helm, Serverless, Elastic Container Repository"},
 					{"name": "Web Services and Infrastructure", "content":"AWS S3, AWS SQS, Kubernetes, Step-Functions, API Gateway, DataDog Alerting and APM"}
@@ -85,7 +85,7 @@
 			},
 			{
 				"name": "Programming Languages",
-				"content": "TypeScript, JavaScript ES6, PHP 7.1+, Python 3.8+, React 17.0+"
+				"content": "NodeJs, TypeScript, JavaScript, PHP 7.1+, Python 3.8+, React 17.0+"
 			},
 			{
 				"name": "Development tools and practices",
