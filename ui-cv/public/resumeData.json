@@ -35,7 +35,7 @@
 				"link": "https://ssense.com",
 				"location": "Montréal, Québec, Canada",
 				"title": "Senior Software Developer - Tech Lead",
-				"years": "November 2018 - January 2023",
+				"years": "November 2017 - January 2023",
 				"markdownTemplate": "/markdown/jobs/ssense.md",
 				"technologies": [
 					{"name": "Programming languages", "content":"Node JS, TypeScript, PHP 7+, Python 3.8+, React 18+"},
@@ -48,7 +48,7 @@
 				"company": "Mindgeek",
 				"location": "Montréal, Québec, Canada",
 				"title": "Lead Code Auditor",
-				"years": "February 2017 - November 2018",
+				"years": "February 2017 - November 2017",
 				"markdownTemplate": "/markdown/jobs/mindgeek-security.md",
 				"technologies": [
 					{"name": "Bug bounty platforms", "content":"HackerOne"},
