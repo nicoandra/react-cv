@@ -1,4 +1,4 @@
-Lead software developer of the Pricing domain, aiming for availability, scalability, simplicity, predictability and performance on the price calculation for all products around the globe.
+Lead software developer of the Pricing domain, aiming for availability, scalability, maintainability, ease and performance on the price calculation for all products around the globe.
 
 ### Main Responsibilities
 * Coaching and supporting the development team on the exploration, design and development of different features.
