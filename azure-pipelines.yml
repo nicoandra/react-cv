@@ -149,7 +149,7 @@ stages:
           set -e
           echo "With targetAppName=$(targetAppName)"
           mv output.pdf NicolasAndrade-SeniorDeveloper.pdf
-          az storage blob upload --account-name $(targetAppName) -f NicolasAndrade-SeniorStaffDeveloper.pdf -c \$web --overwrite true
+          az storage blob upload --account-name $(targetAppName) -f NicolasAndrade-SeniorDeveloper.pdf -c \$web --overwrite true
 - stage: uiRepairShop
   jobs:
   - template: '.pipeline/job_check_changes.yml'
