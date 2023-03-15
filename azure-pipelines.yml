@@ -135,7 +135,7 @@ stages:
     dependsOn: DeployBlobContainer
     steps:
     - bash: |
-        chromium --headless --disable-gpu --print-to-pdf $(cvApplicationUrl)
+        hromium --headless --disable-gpu --print-to-pdf-no-header --no-margins --print-to-pdf=output.pdf $(cvApplicationUrl)
       displayName: Build PDF
       workingDirectory: $(Build.SourcesDirectory)/ui-cv
     - task: AzureCLI@2
@@ -148,7 +148,7 @@ stages:
         inlineScript: |
           set -e
           echo "With targetAppName=$(targetAppName)"
-          mv output.pdf NicolasAndrade-SeniorStaffDeveloper.pdf
+          mv output.pdf NicolasAndrade-SeniorDeveloper.pdf
           az storage blob upload --account-name $(targetAppName) -f NicolasAndrade-SeniorStaffDeveloper.pdf -c \$web --overwrite true
 - stage: uiRepairShop
   jobs:

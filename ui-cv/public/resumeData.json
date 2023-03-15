@@ -2,7 +2,7 @@
 	"main": {
 		"name": "Nicolás Andrade",
 		"occupation": "Tech Lead - Senior Software Developer",
-		"description": "Senior Software Developer with experience in high-traffic, high-throughput and highly-available backend event-based systems.",
+		"description": "Senior Software Developer with experience in high-traffic, high-throughput and highly-available backend event-based applications.",
 		"image": "profilepic.jpg",
 		"bio": "Curious and creative software developer with 15+ years experience in web and software development, database design, scalability, reliability and responsiveness. Experience with NodeJs, TypeScript, Python, virtualization and cloud environments.",
 		"linkedInUrl": "https://linkedin.com/in/nicoandrade/",
@@ -17,7 +17,7 @@
 		},
 		"website": "https://www.nmac.com.ar",
 		"resumeUrl": "https://www.nmac.com.ar",
-		"resumeDownloadUrl": "/NicolasAndrade-SeniorStaffDeveloper.pdf",
+		"resumeDownloadUrl": "/NicolasAndrade-SeniorDeveloper.pdf",
 		"social": [{
 			"name": "linkedin",
 			"url": "https://linkedin.com/in/nicoandrade/",
