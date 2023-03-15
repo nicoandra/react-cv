@@ -51,17 +51,17 @@ function Resume({ resume, hobbies }) {
 	return (
 		<section id="resume">
 			<div className="row resume">
-				<div className={`three columns header-col skills`}>
-					<h1><span>Skills</span></h1>
-					{skills}
-					<h1><span>Hobbies</span></h1>
-					{hobbiesList}
-				</div>
-				<div className={`nine columns header-col work`}>
+				<div className={`twelve columns header-col work`}>
 					<div className={`twelve columns header-col`}>
 						<h1><span>Work Experience</span></h1>
 					</div>
 					<div className='twelve columns main-col'>{work}</div>
+				</div>
+				<div className={`twelve columns header-col skills`}>
+					<h1><span>Skills</span></h1>
+					{skills}
+					<h1><span>Hobbies</span></h1>
+					{hobbiesList}
 				</div>
 			</div>
 
