@@ -225,7 +225,7 @@ section div.grid-wrapper {
 
 section div.as-table {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: repeat(4, 25%);
     grid-template-rows: auto; 
     column-gap: 25px;
     row-gap: 15px;

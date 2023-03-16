@@ -1,8 +1,7 @@
 import React from "react";
 
-
 function GridWrapper({title, children, className}) {
-	const classNameToUse = className || 'column'
+	const classNameToUse = className || 'none'
 	if(!children) return "";
 	return(
 		<div className="twelve columns grid-wrapper">

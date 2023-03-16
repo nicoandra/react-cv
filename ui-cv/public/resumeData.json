@@ -34,7 +34,7 @@
 				"company": "SSENSE",
 				"link": "https://ssense.com",
 				"location": "Montréal, Québec, Canada",
-				"title": "Senior Software Developer - Tech Lead",
+				"title": "Sr. Full-stack Software Developer - Tech Lead",
 				"years": "November 2017 - January 2023",
 				"markdownTemplate": "/markdown/jobs/ssense.md",
 				"technologies": [
@@ -50,7 +50,8 @@
 				"title": "Lead Code Auditor",
 				"years": "February 2017 - November 2017",
 				"markdownTemplate": "/markdown/jobs/mindgeek-security.md",
-				"technologies": [
+				"technologies": [],
+				"disabledTechnologies": [
 					{"name": "Bug bounty platforms", "content":"HackerOne"},
 					{"name": "Auditing tools", "content":"PHP X-Debug, PHP Code Sniffer and Static code analysis tools, Burp Suite, OWASP ZAP, SQLMap, DirBuster"},
 					{"name": "Reverse engineering", "content":"JadX, Android Studio"}
@@ -59,7 +60,7 @@
 			{
 				"company": "Mindgeek",
 				"location": "Montréal, Québec, Canada",
-				"title": "Tech Lead",
+				"title": "Tech Lead - Senior Developer",
 				"years": "October 2010 - February 2017",
 				"markdownTemplate": "/markdown/jobs/mindgeek-techlead.md",
 				"technologies": [
@@ -73,7 +74,7 @@
 		"skills": [
 			{
 				"name": "Cloud Services and Infrastructure",
-				"content": "AWS IAM Roles, API Gateway, SQS, S3, SNS, State machines / Step Functions, Kubernetes, Docker, EKS, CloudWatch, DataDog APM and Logs, NewRelic, PagerDuty"
+				"content": "AWS IAM, API Gateway, SQS, S3, SNS, State machines / Step Functions, Kubernetes, Docker, EKS, CloudWatch, DataDog APM and Logs, NewRelic, PagerDuty"
 			},
 			{
 				"name": "Spoken languages",
@@ -81,7 +82,7 @@
 			},
 			{
 				"name": "Databases and Data storage",
-				"content": "PostgreSQL, MySQL, MongoDB, DynamoDB, DocumentDB, Redis, ElasticSearch. Experience with query optimisation, execution plan, replication, sharding, materialized views and other features in both baremetal self-hosted and cloud environments."
+				"content": "PostgreSQL, MySQL, MongoDB, DynamoDB, DocumentDB, Redis, ElasticSearch. Query optimisation, replication, sharding, materialized views."
 			},
 			{
 				"name": "Programming Languages",

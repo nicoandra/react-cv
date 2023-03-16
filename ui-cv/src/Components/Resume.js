@@ -9,7 +9,7 @@ function Resume({ resume, hobbies }) {
 		return ""
 	}
 
-	const hobbiesList = hobbies.items.map(function (hobby) {
+	const hobbiesList = false && hobbies.items.map(function (hobby) {
 		return (<div key={nextId()}>
 			<em>{hobby.name}</em>
 			<p>{hobby.content}</p>
@@ -36,7 +36,7 @@ function Resume({ resume, hobbies }) {
 				</div>
 
 				<MarkdownLoader url={work.markdownTemplate} />
-				<GridWrapper >{technologies}</GridWrapper>
+				{technologies.length > 0 && <GridWrapper >{technologies}</GridWrapper>}
 			</div>
 		);
 	});
@@ -60,11 +60,10 @@ function Resume({ resume, hobbies }) {
 				<div className={`twelve columns header-col skills`}>
 					<h1><span>Skills</span></h1>
 					{skills}
-					<h1><span>Hobbies</span></h1>
-					{hobbiesList}
+					{hobbiesList && <><h1><span>Hobbies</span></h1>
+					{hobbiesList}</>}
 				</div>
 			</div>
-
 
 			<div className="row open-source">
 				<div className={`twelve columns header-col`}>
