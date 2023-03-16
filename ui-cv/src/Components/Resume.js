@@ -52,10 +52,10 @@ function Resume({ resume, hobbies }) {
 		<section id="resume">
 			<div className="row resume">
 				<div className={`twelve columns header-col work`}>
-					<div className={`twelve columns header-col`}>
+					<div className={`header-col`}>
 						<h1><span>Work Experience</span></h1>
 					</div>
-					<div className='twelve columns main-col'>{work}</div>
+					<div className='main-col'>{work}</div>
 				</div>
 				<div className={`twelve columns header-col skills`}>
 					<h1><span>Skills</span></h1>
