@@ -1,12 +1,18 @@
 
-section#resume .main-col {
-    padding-right: 10%;
+ul > li {
+    list-style: disc inside;
 }
 
+section#resume div.skill.columns {
+    padding: 0px;
+    display: grid;
+}
+    
+
 section#resume div.skills {
-    font-size: 0.9em;
     line-height: 150%;
 }
+
 section#resume div.skills em {
     font-size: 100%;
     font-weight: bold;
@@ -15,8 +21,13 @@ section#resume div.skills em {
     font-style: normal;
 }
 
-section#resume div.skills h1 {
-    margin-bottom: 20px;
+section#resume div.skills h1,
+section#resume div h1,
+div.open-source h3 {
+    margin-bottom: 15px;
+    display: inline;
+    margin-right: 0.5em;
+    font: 18px/24px "opensans-bold", sans-serif
 }
 
 section#resume div.skills>div {
@@ -40,6 +51,17 @@ header#home div.row div.columns {
 
 div.columns.grid-wrapper div.as-table div.technology {
     line-height: 150%;
+}
+
+div.columns.grid-wrapper div.as-table>div {
+    text-overflow: clip;
+}
+
+
+section#resume div.work-position {
+    border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
 }
 
 @media screen {
@@ -70,17 +92,14 @@ div.columns.grid-wrapper div.as-table div.technology {
         line-height: 24px;
     }
 
-    section#resume div.main-col {
-        padding-right: 5%;
-    }
-
     section#resume div.work div.main-col div.markdownLoader h3 {
-        font-size: 18px;
-        line-height: 24px;
+        font-size: 15px;
+        line-height: 21px;
     }
 
     section#resume div.markdownLoader,
-    section#hobbies div.markdownLoader {
+    section#hobbies div.markdownLoader,
+    section#resume div.grid-wrapper {
         margin-bottom: 30px;
     }
 
@@ -155,8 +174,12 @@ div.columns.grid-wrapper div.as-table div.technology {
         margin-top: 4px;
     }
 
+    ul li {
+        margin-bottom: 10px;
+    }
+
     section>div.row div.header-col>h1 {
-        font-size: 30px;
+        font-size: 20px;
         border-bottom: #ddd solid 1px;
     }
 
@@ -210,25 +233,31 @@ section {
 }
 
 section#resume>div.row {
-    margin-bottom: 48px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid #e8e8e8;
+    /*margin-bottom: 12px;*/
+    padding-bottom: 12px;
+    /*border-bottom: 1px solid #e8e8e8; */ 
 }
 
 section div.grid-wrapper div.as-table em {
     font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-style: normal;    
 }
 
 section div.grid-wrapper {
     padding: 0px;
+    display: contents;
 }
 
 section div.as-table {
+    font-size: 90%;
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto; 
     column-gap: 25px;
-    row-gap: 15px;
+    row-gap: 10px;
+    width: 100%;
 }
 
 section div.as-table>div {
