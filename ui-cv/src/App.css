@@ -12,6 +12,7 @@ section#resume div.skill.columns {
 section#resume div.skills {
     line-height: 150%;
 }
+
 section#resume div.skills em {
     font-size: 100%;
     font-weight: bold;
@@ -21,10 +22,12 @@ section#resume div.skills em {
 }
 
 section#resume div.skills h1,
-section#resume div h1 {
-    margin-bottom: 20px;
+section#resume div h1,
+div.open-source h3 {
+    margin-bottom: 15px;
     display: inline;
     margin-right: 0.5em;
+    font: 18px/24px "opensans-bold", sans-serif
 }
 
 section#resume div.skills>div {
@@ -230,7 +233,7 @@ section {
 }
 
 section#resume>div.row {
-    margin-bottom: 12px;
+    /*margin-bottom: 12px;*/
     padding-bottom: 12px;
     /*border-bottom: 1px solid #e8e8e8; */ 
 }
