@@ -73,12 +73,16 @@
 		],
 		"skills": [
 			{
-				"name": "Cloud Services and Infrastructure",
-				"content": "AWS IAM, API Gateway, SQS, S3, SNS, State machines / Step Functions, Kubernetes, Docker, EKS, CloudWatch, DataDog APM and Logs, NewRelic, PagerDuty"
-			},
-			{
 				"name": "Spoken languages",
 				"content": "English, Français, Español"
+			},
+			{
+				"name": "Development tools and practices",
+				"content": "Visual Studio Code (with DevContainers), Linux and OSX, Docker, Git, Git Flow and Trunk-Based development"
+			},			
+			{
+				"name": "Cloud Services and Infrastructure",
+				"content": "AWS IAM, API Gateway, SQS, S3, SNS, State machines / Step Functions, Kubernetes, Docker, EKS, CloudWatch, DataDog APM and Logs, NewRelic, PagerDuty"
 			},
 			{
 				"name": "Databases and Data storage",
@@ -87,10 +91,6 @@
 			{
 				"name": "Programming Languages",
 				"content": "NodeJs, TypeScript, JavaScript, PHP 7.1+, Python 3.8+, React 17.0+"
-			},
-			{
-				"name": "Development tools and practices",
-				"content": "Visual Studio Code (with DevContainers), Linux and OSX, Docker, Git, Git Flow and Trunk-Based development"
 			},
 			{
 				"name": "Design patterns",

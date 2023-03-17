@@ -266,10 +266,13 @@
 		text-transform: uppercase;
 		letter-spacing: 1px;
 	}
-	#resume h1 span, #hobbies h1 span {
+	#resume h1 span, 
+	#hobbies h1 span,
+	#resume .header-col.work div.header-col h3 {
 		border-bottom: 3px solid #11abb0;
 		padding-bottom: 6px;
 		margin-bottom: 15px;
+		display: inline-block;
 	}
 	
 	#resume .info span {

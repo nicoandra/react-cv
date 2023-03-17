@@ -25,9 +25,9 @@ function Resume({ resume, hobbies }) {
 		})
 
 		return (
-			<div key={"work" + index} className="row">
-				<div className="row header-col">
-					<h3>{work.title}</h3>
+			<div key={"work" + index} className="work-position">
+				<div className="header-col">
+					<h1>{work.title}</h1>
 					<span className="info">
 						{work.company}
 						<span>&bull;</span>{" "}
@@ -53,15 +53,20 @@ function Resume({ resume, hobbies }) {
 			<div className="row resume">
 				<div className={`twelve columns header-col work`}>
 					<div className={`header-col`}>
-						<h1><span>Work Experience</span></h1>
+						<h3>Work Experience</h3>
 					</div>
 					<div className='main-col'>{work}</div>
 				</div>
+			</div>
+			<div className="row">
 				<div className={`twelve columns header-col skills`}>
 					<h1><span>Skills</span></h1>
-					{skills}
-					{hobbiesList && <><h1><span>Hobbies</span></h1>
-					{hobbiesList}</>}
+					<GridWrapper >{skills}</GridWrapper >
+					
+					{hobbiesList && <>
+							<h1>Hobbies</h1>
+							{hobbiesList}
+					</>}
 				</div>
 			</div>
 
