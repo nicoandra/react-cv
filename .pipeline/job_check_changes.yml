@@ -8,7 +8,7 @@ jobs:
   steps:
   - bash: |
       PATH_FILTER="${{ parameters.path }}"
-      CHANGED_FILES=$(git diff HEAD HEAD~ --name-only)
+      CHANGED_FILES=$(git diff HEAD...origin/main --name-only)
       MATCH_COUNT=0
 
       echo "Checking for file changes..."
