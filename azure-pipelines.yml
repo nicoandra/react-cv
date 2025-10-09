@@ -62,6 +62,7 @@ stages:
         echo "targetAppName: $(targetAppName)"
 
 - stage: NestApp
+  condition: or(eq(variables.isQaRelease, true), eq(variables.isProductionRelease, true))
   jobs:
   - template: '.pipeline/job_check_changes.yml'
     parameters:
@@ -102,6 +103,7 @@ stages:
         package: $(System.ArtifactsDirectory)/app.zip      
 
 - stage: uiCV
+  condition: or(eq(variables.isQaRelease, true), eq(variables.isProductionRelease, true))
   jobs:
   - template: '.pipeline/job_check_changes.yml'
     parameters:
@@ -153,6 +155,7 @@ stages:
           mv output.pdf NicolasAndrade-SeniorDeveloper.pdf
           az storage blob upload --account-name $(targetAppName) -f NicolasAndrade-SeniorDeveloper.pdf -c \$web --overwrite true
 - stage: uiRepairShop
+  condition: or(eq(variables.isQaRelease, true), eq(variables.isProductionRelease, true))
   jobs:
   - template: '.pipeline/job_check_changes.yml'
     parameters:
