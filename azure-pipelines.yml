@@ -7,6 +7,8 @@ trigger:
     include:
     - main
     - qa
+    - refs/heads/qa
+    - refs/heads/main
     - refs/tags/*
     - releases/tags/*
     - azure-pipeline
@@ -14,9 +16,9 @@ trigger:
 resources:
 - repo: self
 
-pr:
-  - main
-  - qa
+# pr:
+#  - main
+#  - qa
 
 variables:
 # Container registry service connection established during pipeline creation
@@ -44,7 +46,7 @@ variables:
   value: 'Deployment'
 
 pool:
-  vmImage: 'ubuntu-20.04'
+  vmImage: ubuntu-24.04
 
 stages:
 - stage: Debug
@@ -108,7 +110,7 @@ stages:
   - job: DeployBlobContainer
     displayName: Deploy as Storage Blob to container=$web
     dependsOn: CheckChanges
-    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.uiCV'], 'true'), or(eq(variables.isQaRelease, true), eq(variables.isProductionRelease, true)))
+    condition: or(eq(variables.isProductionRelease, true), and(eq(dependencies.CheckChanges.outputs['check_changes.uiCV'], 'true'), eq(variables.isQaRelease, true)))
     steps:
     - bash: |
         npm install
@@ -135,7 +137,7 @@ stages:
     dependsOn: DeployBlobContainer
     steps:
     - bash: |
-        chromium --headless --disable-gpu --print-to-pdf-no-header --no-margins --print-to-pdf=output.pdf $(cvApplicationUrl)
+        chromium --headless --disable-gpu --no-pdf-header-footer --no-margins --no-sandbox --print-to-pdf=output.pdf $(cvApplicationUrl)
       displayName: Build PDF
       workingDirectory: $(Build.SourcesDirectory)/ui-cv
     - task: AzureCLI@2

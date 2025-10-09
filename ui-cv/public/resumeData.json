@@ -30,7 +30,22 @@
 	},
 	"resume": {
 		"skillmessage": false,
-		"work": [{
+		"work": [
+			{
+				"company": "Roofr",
+				"link": "https://roofr.com",
+				"location": "Montréal, Québec, Canada",
+				"title": "Sr. Full-stack Software Developer",
+				"years": "April 2023 - Present",
+				"markdownTemplate": "/markdown/jobs/roofr.md",
+				"technologies": [
+					{"name": "Programming languages", "content":"PHP 8+, Laravel"},
+					{"name": "Databases and data storage", "content":"PostgreSQL, Redis"},
+					{"name": "Development tools and flows", "content":"Docker, GitHub Actions, PhpStan, PhpCsFixer, Notion"},
+					{"name": "Web Services and Infrastructure", "content":"AWS, Sentry"}
+				]
+			},
+			{
 				"company": "SSENSE",
 				"link": "https://ssense.com",
 				"location": "Montréal, Québec, Canada",
