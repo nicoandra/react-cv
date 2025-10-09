@@ -108,7 +108,7 @@ stages:
   - job: DeployBlobContainer
     displayName: Deploy as Storage Blob to container=$web
     dependsOn: CheckChanges
-    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.uiCV'], 'true'), or(eq(variables.isQaRelease, true), eq(variables.isProductionRelease, true)))
+    condition: or(eq(variables.isProductionRelease, true), and(eq(dependencies.CheckChanges.outputs['check_changes.uiCV'], 'true'), eq(variables.isQaRelease, true)))
     steps:
     - bash: |
         npm install
