@@ -14,9 +14,9 @@ trigger:
 resources:
 - repo: self
 
-pr:
-  - main
-  - qa
+# pr:
+#  - main
+#  - qa
 
 variables:
 # Container registry service connection established during pipeline creation
