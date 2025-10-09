@@ -135,7 +135,7 @@ stages:
     dependsOn: DeployBlobContainer
     steps:
     - bash: |
-        chromium --headless --disable-gpu --print-to-pdf-no-header --no-margins --no-sandbox --print-to-pdf=output.pdf $(cvApplicationUrl)
+        chromium --headless --disable-gpu --no-pdf-header-footer --no-margins --no-sandbox --print-to-pdf=output.pdf $(cvApplicationUrl)
       displayName: Build PDF
       workingDirectory: $(Build.SourcesDirectory)/ui-cv
     - task: AzureCLI@2
