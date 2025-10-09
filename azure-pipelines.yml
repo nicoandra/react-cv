@@ -7,6 +7,8 @@ trigger:
     include:
     - main
     - qa
+    - refs/heads/qa
+    - refs/heads/main
     - refs/tags/*
     - releases/tags/*
     - azure-pipeline
