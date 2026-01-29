@@ -66,10 +66,6 @@ stages:
   jobs:
   - template: '.pipeline/job_check_changes.yml'
     parameters:
-      path: "ui-cv/"
-      appName: "uiCV" 
-  - template: '.pipeline/job_check_changes.yml'
-    parameters:
       path: "resume.*"
       appName: "jsonResume"    
   - job: DeployBlobContainer
