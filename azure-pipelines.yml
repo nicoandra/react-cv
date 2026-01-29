@@ -88,5 +88,5 @@ stages:
         inlineScript: |
           set -e
           echo "With targetAppName=$(targetAppName)"
-          az storage blob upload --account-name $(targetAppName) -s index.html -d \$web --overwrite true
+          az storage blob upload --account-name $(targetAppName) --file index.html --name \$web/index.html --overwrite true
 
