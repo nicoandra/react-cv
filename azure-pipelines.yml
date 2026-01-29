@@ -85,7 +85,7 @@ stages:
         azureSubscription: $(azureSubscription)
         scriptType: bash
         scriptLocation: inlineScript
-        workingDirectory: $(Build.SourcesDirectory)/ui-cv
+        workingDirectory: $(Build.SourcesDirectory)
         inlineScript: |
           set -e
           echo "With targetAppName=$(targetAppName)"
