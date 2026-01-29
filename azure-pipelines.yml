@@ -61,47 +61,6 @@ stages:
         echo "commitHash: $(commitHash)"
         echo "targetAppName: $(targetAppName)"
 
-- stage: NestApp
-  condition: or(eq(variables.isQaRelease, true), eq(variables.isProductionRelease, true))
-  jobs:
-  - template: '.pipeline/job_check_changes.yml'
-    parameters:
-      path: "nest-app/"
-      appName: "nestApp"
-  - job: DeployFunctionApp
-    displayName: Deploy Function App
-    dependsOn: CheckChanges
-    condition: and(eq(dependencies.CheckChanges.outputs['check_changes.nestApp'], 'true'), or(eq(variables.isQaRelease, true), eq(variables.isProductionRelease, true)))
-    steps:
-    - bash: |
-        npm install
-        npm run build
-      workingDirectory: $(Build.SourcesDirectory)/nest-app
-      displayName: Compile
-    - bash: |
-        mkdir toZip
-        rm node_modules -r
-        npm install --only=production
-        mv dist toZip
-        mv node_modules toZip
-        mv main toZip
-      workingDirectory: $(Build.SourcesDirectory)/nest-app
-      displayName: Make lean
-    - task: ArchiveFiles@2
-      inputs:
-        rootFolderOrFile: $(Build.SourcesDirectory)/nest-app/toZip
-        includeRootFolder: false
-        archiveType: zip
-        archiveFile: '$(System.ArtifactsDirectory)/app.zip' 
-        replaceExistingArchive: true 
-    - task: AzureFunctionApp@1
-      displayName: Deploy FunctionApp
-      inputs:
-        azureSubscription: $(azureSubscription)
-        appType: functionAppLinux
-        appName: $(targetAppName)
-        package: $(System.ArtifactsDirectory)/app.zip      
-
 - stage: uiCV
   condition: or(eq(variables.isQaRelease, true), eq(variables.isProductionRelease, true))
   jobs:
@@ -116,13 +75,8 @@ stages:
     steps:
     - bash: |
         npm install
-        npm run build
-      displayName: Compile App to ./build
-      workingDirectory: $(Build.SourcesDirectory)/ui-cv
-      env:
-        REACT_APP_CONTACT_FORM_POSTBACK_URL: https://nicoandra.azurewebsites.net/api/contactform-onsubmit
-        REACT_APP_RECAPTCHA_SITE_KEY: 6LdvDi4aAAAAAO0wUdv-n40lIutg4slj9SQa7iqk
-        REACT_APP_VERSION: $(Build.SourceBranchName)
+        resumed render --theme jsonresume-theme-elegant
+        cp resume.html index.html
     - task: AzureCLI@2
       displayName: Copy to Blob Container
       inputs:
@@ -133,31 +87,4 @@ stages:
         inlineScript: |
           set -e
           echo "With targetAppName=$(targetAppName)"
-          az storage blob upload-batch --account-name $(targetAppName) -s ./build -d \$web --overwrite true
-  - job: BuildPdf
-    displayName: Installs Chromium and builds the printable version of the CV
-    dependsOn: DeployBlobContainer
-    steps:
-    - bash: |
-        chromium --headless --disable-gpu --no-pdf-header-footer --no-margins --no-sandbox --print-to-pdf=output.pdf $(cvApplicationUrl)
-      displayName: Build PDF
-      workingDirectory: $(Build.SourcesDirectory)/ui-cv
-    - task: AzureCLI@2
-      displayName: Copy PDF to Blob Container
-      inputs:
-        azureSubscription: $(azureSubscription)
-        scriptType: bash
-        scriptLocation: inlineScript
-        workingDirectory: $(Build.SourcesDirectory)/ui-cv
-        inlineScript: |
-          set -e
-          echo "With targetAppName=$(targetAppName)"
-          mv output.pdf NicolasAndrade-SeniorDeveloper.pdf
-          az storage blob upload --account-name $(targetAppName) -f NicolasAndrade-SeniorDeveloper.pdf -c \$web --overwrite true
-- stage: uiRepairShop
-  condition: or(eq(variables.isQaRelease, true), eq(variables.isProductionRelease, true))
-  jobs:
-  - template: '.pipeline/job_check_changes.yml'
-    parameters:
-      path: "ui-repair-shop/"
-      appName: "uiRepairShop"
+          az storage blob upload-batch --account-name $(targetAppName) -s index.html \$web --overwrite true

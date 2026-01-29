@@ -1,0 +1,240 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Nicolás Andrade",
+    "label": "Senior Software Engineer (Backend / Platform)",
+    "image": "",
+    "email": "",
+    "phone": "+1 438-821-6426",
+    "url": "https://www.nmac.com.ar",
+    "summary": "Senior software engineer with 10+ years building high-traffic, high-throughput and highly-available backend systems. Strong focus on reliability, incident ownership, domain design, and pragmatic engineering standards (testing, static analysis, CI/CD). Experienced in event-driven architectures, DDD-style boundaries, and scaling production services across AWS/Kubernetes environments.",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "Montréal",
+      "countryCode": "CA",
+      "region": "Québec"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "nicoandrade",
+        "url": "https://www.linkedin.com/in/nicoandrade/"
+      },
+      {
+        "network": "GitHub",
+        "username": "nicoandra",
+        "url": "https://github.com/nicoandra"
+      },
+      {
+        "network": "Website",
+        "username": "nmac.com.ar",
+        "url": "https://www.nmac.com.ar"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Roofr",
+      "location": "",
+      "description": "Web platform for roofing contractors (job planning, quotes, document signing, invoicing, payments, supplier integrations).",
+      "position": "Senior Back-End Software Developer",
+      "url": "",
+      "startDate": "2023-04-01",
+      "endDate": "",
+      "summary": "Core backend engineering across domain services with a focus on scalability, maintainability, and operational excellence.",
+      "highlights": [
+        "Designed, developed, and maintained core backend components with an emphasis on reliability, throughput, and safe change management.",
+        "Raised engineering quality by championing stronger pre-merge validation (static analysis + test suite gates) to reduce regressions and improve accountability.",
+        "Streamlined local development with a unified Makefile workflow to reduce onboarding friction and environment drift.",
+        "Led design and implementation of a domain-driven transition away from CycleORM toward a repository-based architecture to improve decoupling and testability.",
+        "Collaborated cross-team to standardize authorization and permission handling through reusable policies and typed DTOs.",
+        "Owned and facilitated post-incident analysis for production issues, driving root-cause identification, mitigation plans, and prevention work."
+      ]
+    },
+    {
+      "name": "SSENSE",
+      "location": "",
+      "description": "Global e-commerce platform.",
+      "position": "Senior Full-stack Software Developer / Tech Lead (Pricing Domain)",
+      "url": "",
+      "startDate": "2017-11-01",
+      "endDate": "2023-01-01",
+      "summary": "Led the Pricing domain to improve correctness, performance, and availability of global price calculation and related services.",
+      "highlights": [
+        "Led the Pricing domain team, guiding feature exploration, technical design, and delivery with a focus on scalability and operational safety.",
+        "Modernized parts of a legacy monolith by extracting capabilities into cloud-native services.",
+        "Built an eventually-consistent framework for near real-time per-product aggregates from multiple data sources, minimizing incremental effort for new aggregate types.",
+        "Designed and deployed a Slack integration to query real-time product information (price, stock, description, discounts) from internal systems.",
+        "Owned incident response and post-incident reporting for production services, defining mitigation strategies and preventative actions.",
+        "Contributed to engineering standards through code reviews, coaching, and participation in hiring (interviews + debriefs)."
+      ]
+    },
+    {
+      "name": "MindGeek",
+      "location": "",
+      "description": "",
+      "position": "Lead Code Auditor (Internal Product Security Team)",
+      "url": "",
+      "startDate": "2017-02-01",
+      "endDate": "2017-11-01",
+      "summary": "Tech lead for internal product security reviews and security engineering guidance across teams.",
+      "highlights": [
+        "Reviewed internal applications to identify security weaknesses, bugs, exploit paths, and violations of secure coding standards.",
+        "Provided technical guidance to security analysts and engineering teams; contributed to security awareness trainings for new hires.",
+        "Triaged bug-bounty submissions, assessed impact, and coordinated follow-ups with engineering and infrastructure stakeholders."
+      ]
+    },
+    {
+      "name": "MindGeek",
+      "location": "",
+      "description": "",
+      "position": "Tech Lead / Senior Software Developer",
+      "url": "",
+      "startDate": "2010-10-01",
+      "endDate": "2017-02-01",
+      "summary": "Led teams and services across multiple products; later worked on a high-traffic advertising platform improving CMS and analytics capabilities.",
+      "highlights": [
+        "Led a team of ~7 developers across multiple projects; served as the interface between frontend, backend, and product stakeholders.",
+        "Redesigned and consolidated inherited codebases to reduce duplication and improve maintainability across multiple services.",
+        "Designed a framework to unify multiple domains into a single backend codebase, reducing development and maintenance overhead.",
+        "Improved performance and reliability by identifying bottlenecks, tuning systems, and supporting production operations.",
+        "Participated in hiring by running technical interviews and contributing to debrief sessions."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Backend Engineering",
+      "level": "",
+      "keywords": [
+        "High-traffic systems",
+        "Event-driven architecture",
+        "CQRS",
+        "API design",
+        "Performance optimization",
+        "Reliability & operations",
+        "Incident response",
+        "Post-incident analysis"
+      ]
+    },
+    {
+      "name": "Languages",
+      "level": "",
+      "keywords": ["PHP (7.1–8+)", "TypeScript", "JavaScript", "Node.js", "Python (3.8+)", "Bash"]
+    },
+    {
+      "name": "Frameworks & Patterns",
+      "level": "",
+      "keywords": ["Laravel", "MVC", "DDD-style boundaries", "Repository pattern", "Unit & integration testing"]
+    },
+    {
+      "name": "Data",
+      "level": "",
+      "keywords": [
+        "PostgreSQL",
+        "MySQL",
+        "Redis",
+        "MongoDB",
+        "DocumentDB",
+        "DynamoDB",
+        "ElasticSearch",
+        "Materialized views",
+        "Replication & sharding (concepts)",
+        "Query optimization"
+      ]
+    },
+    {
+      "name": "Cloud & Infrastructure",
+      "level": "",
+      "keywords": [
+        "AWS (IAM, S3, SQS, SNS, API Gateway, Step Functions)",
+        "Kubernetes",
+        "EKS",
+        "Docker",
+        "CloudWatch",
+        "Serverless"
+      ]
+    },
+    {
+      "name": "Quality & Delivery",
+      "level": "",
+      "keywords": [
+        "CI/CD",
+        "GitHub Actions",
+        "Static analysis (PHPStan)",
+        "Code style (PhpCsFixer)",
+        "Jenkins",
+        "SonarQube",
+        "Trunk-based development",
+        "GitFlow"
+      ]
+    },
+    {
+      "name": "Observability & Incident Tooling",
+      "level": "",
+      "keywords": ["Sentry", "Datadog (APM/Logs)", "New Relic", "PagerDuty"]
+    }
+  ],
+  "languages": [
+    { "language": "English", "fluency": "Professional" },
+    { "language": "Français", "fluency": "Professional" },
+    { "language": "Español", "fluency": "Native" }
+  ],
+  "projects": [
+    {
+      "name": "serverless-offline-lambda-docker",
+      "description": "Serverless plugin enabling local development with Serverless Offline while deploying AWS Lambda as Docker images via CloudFormation, to keep local/dev/prod behavior closer and reduce friction.",
+      "highlights": [
+        "Improved local development ergonomics for teams using Lambda container images.",
+        "Focused on transparent developer experience: same workflow locally and in AWS."
+      ],
+      "keywords": ["Serverless", "AWS Lambda", "Docker", "Developer tooling"],
+      "startDate": "",
+      "endDate": "",
+      "url": "",
+      "roles": ["Contributor"],
+      "entity": "",
+      "type": "open-source"
+    },
+    {
+      "name": "Cachier (bug fix contribution)",
+      "description": "Contributed a backwards-compatible fix for a bug that could lead to deadlocks under certain conditions, implemented as an opt-in behavior for users.",
+      "highlights": ["Bug fix with careful backwards-compatibility considerations."],
+      "keywords": ["Python", "Caching", "Concurrency"],
+      "url": "",
+      "type": "open-source"
+    },
+    {
+      "name": "S3rver (bug fix contribution)",
+      "description": "Fixed an issue with improper handling of HTTP Range requests, which caused downstream failures for clients relying on correct partial-content behavior.",
+      "highlights": ["Improved protocol correctness for local S3-compatible development tooling."],
+      "keywords": ["Node.js", "S3", "HTTP", "Developer tooling"],
+      "url": "",
+      "type": "open-source"
+    },
+    {
+      "name": "serverless-step-functions-local-docker",
+      "description": "Fixed configuration behavior so the stage is resolved from provider configuration and falls back to legacy values when required.",
+      "highlights": ["More robust configuration resolution while preserving legacy compatibility."],
+      "keywords": ["Serverless", "AWS Step Functions", "Docker"],
+      "url": "",
+      "type": "open-source"
+    }
+  ],
+  "education": [],
+  "certificates": [],
+  "awards": [
+    {
+      "title": "Empowering Our People Ambassador (nomination)",
+      "date": "",
+      "awarder": "SSENSE",
+      "summary": "Nominated by colleagues."
+    }
+  ],
+  "publications": [],
+  "volunteer": [],
+  "interests": [],
+  "references": []
+}
+
