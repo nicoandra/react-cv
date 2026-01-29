@@ -64,6 +64,7 @@ stages:
 - stage: uiCV
   condition: or(eq(variables.isQaRelease, true), eq(variables.isProductionRelease, true))
   jobs:
+
   - template: '.pipeline/job_check_changes.yml'
     parameters:
       path: "resume.*"
@@ -87,4 +88,5 @@ stages:
         inlineScript: |
           set -e
           echo "With targetAppName=$(targetAppName)"
-          az storage blob upload-batch --account-name $(targetAppName) -s index.html -d \$web --overwrite true
+          az storage blob upload --account-name $(targetAppName) -s index.html -d \$web --overwrite true
+
