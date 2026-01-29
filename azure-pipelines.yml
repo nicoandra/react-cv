@@ -64,20 +64,21 @@ stages:
 - stage: uiCV
   condition: or(eq(variables.isQaRelease, true), eq(variables.isProductionRelease, true))
   jobs:
-
   - template: '.pipeline/job_check_changes.yml'
     parameters:
-      path: "resume.*"
-      appName: "jsonResume"    
+      path: "ui-cv/"
+      appName: "uiCV" 
+   
   - job: DeployBlobContainer
     displayName: Deploy as Storage Blob to container=$web
     dependsOn: CheckChanges
-    condition: or(eq(variables.isProductionRelease, true), and(eq(dependencies.CheckChanges.outputs['check_changes.jsonResume'], 'true'), eq(variables.isQaRelease, true)))
+    condition: or(eq(variables.isProductionRelease, true), and(eq(dependencies.CheckChanges.outputs['check_changes.uiCV'], 'true'), eq(variables.isQaRelease, true)))
     steps:
     - bash: |
         npm install
         resumed render --theme jsonresume-theme-elegant
-        cp resume.html index.html
+        mkdir build
+        cp resume.html build/index.html
     - task: AzureCLI@2
       displayName: Copy to Blob Container
       inputs:
@@ -88,5 +89,4 @@ stages:
         inlineScript: |
           set -e
           echo "With targetAppName=$(targetAppName)"
-          az storage blob upload --account-name $(targetAppName) --file index.html --name \$web/index.html --overwrite true
-
+          az storage blob upload-batch --account-name $(targetAppName) -s ./build -d \$web --overwrite true
