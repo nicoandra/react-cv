@@ -215,7 +215,7 @@
       "type": "open-source"
     },
     {
-      "name": "serverless-step-functions-local-docker",
+      "name": "Sºerverless-step-functions-local-docker",
       "description": "Fixed configuration behavior so the stage is resolved from provider configuration and falls back to legacy values when required.",
       "highlights": ["More robust configuration resolution while preserving legacy compatibility."],
       "keywords": ["Serverless", "AWS Step Functions", "Docker"],
@@ -224,6 +224,7 @@
     }
   ],
   "education": [],
+
   "certificates": [],
   "awards": [
     {
