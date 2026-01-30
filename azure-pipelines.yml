@@ -75,9 +75,10 @@ stages:
     condition: or(eq(variables.isProductionRelease, true), and(eq(dependencies.CheckChanges.outputs['check_changes.jsonResume'], 'true'), eq(variables.isQaRelease, true)))
     steps:
     - bash: |
+        set -e
         npm install
         cd jsonresume
-        resumed render --theme jsonresume-theme-elegant
+        ../node_modules/.bin/resumed render --theme jsonresume-theme-elegant
         php build.php
         cp resume.analytics.html index.html
     - task: AzureCLI@2
