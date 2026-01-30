@@ -193,7 +193,7 @@
       "keywords": ["Serverless", "AWS Lambda", "Docker", "Developer tooling"],
       "startDate": "",
       "endDate": "",
-      "url": "",
+      "url": "https://www.npmjs.com/package/serverless-offline-lambda-docker-plugin",
       "roles": ["Contributor"],
       "entity": "",
       "type": "open-source"
@@ -203,7 +203,7 @@
       "description": "Contributed a backwards-compatible fix for a bug that could lead to deadlocks under certain conditions, implemented as an opt-in behavior for users.",
       "highlights": ["Bug fix with careful backwards-compatibility considerations."],
       "keywords": ["Python", "Caching", "Concurrency"],
-      "url": "",
+      "url": "https://github.com/shaypal5/cachier/pull/36",
       "type": "open-source"
     },
     {
@@ -211,7 +211,7 @@
       "description": "Fixed an issue with improper handling of HTTP Range requests, which caused downstream failures for clients relying on correct partial-content behavior.",
       "highlights": ["Improved protocol correctness for local S3-compatible development tooling."],
       "keywords": ["Node.js", "S3", "HTTP", "Developer tooling"],
-      "url": "",
+      "url": "https://github.com/jamhall/s3rver/pull/755",
       "type": "open-source"
     },
     {
@@ -219,7 +219,7 @@
       "description": "Fixed configuration behavior so the stage is resolved from provider configuration and falls back to legacy values when required.",
       "highlights": ["More robust configuration resolution while preserving legacy compatibility."],
       "keywords": ["Serverless", "AWS Step Functions", "Docker"],
-      "url": "",
+      "url": "https://github.com/evennode/serverless-step-functions-local-docker/pull/3",
       "type": "open-source"
     }
   ],
