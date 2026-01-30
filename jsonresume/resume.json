@@ -184,7 +184,7 @@
   ],
   "projects": [
     {
-      "name": "serverless-offline-lambda-docker",
+      "name": "Serverless-offline-lambda-docker",
       "description": "Serverless plugin enabling local development with Serverless Offline while deploying AWS Lambda as Docker images via CloudFormation, to keep local/dev/prod behavior closer and reduce friction.",
       "highlights": [
         "Improved local development ergonomics for teams using Lambda container images.",
