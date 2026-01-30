@@ -3,7 +3,8 @@
   "basics": {
     "name": "Nicolás Andrade",
     "label": "Senior Software Developer (Backend / Platform / Architecture)",
-    "image": "",
+    "image": "profilepic.jpg",
+    "picture": "profilepic.jpg",
     "email": "",
     "phone": "+1 438-821-6426",
     "url": "https://www.nmac.com.ar",

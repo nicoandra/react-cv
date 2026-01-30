@@ -66,13 +66,13 @@ stages:
   jobs:
   - template: '.pipeline/job_check_changes.yml'
     parameters:
-      path: "jsonresume/"
+      path: "jsonresume/*"
       appName: "jsonResume" 
    
   - job: DeployBlobContainer
     displayName: Deploy as Storage Blob to container=$web
     dependsOn: CheckChanges
-    condition: or(eq(variables.isProductionRelease, true), and(eq(dependencies.CheckChanges.outputs['check_changes.uiCV'], 'true'), eq(variables.isQaRelease, true)))
+    condition: or(eq(variables.isProductionRelease, true), and(eq(dependencies.CheckChanges.outputs['check_changes.jsonResume'], 'true'), eq(variables.isQaRelease, true)))
     steps:
     - bash: |
         npm install
