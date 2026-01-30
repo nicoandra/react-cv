@@ -90,4 +90,4 @@ stages:
         inlineScript: |
           set -e
           echo "With targetAppName=$(targetAppName)"
-          az storage blob upload-batch --account-name $(targetAppName) -s ./jsonresume -d \$web --overwrite true
+          az storage blob upload-batch --account-name $(targetAppName) -s . -d \$web --overwrite true
